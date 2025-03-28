@@ -1,0 +1,627 @@
+/* Default setting */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+}
+
+/* header */
+header{
+    background-color: white;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 10%;
+}
+
+header #company_logo{
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 3%;
+    top: 50%;
+    z-index: 9999;
+}
+
+header #company_name{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 13.5%;
+    top: 50%;
+    font-style: italic;
+    font-weight: bold;
+    z-index: 9999;
+}
+
+/* Navigation bar */
+nav {
+    background-color: white;
+    opacity: 0.8;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center; /* center align */
+    justify-content: flex-end; /* right */
+    padding-right: 50px; /* right margin */
+    z-index: 9998;
+}
+
+nav #menu_home, #menu_browse, #menu_about{
+    color: rgb(64, 51, 151);
+    margin-right: 100px;
+}
+
+nav #login_btn, #signup_btn{
+    width: 110px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: rgb(64, 51, 151);
+}
+
+nav #login_btn{
+    margin-right: 50px;
+}
+
+/* main screen */
+#main_screen{
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    width: 100%;
+    height: 90%;
+    background-color:rgb(21, 14, 69);
+}
+
+#main_background{
+    position: absolute;
+    top: 0%;
+    left: 25%;
+    height: 100%;
+    width: 75%;
+}
+
+#promotion_title{
+    position: absolute;
+    top: 35%;
+    left: 6.5%;
+    font-size: 100px;
+    font-weight: bold;
+    color: white;
+}
+
+#promotion_line{
+    position: absolute;
+    top: 55%;
+    left: 5.5%;
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+}
+
+#order_btn{
+    position: absolute;
+    top: 68%;
+    left: 5.5%;
+    height: 80px;
+    width: 250px;
+    background-color:cornflowerblue;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#order_btn p {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+/* ------------------------------------------------------------------------- */
+/* Second screen */
+#second_screen{
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+#second_screen_context{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-weight: bold;
+    color: rgb(64, 51, 151);
+}
+
+#split_line{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    height: 2px;
+    background-color: rgb(64, 51, 151);
+}
+
+.frame_2nd{
+    width: 300px;
+    height: 350px;
+    border: 2px solid rgb(64, 51, 151);
+}
+
+#frame1_2{
+    position: absolute;
+    top: 55%;
+    left: 25%;
+    transform: translate(-50%,-50%);
+}
+
+#frame2_2{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#frame3_2{
+    position: absolute;
+    top: 55%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+}
+
+.frame_2nd_img{
+    width: 220px;
+    height: 250px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.product_name{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.arrow{
+    width: 70px;
+    height: 70px;
+}
+
+#arrow_left{
+    position: absolute;
+    top: 55%;
+    left: 10%;
+    transform: translate(-50%,-50%);
+}
+
+#arrow_right{
+    position: absolute;
+    top: 55%;
+    left: 90%;
+    transform: translate(-50%,-50%);
+}
+
+.slideshow{
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%,-50%);
+}
+
+#slideshow1{
+    position: absolute;
+    top: 85%;
+    left: 45%;
+}
+
+#slideshow2{
+    position: absolute;
+    top: 85%;
+    left: 47.5%;
+}
+
+#slideshow3{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+}
+
+#slideshow4{
+    position: absolute;
+    top: 85%;
+    left:52.5%;
+}
+
+#slideshow5{
+    position: absolute;
+    top: 85%;
+    left: 55%;
+}
+/* ------------------------------------------------------------------------- */
+/* Customer Favourite */
+#customer_favourite{
+    position: absolute;
+    top: 200%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+/* Custoemr Favourite Context */
+#customer_favourite_context{
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-weight: bold;
+    color: rgb(64, 51, 151);
+}
+
+/* Search bar */
+#search_bar{
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 500px;
+    height: 50px;
+    border: 2px solid rgb(64, 51, 151);
+    border-radius: 20px;
+    overflow: hidden;
+}
+#search_text{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 90%;
+    height: 100%;
+    border: 0px;
+    text-indent: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+#search_icon{
+    position: absolute;
+    top: 56%;
+    left: 95%;
+    width: 10%;
+    height: 90%;
+    transform: translate(-50%,-50%);
+}
+
+/* frame */
+.frame_3rd{
+    width: 380px;
+    height: 420px;
+    border: 2px solid rgb(64, 51, 151);
+}
+
+#frame1_3{
+    position: absolute;
+    top: 65%;
+    left: 25%;
+    transform: translate(-50%,-50%);
+}
+
+#frame2_3{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#frame3_3{
+    position: absolute;
+    top: 65%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+}
+.frame_3rd_img{
+    width: 320px;
+    height: 220px;
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.price{
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 32px;
+    font-weight: bold;
+    color: rgb(64, 51, 151);
+}
+.order_btn{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgb(50, 28, 199);
+    color: white;
+    width: 240px;
+    height: 60px;
+    border-radius: 20px;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Latest Reviews */
+#latest_reviews{
+    position: absolute;
+    top: 300%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+/* Latest Reviews Context */
+#latest_reveiw_context{
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-weight: bold;
+    color: rgb(64, 51, 151);
+}
+/* review section */
+#review_section{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    height: 60%;
+    border: 2px solid rgb(64, 51, 151);
+}
+#review_img{
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translate(-50%,-50%);
+    width: 25%;
+    height: 80%;
+}
+#wall{
+    position: absolute;
+    top: 0%;
+    left: 92%;
+    width: 8%;
+    height: 100%;
+    background-color: rgb(64, 51, 151);
+}
+/* arrow sign */
+#arrow_left2{
+    position: absolute;
+    top: 60%;
+    left: 7%;
+    transform: translate(-50%,-50%);
+}
+#arrow_right2{
+    position: absolute;
+    top: 60%;
+    left: 93%;
+    transform: translate(-50%,-50%);
+}
+/* ------------------------------------------------------------------------- */
+/* Want to know about us */
+#company_detail{
+    position: absolute;
+    top: 400%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+/* company Context */
+#company_context{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-weight: bold;
+    color: rgb(64, 51, 151);
+}
+/* img stack */
+.image-stack {
+    position: absolute;
+    top: 60%;
+    left: 25%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 400px;
+}
+.stacked-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    transform: rotate(0deg);
+    transition: transform 0.5s ease;
+}
+.stacked-img:nth-child(2) { transform: rotate(-14deg); left: -60px; top: 25px; }
+.stacked-img:nth-child(3) { transform: rotate(-10deg); left: -40px; top: 15px; }
+.stacked-img:nth-child(4) { transform: rotate(-6deg); left: -20px; top: 5px; }
+/* company text */
+#company_text{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    width: 50%;
+    height: 50%;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* FREQUENT FAQs */
+#frequent_faq{
+    position: absolute;
+    top: 500%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+/* frequent context */
+#frequent_context{
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-weight: bold;
+    color: rgb(64, 51, 151);
+}
+/* faq section */
+.faq_section{
+    width: 1400px;
+    height: 80px;
+    border-radius: 20px;
+    border: 2px solid rgb(64, 51, 151);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 32px;
+}
+
+#faq1{
+    top: 37%;
+}
+#faq2{
+    top: 52%
+}
+#faq3{
+    top: 67%;
+}
+#faq4{
+    top: 82%;
+}
+
+#faq_section_text{
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    transform: translate(0, -50%);
+    font-style: bold;
+}
+#plus{
+    position: absolute;
+    top: 50%;
+    left: 95%;
+    transform: translate(0, -50%);
+    width: 30px;
+    height: 30px;
+}
+
+/* footer */
+footer{
+    position: absolute;
+    top: 600%;
+    left: 0%;
+    width: 100%;
+    height: 15%;
+    border-top: 2px solid rgb(50, 28, 199);
+}
+#company_logo2{
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform:translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+}
+#company_name2{
+    position: absolute;
+    top: 50%;
+    left: 14%;
+    transform: translate(-50%,-50%);
+    font-weight: bold;
+}
+#instagram{
+    position: absolute;
+    top: 30%;
+    left: 85%;
+    transform: translate(-50%,-50%);
+    width: 40px;
+    height: 40px;
+}
+#insta_address{
+    position: absolute;
+    top: 30%;
+    left: 89.5%;
+    transform: translate(-50%,-50%);
+    font-size: 18px;
+    font-style: bold;
+}
+
+#email{
+    position: absolute;
+    top: 70%;
+    left: 85%;
+    transform: translate(-50%,-50%);
+    width: 40px;
+    height: 40px;
+}
+#email_address{
+    position: absolute;
+    top: 70%;
+    left: 91%;
+    transform: translate(-50%,-50%);
+    font-size: 18px;
+    font-style: bold;
+}
