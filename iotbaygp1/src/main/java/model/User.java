@@ -3,9 +3,6 @@ import java.io.Serializable;
 
 public abstract class User implements Serializable {
     // private int userID;
-
-    @SuppressWarnings("unused")
-    private static final Long serialVersionUID = 0501L;
     protected String firstName;
     protected String lastName;
     

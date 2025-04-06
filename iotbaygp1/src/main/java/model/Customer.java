@@ -1,22 +1,18 @@
 package model;
-import java.io.Serializable;
 
+import java.util.ArrayList;
 
-public class Customer implements Serializable{
-    private String firstName;
-    private String lastName;
+public class Customer extends User{
     private String email;
     private String password;
     private int phoneNum;
     private String address = null;
+    private ArrayList<Order> orders;
+    private Cart cart;
     
-    public Customer(){
-
-    }
-
+    
     public Customer(String firstName, String lastName, String email, String password){
-        this.firstName = firstName;
-        this.lastName = lastName;
+        super(firstName, lastName);
         this.email = email;
         this.password = password;
     }
@@ -47,6 +43,15 @@ public class Customer implements Serializable{
 
     public void setAddress(String address){
         this.address = address;
+    }
+
+
+    public ArrayList<Order> getOrders(){
+        return this.orders;
+    }
+
+    public Cart geCart(){
+        return this.cart;
     }
 
 

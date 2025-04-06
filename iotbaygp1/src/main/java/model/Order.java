@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Order implements Serializable{
     private final Cart cart;
+    private final Customer customer;
     private String paymentReference;
     private String status;
     private String address;
@@ -13,6 +14,11 @@ public class Order implements Serializable{
 
     public Order(Cart cart){
         this.cart = cart;
+        this.customer = cart.getCustomer();
+    }
+
+    public Customer getCustomer(){
+        return this.customer;
     }
 
     public void setPayRef(String ref){

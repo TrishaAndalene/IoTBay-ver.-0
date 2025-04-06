@@ -30,7 +30,7 @@ public class ListUsers {
     }
 
     public void addManager(Staff staff){
-        if (staff.manager){
+        if (staff.managerPermissions){
             managers.add(staff);
         }
     }

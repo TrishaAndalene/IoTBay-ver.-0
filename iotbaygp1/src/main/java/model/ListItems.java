@@ -2,7 +2,7 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ListItem implements Serializable{
+public class ListItems implements Serializable{
     private final ArrayList<Product> products;
     private ArrayList<Product> allProducts = new ArrayList<>();
     private ArrayList<String> brands = new ArrayList<>();
@@ -12,7 +12,7 @@ public class ListItem implements Serializable{
     private ArrayList<Double> prices = new ArrayList<>();
 
     
-    public ListItem(){
+    public ListItems(){
         this.products = new ArrayList<>();
     }
     
@@ -143,7 +143,7 @@ public class ListItem implements Serializable{
     }
 
 
-    public ListItem demoProducts(){
+    public ListItems demoProducts(){
         this.createProduct("Macbook", "Apple", 1990.00, "Silver", "12 inch");
         this.createProduct("28 inch monitor", "Samsung", 500.00, "Black", "28 inch");
         this.createProduct("Charging cord", "Apple", 80.00, "White", "1 metre");

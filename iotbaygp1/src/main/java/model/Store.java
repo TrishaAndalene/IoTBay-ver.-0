@@ -6,10 +6,10 @@ import controller.Validator;
 
 public class Store {
     ListUsers users;
-    ListItem products;
+    ListItems products;
     Validator vldtr = new Validator();
 
-    public Store(ListUsers users, ListItem products){
+    public Store(ListUsers users, ListItems products){
         this.users = users;
         this.products = products;
     }
@@ -70,7 +70,7 @@ public class Store {
         
 
         ListUsers exampleUsers = new ListUsers().demoUsers();
-        ListItem exampleProducts = new ListItem().demoProducts();
+        ListItems exampleProducts = new ListItems().demoProducts();
 
         new Store(exampleUsers, exampleProducts).Use();
     }

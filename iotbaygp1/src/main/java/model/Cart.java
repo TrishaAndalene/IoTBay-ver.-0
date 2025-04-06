@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Cart implements Serializable{
     private final Customer customer;
-    private ListItem products;
+    private ListItems products;
     private Double totalCost;
 
     public Cart(Customer customer){
@@ -19,7 +19,7 @@ public class Cart implements Serializable{
         return this.customer;
     }
 
-    public ListItem getProducts(){
+    public ListItems getProducts(){
         return this.products;
     }
 
