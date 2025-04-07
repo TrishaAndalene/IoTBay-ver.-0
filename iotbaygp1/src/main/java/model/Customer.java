@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Customer extends User{
-    private String email;
+    private final String email;
     private String password;
     private int phoneNum;
     private String address = null;
@@ -50,7 +50,7 @@ public class Customer extends User{
         return this.orders;
     }
 
-    public Cart geCart(){
+    public Cart getCart(){
         return this.cart;
     }
 

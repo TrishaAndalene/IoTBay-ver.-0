@@ -9,6 +9,7 @@ public class Order implements Serializable{
     private String status;
     private String address;
     private String delivery;
+    private Double shippingCost;
     private Double totalCost;
 
 
@@ -29,6 +30,10 @@ public class Order implements Serializable{
         return this.paymentReference;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
     public void setAddress(Cart cart){
         if (!cart.getCustomer().getAddress().isEmpty()){
             this.address = cart.getCustomer().getAddress();}
@@ -44,14 +49,18 @@ public class Order implements Serializable{
 
     public Double getTotalCost(){
         Double cartCost = this.cart.getTotalCost();
-        Double shipping = 0.00;
         switch (this.delivery){
-            case "express" : shipping = 15.00;
-            case "overnight": shipping = 20.00;
-            default: shipping = 9.00;
+            case "express" : this.shippingCost = 15.00;
+            case "overnight": this.shippingCost = 20.00;
+            default: this.shippingCost = 9.00;
         }
-        this.totalCost += cartCost + shipping;
+        this.totalCost += cartCost + this.shippingCost;
         return this.totalCost;
+    }
+
+
+    public String getStatus() {
+        return status;
     }
 
     public void changeStatus(String status){
@@ -62,7 +71,5 @@ public class Order implements Serializable{
     public String toString(){
         return "Order details:\n" + this.cart.getProducts() + " with " + this.delivery + " delivery comes to a total of $" + this.totalCost;
     }
-
-
 
 }

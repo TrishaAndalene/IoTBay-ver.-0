@@ -142,18 +142,36 @@ public class ListItems implements Serializable{
         return withinRating;
     }
 
-
-    public ListItems demoProducts(){
-        this.createProduct("Macbook", "Apple", 1990.00, "Silver", "12 inch");
-        this.createProduct("28 inch monitor", "Samsung", 500.00, "Black", "28 inch");
-        this.createProduct("Charging cord", "Apple", 80.00, "White", "1 metre");
-        this.createProduct("iPad", "Apple", 700.00, "Black", "11 inch");
-        this.createProduct("Galaxy Phone", "Samsung", 1400.00, "Silver", "128GB");
-        this.createProduct("Power Bank", "Lenovo", 80.00, "White", "100 watt");
-        this.createProduct("Television", "Lenovo", 1863.95, "Black", "60 inch");
-        this.createProduct("Headphones", "Sony", 379.00, "Silver", "OS");
-        this.createProduct("Watch", "Sony", 634.00, "White", "12 mm");
-
-        return this;
+    public void setAllProducts(ArrayList<Product> allProducts) {
+        this.allProducts = allProducts;
     }
+
+    public void setBrands(ArrayList<String> brands) {
+        this.brands = brands;
+    }
+
+    public void setCategories(ArrayList<String> categories) {
+        this.categories = categories;
+    }
+
+    public void setCollections(ArrayList<String> collections) {
+        this.collections = collections;
+    }
+
+    public ArrayList<String> getColours() {
+        return colours;
+    }
+
+    public void setColours(ArrayList<String> colours) {
+        this.colours = colours;
+    }
+
+    public ArrayList<Double> getPrices() {
+        return prices;
+    }
+
+    public void setPrices(ArrayList<Double> prices) {
+        this.prices = prices;
+    }
+
 }

@@ -1,13 +1,10 @@
 package model;
 import java.util.ArrayList;
 
-import controller.Validator;
-
 
 public class Store {
     ListUsers users;
     ListItems products;
-    Validator vldtr = new Validator();
 
     public Store(ListUsers users, ListItems products){
         this.users = users;
@@ -47,31 +44,8 @@ public class Store {
         for (Product p : this.products.getProductsByCategory("Apple")){
         System.out.println(p);
         }
-/*  
-        
-     System.out.print("email: ");
-     String email = In.nextLine();
-     System.out.print("password: ");
-     String password = In.nextLine();
 
-     if (!vldtr.validateEmail(email)){
-        System.out.println("not valid email");
-     } else if (!vldtr.validatePassword(password)){
-        System.out.println("not valid password");
-     } else {
-        System.out.println("success!");
-     }
-*/
-       
     }
     
     
-    public static void main(String[] args){
-        
-
-        ListUsers exampleUsers = new ListUsers().demoUsers();
-        ListItems exampleProducts = new ListItems().demoProducts();
-
-        new Store(exampleUsers, exampleProducts).Use();
-    }
 }
