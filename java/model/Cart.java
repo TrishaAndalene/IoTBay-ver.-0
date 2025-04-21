@@ -1,0 +1,94 @@
+package model;
+
+import java.io.Serializable;
+
+
+// Java Library
+import java.util.*;
+
+// Cart Object (partially dependent on Customer.java)
+public class Cart implements Serializable{
+    private final Customer customer;
+    private ArrayList<Purchase> products;
+    private double totalCost;
+
+    // Constructor
+    Cart(Customer customer){
+        this.customer = customer;
+        this.products = new ArrayList<>();
+        this.totalCost = 0;
+    }
+
+    // Constructor for non-registered customer
+    Cart(){
+        this.customer = null;
+        this.products = new ArrayList<>();
+    }
+
+    // Update methods
+    public void addItemToCart(Purchase item){
+        this.products.add(item);
+    }
+
+    public void updateCost(){
+        double cost = 0;
+        for (Purchase p : this.products){
+            cost += p.getTotalCost();
+        }
+        this.totalCost = cost;
+    }
+
+    // Read methods
+
+    public Customer getCustomer(){
+        return this.customer;
+    }
+
+    public ArrayList<Purchase> getList(){
+        return this.products;
+    }
+
+    public double getTotalCost(){
+        return this.totalCost;
+    }
+
+    public int getUniqueItemCount(){
+        int count = 0;
+        for (Purchase p : this.products){
+            count++;
+        }
+        return count;
+    }
+
+    public int getTotalQuantity(){
+        int total = 0;
+        for (Purchase purchase : this.products){
+            total += purchase.getQuantity();
+        }
+        return total;
+    }
+
+    // (this is to get the specific index of a product in the array)
+    public int getProductIndex(String name){
+        if (this.products.size() != 0){
+            for (Purchase p : this.products){
+                if (name.equals(p.product.getName())){
+                    return this.products.indexOf(p);
+                }
+            }
+        }
+        return -1;
+    }
+
+    // Delete methods
+    public void deleteItem(String name){
+        if (this.products.size() != 0){
+            for (Purchase p : this.products){
+                if (name.equals(p.product.getName())){
+                    this.products.remove(p);
+                }
+            }
+        }
+    }
+
+}
