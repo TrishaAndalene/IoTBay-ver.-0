@@ -13,7 +13,7 @@ public class Validator {
         Pattern pattern = Pattern.compile(ptrn);
         Matcher match = pattern.matcher(input);
         return match.matches();
-    }
+    }   
 
     public boolean checkEmpty(String email, String password){
         return email.isEmpty() || password.isEmpty();

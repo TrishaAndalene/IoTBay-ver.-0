@@ -1,0 +1,81 @@
+body {
+    margin:0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+    font-family: "Sriracha", cursive;
+    font-weight: 300;
+    font-style: normal;
+    letter-spacing: 0.2vw;
+}
+
+section{
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+}
+
+section.content{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+}
+
+/* Title Navigation Bar */
+div.title{
+    background-color: rgb(48, 162, 244);
+    color: white;
+    max-height: 15vh;
+    text-align: center;
+    font-size: 5vh;
+}
+
+div.title h1{
+    margin-top: 0vh;
+}
+
+/* Left Navigation Bar */
+div.left-nav{
+    background-color: rgb(224, 224, 224);
+    min-width: 20%;
+    max-width: 20%;
+    min-height: 85vh;
+}
+
+div.left-nav ul{
+    list-style-type: none;
+    color: black;
+}
+
+div.left-nav ul li {
+    padding-top: 3.5vh;
+    padding-bottom: 3.5vh;
+    font-size: 2.5vh;
+}
+
+/* Content Right */
+div.right-content{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    min-width: 80%;
+    max-width: 80%;
+    min-height: 85vh;
+    justify-content: center;
+    text-align: center;
+}
+
+div.button-bar{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    min-height: 5vh;
+}
+
+div.button-bar button{
+    min-width: 40vw;
+    max-width: 40vw;
+}
