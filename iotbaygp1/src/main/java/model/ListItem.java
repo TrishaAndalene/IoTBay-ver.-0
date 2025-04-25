@@ -14,8 +14,8 @@ public class ListItem implements Serializable{
         this.allProducts = new ArrayList<>();
     }
     
-    public void createProduct(String upc, String name, String brand, Double price, String colour, String size, int quantity, Categories category){
-        Product product = new Product(upc, name, brand, price, colour, size, quantity, category);
+    public void createProduct(String upc, String name, Double price, String brand,String colour, String size, String img, int quantity, Categories category){
+        Product product = new Product(upc, name, price, brand, colour, size, img, quantity, category);
         this.allProducts.add(product);
         this.enterBrandHash(brand, product);
         this.enterCategoryHash(category, product);

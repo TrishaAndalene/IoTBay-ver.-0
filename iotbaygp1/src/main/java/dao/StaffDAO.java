@@ -13,10 +13,11 @@ import model.Staff;
 */
 
 public class StaffDAO {
-
+private Connection conn;
 private Statement st;
    
 public StaffDAO(Connection conn) throws SQLException {       
+   this.conn = conn;
    st = conn.createStatement();   
 }
 

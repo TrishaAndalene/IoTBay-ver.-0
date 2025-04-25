@@ -11,6 +11,17 @@
   </welcome-file-list>
 
   <servlet>
+      <servlet-name>StaffServlet</servlet-name>
+      <servlet-class>controller.StaffServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+      <servlet-name>StaffServlet</servlet-name>
+      <url-pattern>/StaffServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
       <servlet-name>StaffLoginController</servlet-name>
       <servlet-class>controller.StaffLoginController</servlet-class>
   </servlet>
@@ -19,5 +30,6 @@
       <servlet-name>StaffLoginController</servlet-name>
       <url-pattern>/StaffLoginController</url-pattern>
   </servlet-mapping>
+
 
 </web-app>

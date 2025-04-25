@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,6 @@
 </head>
 
 <body>
-
     <section class="login">
         <div class="left-1">
             <div class="left-content">
@@ -27,7 +27,7 @@
             <div class="right-content">
                 <h1>SIGN IN</h1>
 
-                <form action="StaffLoginController" method="post">
+                <form action="StaffLanding.jsp" method="post">
                     <input type="text" name="email" placeholder="Staff Email">
                     <br>
                     <input type="password" name="password" placeholder="Password">

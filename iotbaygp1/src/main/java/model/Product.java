@@ -1,35 +1,47 @@
 package model;
 import java.io.Serializable;
 
-
 enum StockStatus{
     UNAVAILABLE, LOW, AVAILABLE;
 }
 
 enum Categories{
-    WIFI, HOME_SECURITY, ACTIVITY_TRACKERS, ACTUATOR, AMBIENT_IOT;
+    WIFI, HOME_SECURITY, ACTIVITY_TRACKERS, ACTUATOR, AMBIENT_IOT, MINI_PC;
 }
 
 // Product Object
 public class Product implements Serializable{
     
     // Attributes
-    protected String upc, name, colour, brand, size, description;
+    protected String upc, name, colour, brand, size, img, description;
     protected double price, ratings;
     protected int quantity, reviews;
     protected StockStatus stock;
     protected Categories categories;
 
     // Construtor
-    Product(String upc, String name, String brand, double price, String colour, String size, int quantity, Categories category){
+    public Product(String upc, String name, double price, String brand, String colour, String size, String img, int quantity, Categories category){
         this.upc = upc;
         this.name = name;
         this.brand = brand;
         this.price = price;
         this.colour = colour;
         this.size = size;
+        this.img = img;
         this.quantity = quantity;
         this.categories = category;
+    }
+
+    public Product(String upc, String name, double price, String brand, String colour, String size, String img, int quantity, String description){
+        this.upc = upc;
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.colour = colour;
+        this.size = size;
+        this.img = img;
+        this.quantity = quantity;
+        this.description = description;
     }
 
     // Update methods
@@ -98,8 +110,20 @@ public class Product implements Serializable{
         return this.size;
     }
 
-    public String getDesc(){
+    public String getImg(){
+        return this.img;
+    }
+
+    public void setImg(String img){
+        this.img = img;
+    }
+
+    public String getDescription(){
         return this.description;
+    }
+
+    public String getUPC(){
+        return this.upc;
     }
 
     public double getPrice(){
