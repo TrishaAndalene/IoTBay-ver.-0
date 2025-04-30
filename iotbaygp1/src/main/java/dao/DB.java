@@ -10,7 +10,7 @@ import java.sql.Connection;
 
 public abstract class DB {   
 
-protected String URL = "jdbc:sqlite:src/main/database/iotbay.db";
+protected String URL = "jdbc:sqlite:database/iotbay.db";
 protected String driver = "org.sqlite.JDBC"; //connection null-instance to be initialized in sub-classes
 protected Connection conn; 
    
