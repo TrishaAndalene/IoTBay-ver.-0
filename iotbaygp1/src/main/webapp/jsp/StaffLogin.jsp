@@ -28,9 +28,9 @@
                 <h1>SIGN IN</h1>
 
                 <form action="StaffLanding.jsp" method="post">
-                    <input type="text" name="email" placeholder="Staff Email">
+                    <input type="text" name="staffemail" placeholder="Staff Email">
                     <br>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="staffpassword" placeholder="Password">
                     <br>
                     <input type="submit" id="signInBtn" value="Sign In">
                 </form>
