@@ -6,9 +6,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dao.DBConnector;
+import dao.OrderDAO;
 import dao.StaffDAO;
-import model.Staff;
 
+// Data type import
+import model.Staff;
+import model.Cart;
+import model.Order;
+import model.Purchase;
 public class TestDB {
     private static Scanner in = new Scanner(System.in);
 
@@ -27,7 +32,16 @@ try {
 
     System.out.println(staff);
 
+    // Order db
+    OrderDAO orderDB = new OrderDAO(conn);
 
+    // Cart trial = new Cart();
+
+    // orderDB.addOrder(new Cart());
+
+    Order order = orderDB.findOrder("Trisha");
+
+    System.out.println(order);
 
 connector.closeConnection();
 

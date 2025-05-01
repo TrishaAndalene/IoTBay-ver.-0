@@ -20,9 +20,10 @@ public OrderDAO(Connection conn) throws SQLException {
 }
 
 //Find user by email and password in the database   
-public Order findOrder(String name) throws SQLException {   
+@SuppressWarnings("unchecked")
+public Order findOrder(String code) throws SQLException {   
     //setup the select sql query string
-    String query = "SELECT * FROM Order WHERE name = '" + name  + "' ";
+    String query = "SELECT * FROM Order WHERE code = '" + code  + "' ";
 
     //execute this query using the statement field 
     //add the results to a ResultSet 
@@ -32,13 +33,13 @@ public Order findOrder(String name) throws SQLException {
    if (rs.next()){
         String customerName = rs.getString("name"); // to get the customer name
         double cost = rs.getDouble("totalCost");
-        List<Purchase> orderList = (List<Purchase>) rs.getArray("orderList");
+        ArrayList<Purchase> orderList = (ArrayList<Purchase>) rs.getArray("orderList");
 
-        return null;
+        Cart placeholder = new Cart();
+        placeholder.addItemToCart(orderList);
+        return new Order(placeholder);
 
-   }
-
-
+  }
     return null;
   }
 
@@ -46,8 +47,9 @@ public Order findOrder(String name) throws SQLException {
 
 //Add a user-data into the database   
 public void addOrder(Cart cart) throws SQLException {                   //code for add-operation       
-  st.executeUpdate("sql query");   
-
+  Order placeholder = new Order(cart);
+  String sqlQuery = "INSERT placeholder.getCode(), placeholder.getName(), placeholder.getList(), placeholder.getCost(), placeholder.getStatus() INTO Orders values(code, name, orderList, cost, status)";
+  st.executeUpdate(sqlQuery);   
 }
 }
 

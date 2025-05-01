@@ -32,6 +32,15 @@ CREATE TABLE Products (
     category TEXT DEFAULT 'None',
     description TEXT DEFAULT 'None');
 
+CREATE TABLE Orders (
+    code TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    orderList LIST NOT NULL,
+    cost FLOAT NOT NULL,
+    status TEXT NOT NULL);
+
+INSERT INTO Orders (code, name, orderList, cost, status) VALUES ('123456789', 'Trisha', '["Wifi", "Battery", "etc"]', 120.0, 'Received');
+
 INSERT INTO Products (upc, name, price, brand, colour, size, image, quantity, description) VALUES
 ('196163505886', 'PoE Mini-Computer ', 159.00, 'Waveshare', 'Black', '128GB', 'product_img/iot-boardcm4.jpg' ,25, 'Based on Raspberry Pi Compute Module 4 (with Fan)'),
 
@@ -62,5 +71,3 @@ INSERT INTO Customers (firstName, lastName, email, phoneNum, password) VALUES
 ('Dwight', 'Schrute', 'dwight.schrute@dundermifflin.com', '0443333333', '12345'),
 ('Pam', 'Beasley', 'pam.beasley@dundermifflin.com', '0454444444', '12345'),
 ('Kevin', 'Malone', 'kevin.malone@dundermifflin.com', '0465555555', '12345');
-
-

@@ -20,7 +20,7 @@ public class Cart implements Serializable{
     }
 
     // Constructor for non-registered customer
-    Cart(){
+    public Cart(){
         this.customer = null;
         this.products = new ArrayList<>();
     }
@@ -28,6 +28,10 @@ public class Cart implements Serializable{
     // Update methods
     public void addItemToCart(Purchase item){
         this.products.add(item);
+    }
+
+    public void addItemToCart(ArrayList<Purchase> items){
+        this.products = items;
     }
 
     public void updateCost(){

@@ -1,6 +1,7 @@
 package model;
 import java.io.Serializable;
 
+import java.util.*;
 
 public class Customer implements Serializable{
     // Attributes
@@ -9,6 +10,7 @@ public class Customer implements Serializable{
     private String email;
     private String password;
     private String phoneNum;
+    private ArrayList<String> orderCodes;
 
     // Constructor
     public Customer(String firstName, String lastName, String email, String phoneNum, String password){
@@ -26,6 +28,10 @@ public class Customer implements Serializable{
 
     public void setPhoneNum(String newPhoneNum){
         this.phoneNum = newPhoneNum;
+    }
+
+    public void addOrder(String code){
+        this.orderCodes.add(code);
     }
 
     // Read methods
