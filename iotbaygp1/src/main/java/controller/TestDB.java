@@ -26,11 +26,11 @@ try {
     DBConnector connector = new DBConnector();
     Connection conn = connector.openConnection();
 
-    StaffDAO db = new StaffDAO(conn);
+    // StaffDAO db = new StaffDAO(conn);
 
-    Staff staff = db.findStaff("michael.scott@iotbay.com", "12345");
+    // Staff staff = db.findStaff("michael.scott@iotbay.com", "12345");
 
-    System.out.println(staff);
+    // System.out.println(staff);
 
     // Order db
     OrderDAO orderDB = new OrderDAO(conn);
@@ -39,7 +39,7 @@ try {
 
     // orderDB.addOrder(new Cart());
 
-    Order order = orderDB.findOrder("Trisha");
+    Order order = orderDB.findOrder("123456789");
 
     System.out.println(order);
 

@@ -10,7 +10,7 @@ public class Purchase implements Serializable{
     public int quantity;
 
     // Constructor
-    Purchase(Product product, int quantity){
+    public Purchase(Product product, int quantity){
         this.product = product;
         this.quantity = quantity;
     }

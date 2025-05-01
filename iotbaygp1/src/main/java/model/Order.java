@@ -19,17 +19,21 @@ public class Order implements Serializable{
     private double cost;
 
     // Constructor
-    public Order(Cart cart){
+    public Order(Cart cart, String code){
         this.status = Status.RECEIVED;
         this.customer = cart.getCustomer();
         this.orderList = cart.getList();
         this.cost = cart.getTotalCost();
-        this.code = this.generateRandomStringList(1, 8);
+        this.code = code;
         try {
             this.name = this.customer.getFirstName();
             this.customer.addOrder(this.code);
         } catch (NullPointerException e){
             this.name = "anonymous";
+        }
+
+        if (this.code.equals("")){
+            this.code = this.generateRandomStringList(1, 8);
         }
     }
 
@@ -116,5 +120,9 @@ public class Order implements Serializable{
         } else {
             return "Cancelled";
         }
+    }
+
+    public String toString(){
+        return "Order code : " + this.getCode() + " | Customer name: " + this.getName() + " | Items : " + this.getList() + " | Total Cost: " + this.getCost() + " | Status : " + this.getStatus();
     }
 }
