@@ -62,6 +62,6 @@
     </footer>
     
  
-    
+<jsp:include page="/ConnServlet" flush="true"/>
 </body>
 </html>

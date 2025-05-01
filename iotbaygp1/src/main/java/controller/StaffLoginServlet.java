@@ -7,12 +7,14 @@ import java.util.logging.Logger;
 
 import dao.StaffDAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Staff;
- 
+
+@WebServlet("/StaffLoginServlet")
 public class StaffLoginServlet extends HttpServlet {
    
 @Override   
@@ -24,10 +26,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     Validator validator = new Validator();  
 
     //3- capture the posted email - check jsp form name to see what parameter name
-    String email = request.getParameter("staffemail");      
+    String email = request.getParameter("email");      
     
     //4- capture the posted password 
-    String password = request.getParameter("staffpassword");
+    String password = request.getParameter("password");
     
     //5- retrieve the manager instance from session      
     StaffDAO manager = (StaffDAO) session.getAttribute("manager");
