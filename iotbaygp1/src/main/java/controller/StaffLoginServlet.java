@@ -51,22 +51,22 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         //8-set incorrect email error to the session  
         session.setAttribute("errorMsg", "email does not fit correct format");         
         //9- redirect user back to the login.jsp
-        request.getRequestDispatcher("jsp/StaffLogin.jsp").include(request, response);     
+        request.getRequestDispatcher("StaffLogin.jsp").include(request, response);     
     } else if (validator.validatePassword(password)) {                  
         //11-set incorrect password error to the session
         session.setAttribute("errorMsg", "password does not fit correct format");           
         //12- redirect user back to the login.jsp  
-        request.getRequestDispatcher("jsp/StaffLogin.jsp").include(request, response);        
+        request.getRequestDispatcher("StaffLogin.jsp").include(request, response);        
     } else if (staff != null) {                     
         //13-save the logged in user object to the session
         session.setAttribute("staff", staff);
         //14- redirect user to the main.jsp
-        request.getRequestDispatcher("jsp/Landing.jsp").include(request, response);   
+        request.getRequestDispatcher("Landing.jsp").include(request, response);   
     } else {                       
         //15-set user does not exist error to the session
         session.setAttribute("errorMsg", "Incorrect email or password :(");        
         //16- redirect user back to the login.jsp
-        request.getRequestDispatcher("jsp/StaffLogin.jsp").include(request, response);  
+        request.getRequestDispatcher("StaffLogin.jsp").include(request, response);  
         }   
     }
 }
