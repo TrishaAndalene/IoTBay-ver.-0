@@ -12,8 +12,5 @@ public abstract class DB {
 
 protected String URL = "jdbc:sqlite:C:/Users/user/OneDrive - UTS/UTS Bachelor Material/Introduction to Software Development/Assignment 1/git pull/IoTBay-ver.-0/iotbaygp1/database/iotbay.db";
 protected String driver = "org.sqlite.JDBC"; //connection null-instance to be initialized in sub-classes
-protected Connection conn; 
-   
-
-
+protected Connection conn;
 }
