@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,6 +35,7 @@ public Order findOrder(String code) throws SQLException {
         String customerName = rs.getString("name"); // to get the customer name
         double cost = rs.getDouble("cost");
         String[] orderList = rs.getString("orderList").split(",");
+        String[] quantityList = rs.getString("quantityList").split(",");
 
         ArrayList<Purchase> lists = new ArrayList<>();
 
@@ -48,7 +48,7 @@ public Order findOrder(String code) throws SQLException {
           
           Product p = new Product(rs2.getString("upc"), rs2.getString("name"), rs2.getDouble("price"), rs2.getString("brand"), rs2.getString("colour"), rs2.getString("size"), rs2.getString("image"), rs2.getInt("quantity"), Categories.ACTIVITY_TRACKERS);
 
-          lists.add(new Purchase(p, 2));
+          lists.add(new Purchase(p, Integer.parseInt(quantityList[i])));
 
         }
 

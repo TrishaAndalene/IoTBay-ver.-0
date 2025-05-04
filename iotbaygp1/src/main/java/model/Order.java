@@ -43,7 +43,7 @@ public class Order implements Serializable{
     }
 
     // randomiser code (don't know if it's work yet)
-    public String generateRandomStringList(int numberOfStrings, int stringLength) {
+    public static String generateRandomStringList(int numberOfStrings, int stringLength) {
         List<String> stringList = new ArrayList<>();
         Random random = new Random();
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
