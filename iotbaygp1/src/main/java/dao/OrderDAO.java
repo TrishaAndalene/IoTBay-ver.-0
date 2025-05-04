@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +20,7 @@ public class OrderDAO {
 private Statement st;
    
 public OrderDAO(Connection conn) throws SQLException {       
-   st = conn.createStatement();   
+   st = conn.createStatement();
 }
 
 public Order findOrder(String code) throws SQLException {   
@@ -68,8 +69,34 @@ public Order findOrder(String code) throws SQLException {
 //Add a user-data into the database   
 public void addOrder(Cart cart) throws SQLException {                   //code for add-operation       
   Order placeholder = new Order(cart, "");
-  String sqlQuery = "INSERT placeholder.getCode(), placeholder.getName(), placeholder.getList(), placeholder.getCost(), placeholder.getStatus() INTO Orders values(code, name, orderList, cost, status)";
-  st.executeUpdate(sqlQuery);   
+  String sqlQuery = "INSERT INTO Orders (code, name, orderList, cost, status) VALUES ('" +
+                  placeholder.getCode()+ "', '" +
+                  placeholder.getName() + "', '" +
+                  placeholder.getList() + "', '" +
+                  placeholder.getCost() + "', '" +
+                  placeholder.getStatus() + "')";
+  st.executeUpdate(sqlQuery);
 }
+
+// Update order status (Order is unable to be deleted -> business rule)
+public void updateOrder(String code, int statusCode){
+    //setup the select sql query string
+
+    try {
+      Order o = this.findOrder(code);
+      
+      o.updateStatus(statusCode);
+
+      String query = "UPDATE Orders SET status = '" + o.getStatus() + "' WHERE code = '" + code + "'";
+
+      st.executeUpdate(query);
+
+      System.err.println("Here");
+
+    }
+    catch (SQLException s){};
+  
+  }
+
 }
 

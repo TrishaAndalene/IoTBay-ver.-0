@@ -12,7 +12,9 @@ import dao.StaffDAO;
 // Data type import
 import model.Staff;
 import model.Cart;
+import model.Categories;
 import model.Order;
+import model.Product;
 import model.Purchase;
 public class TestDB {
     private static Scanner in = new Scanner(System.in);
@@ -35,13 +37,17 @@ try {
     // Order db
     OrderDAO orderDB = new OrderDAO(conn);
 
-    // Cart trial = new Cart();
-
-    // orderDB.addOrder(new Cart());
-
     Order order = orderDB.findOrder("123456789");
 
     System.out.println(order);
+
+    // Unit testing adding a cart (success)
+    // Cart unitC = new Cart();
+    // unitC.addItemToCart(new Purchase(new Product("", "", 2, "", "", "", "", 3, Categories.ACTIVITY_TRACKERS), 0));
+    // orderDB.addOrder(unitC);
+
+    // Order status update (success)
+    orderDB.updateOrder("y8h0f0hS", 3);
 
 connector.closeConnection();
 

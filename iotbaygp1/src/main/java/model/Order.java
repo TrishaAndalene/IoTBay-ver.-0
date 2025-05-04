@@ -116,7 +116,7 @@ public class Order implements Serializable{
         } else if (this.status == Status.ONDELIVERY){
             return "On delivery";
         } else if (this.status == Status.FINISHED){
-            return "Finisged";
+            return "Finished";
         } else {
             return "Cancelled";
         }
