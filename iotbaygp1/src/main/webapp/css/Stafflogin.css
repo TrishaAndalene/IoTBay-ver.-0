@@ -107,7 +107,7 @@ input {
     margin-top: 4vh;
 }
 
-input[type="String"], input[type="password"] {
+input[type="text"], input[type="password"] {
     width: 60%;
     padding: 12px 20px;
     box-sizing: border-box;

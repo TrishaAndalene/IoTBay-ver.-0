@@ -11,7 +11,7 @@
 
     <script src="js/login_script.js"></script>
     
-    <link href="../css/Signin.css" rel="stylesheet" type="text/css">
+    <link href="css/Signin.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -26,7 +26,7 @@
                 <h1>IoTBay</h1>
                 <br>
                 <h3>Don't have an account yet?</h3>
-                <button><a href="jsp/Signup.jsp"><h4>Sign up</h4></a></button>
+                <button><a href="Signup.jsp"><h4>Sign up</h4></a></button>
             </div>
         </div>
 
@@ -49,9 +49,9 @@
                 <h3 id="alternativeLabel">Or sign in with</h3>
 
                 <form action="" method="get" class="alternativeTemplate">
-                    <input type="image" src="http://localhost:8080/webapp/img/google.svg" alt="google">
-                    <input type="image" src="http://localhost:8080/webapp/img/apple.svg" alt="apple">
-                    <input type="image" src="http://localhost:8080/webapp/img/facebook.svg" alt="facebook">
+                    <input type="image" src="img/google.svg" alt="google">
+                    <input type="image" src="img/apple.svg" alt="apple">
+                    <input type="image" src="img/facebook.svg" alt="facebook">
                 </form>
                 <br>
                 <h4 id="alternativeLabel">Forget your password? <a href="#" id="alternativeLink">Click here</a></h4>
