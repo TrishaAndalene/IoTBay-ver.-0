@@ -37,6 +37,7 @@ CREATE TABLE Products (
 
 CREATE TABLE Orders (
     code TEXT PRIMARY KEY,
+    customerID INTEGER NOT NULL,
     name TEXT NOT NULL,
     orderList LIST NOT NULL,
     quantityList LIST NOT NULL,
@@ -53,7 +54,7 @@ CREATE TABLE Carts (
 
 INSERT INTO Carts (code, customer_id, orderList, quantityList, cost) VALUES ('1111111', 12345,'["Wifi", "Camera", "etc"]', '[1, 2, 3]',250);
 
-INSERT INTO Orders (code, name, orderList, quantityList,cost, status) VALUES ('123456789', 'Trisha', '["Wifi", "Battery", "etc"]', '[12, 10, 5]', 120.0, 'Received');
+INSERT INTO Orders (code, customerID, name, orderList, quantityList,cost, status) VALUES ('123456789', 1234,'Trisha', '["Wifi", "Battery", "etc"]', '[12, 10, 5]', 120.0, 'Received');
 
 INSERT INTO Products (upc, name, price, brand, colour, size, image, quantity, description) VALUES
 ('196163505886', 'PoE Mini-Computer ', 159.00, 'Waveshare', 'Black', '128GB', 'product_img/iot-boardcm4.jpg' ,25, 'Based on Raspberry Pi Compute Module 4 (with Fan)'),
