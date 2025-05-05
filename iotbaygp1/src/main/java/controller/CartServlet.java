@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dao.DBConnector;
-import dao.OrderDAO;
+import dao.CartDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,26 +16,26 @@ import jakarta.servlet.http.HttpSession;
 
  
 
-public class OrderServlet extends HttpServlet {
+public class CartServlet extends HttpServlet {
 
     private DBConnector db;
     private Connection conn;
-    private OrderDAO orderManager;
+    private CartDAO cartManager;
 
     @Override //Create and instance of DBConnector for the deployment session
 
     public void init() {
 
         try {
-            System.out.println("OrderServlet initializing...");
+            System.out.println("CartServlet initializing...");
             db = new DBConnector();
             conn = db.openConnection();
-            getServletContext().setAttribute("orderManager", orderManager);
-            System.out.println("orderManager set in ServletContext");
+            getServletContext().setAttribute("cartManager", cartManager);
+            System.out.println("cartManager set in ServletContext");
 
         } catch (ClassNotFoundException | SQLException ex) {
 
-            Logger.getLogger(OrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }      
 
     }
@@ -56,17 +56,17 @@ public class OrderServlet extends HttpServlet {
 
         try {
 
-            orderManager = new OrderDAO(conn);
+            cartManager = new CartDAO(conn);
 
         } catch (SQLException ex) {
 
-            Logger.getLogger(OrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CartServlet.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
         //export the DB manager to the view-session (JSPs)
 
-        session.setAttribute("orderManager", orderManager);           
+        session.setAttribute("cartManager", cartManager);           
 
     }   
 
@@ -82,7 +82,7 @@ public class OrderServlet extends HttpServlet {
 
         } catch (SQLException ex) {
 
-            Logger.getLogger(OrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CartServlet.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
