@@ -13,7 +13,8 @@ enum Categories{
 public class Product implements Serializable{
     
     // Attributes
-    protected String upc, name, colour, brand, size, img, description;
+    // "type" was added by elle for her trial db
+    protected String upc, name, colour, brand, size, img, description, type;
     protected double price, ratings;
     protected int quantity, reviews;
     protected StockStatus stock;
@@ -32,7 +33,8 @@ public class Product implements Serializable{
         this.categories = category;
     }
 
-    public Product(String upc, String name, double price, String brand, String colour, String size, String img, int quantity, String description){
+    // this is the one elle is working on
+    public Product(String upc, String name, double price, String brand, String colour, String size, String img, int quantity, String description, String type){
         this.upc = upc;
         this.name = name;
         this.brand = brand;
@@ -42,6 +44,7 @@ public class Product implements Serializable{
         this.img = img;
         this.quantity = quantity;
         this.description = description;
+        this.type = type;
     }
 
     // Update methods

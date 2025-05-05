@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IoT_Landing_Page</title>
+    <title>Iot Bay</title>
 
     <!-- Style overloading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,11 +22,12 @@
     <!-- navigation bar -->
     <nav>
         <a href="" id="menu_home"><h1>Home</h1></a>
-        <a href="" id="menu_browse"><h1>Browse</h1></a>
+        <a href="BrowseItems.jsp" id="menu_browse"><h1>Browse</h1></a>
         <a href="" id="menu_about"><h1>About</h1></a>
 
-        <button id="login_btn"><a href="jsp/Login.jsp">LOGIN</a></button>
-        <button id="signup_btn"><a href="jsp/Signup.jsp">SIGN UP</a></button>
+        <button id="login_btn"><a href="Login.jsp">LOGIN</a></button>
+        <button id="signup_btn"><a href="Signup.jsp">SIGN UP</a></button>
+        <button id="signup_btn"><a href="StaffLogin.jsp">Staff</a></button>
     </nav>
 
     <!-- main screen -->
@@ -68,11 +69,11 @@
             <img class="arrow" id="arrow_right" src="img/right.png">
         </button>
         <!-- slideshow -->
-        <img class="slideshow" id="slideshow1" src="http://localhost:8080/webapp/img/circle_blue.png">
-        <img class="slideshow" id="slideshow2" src="http://localhost:8080/webapp/img/circle_grey.png">
-        <img class="slideshow" id="slideshow3" src="http://localhost:8080/webapp/img/circle_grey.png">
-        <img class="slideshow" id="slideshow4" src="http://localhost:8080/webapp/img/circle_grey.png">
-        <img class="slideshow" id="slideshow5" src="http://localhost:8080/webapp/img/circle_grey.png">
+        <img class="slideshow" id="slideshow1" src="img/circle_blue.png">
+        <img class="slideshow" id="slideshow2" src="img/circle_grey.png">
+        <img class="slideshow" id="slideshow3" src="img/circle_grey.png">
+        <img class="slideshow" id="slideshow4" src="img/circle_grey.png">
+        <img class="slideshow" id="slideshow5" src="img/circle_grey.png">
     </div>
 
     <!-- Customer Favourite -->
@@ -84,18 +85,18 @@
         <!-- Search bar -->
         <div id="search_bar">
             <input type="text" placeholder="Type to search" id="search_text">
-            <button><img id="search_icon" src="http://localhost:8080/webapp/img/search_icon.png"></button>
+            <button><img id="search_icon" src="img/search_icon.png"></button>
         </div>
 
         <!-- frame1 -->
         <div class="frame_3rd" id="frame1_3">
-            <img class="frame_3rd_img" id="frame_3rd_img1" src="http://localhost:8080/webapp/img/stair.jpg">
+            <img class="frame_3rd_img" id="frame_3rd_img1" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
             <button class="order_btn">ORDER NOW</button>
         </div>
         <!-- frame2 -->
         <div class="frame_3rd" id="frame2_3">
-            <img class="frame_3rd_img" id="frame_3rd_img2" src="http://localhost:8080/webapp/img/stair.jpg">
+            <img class="frame_3rd_img" id="frame_3rd_img2" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
             <button class="order_btn">ORDER NOW</button>
         </div>
@@ -202,5 +203,7 @@
         <img id="email" src="img/email.png">
         <p id="email_address">aaaa@gmail.com</p>
     </footer>
+
+
 </body>
 </html>

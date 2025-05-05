@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="../css/Stafflogin.css">
+    <link rel="stylesheet" href="css/Stafflogin.css">
 
 </head>
 
@@ -18,7 +18,7 @@
     <section class="login">
         <div class="left-1">
             <div class="left-content">
-                <img src="../img/company_logo.png" alt="Company Logo">
+                <img src="img/company_logo.png" alt="Company Logo">
                 <h1>IoTBay - Staff Log In</h1>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="right-content">
                 <h1>SIGN IN</h1>
 
-                <form action="StaffLoginServlet" method="post">
+                <form action="StaffLanding.jsp" method="post">
                     <input type="text" name="email" placeholder="Staff Email">
                     <br>
                     <input type="password" name="password" placeholder="Password">
