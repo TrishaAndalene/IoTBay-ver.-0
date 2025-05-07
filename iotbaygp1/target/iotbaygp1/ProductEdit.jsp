@@ -26,7 +26,7 @@
         <h1 id="company_name">IoT Bay</h1>
         <ul class="nav-links">
             <li><a href="index.jsp" id="menu_home">Main Home</a></li>
-            <li><a href="" id="menu_browse">Browse</a></li>
+            <li><a href="BrowseItems.jsp" id="menu_browse">Browse</a></li>
             <li><a href="" id="menu_account">Account</a></li>
             <li><a href="Logout.jsp" id="logout_btn">Log Out</a></li>
         </ul>
