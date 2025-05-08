@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Staff;
 
-@WebServlet("/StaffLoginServlet")
+@WebServlet("iotbaygp1/StaffLoginServlet")
 public class StaffLoginServlet extends HttpServlet {
    
 @Override   
@@ -51,12 +51,12 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         //8-set incorrect email error to the session  
         session.setAttribute("errorMsg", "email does not fit correct format");         
         //9- redirect user back to the login.jsp
-        request.getRequestDispatcher("StaffLogin.jsp").include(request, response);     
+        request.getRequestDispatcher("src/main/webapp/StaffLogin.jsp").include(request, response);     
     } else if (validator.validatePassword(password)) {                  
         //11-set incorrect password error to the session
         session.setAttribute("errorMsg", "password does not fit correct format");           
         //12- redirect user back to the login.jsp  
-        request.getRequestDispatcher("StaffLogin.jsp").include(request, response);        
+        request.getRequestDispatcher("src/main/webapp/StaffLogin.jsp").include(request, response);        
     } else if (staff != null) {                     
         //13-save the logged in user object to the session
         session.setAttribute("staff", staff);
