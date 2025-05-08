@@ -4,11 +4,6 @@ import java.io.Serializable;
 enum StockStatus{
     UNAVAILABLE, LOW, AVAILABLE;
 }
-
-enum Categories{
-    WIFI, HOME_SECURITY, ACTIVITY_TRACKERS, ACTUATOR, AMBIENT_IOT, MINI_PC;
-}
-
 // Product Object
 public class Product implements Serializable{
     
@@ -139,6 +134,10 @@ public class Product implements Serializable{
 
     public Categories getCategories(){
         return this.categories;
+    }
+
+    public String toString (){
+        return this.getName();
     }
     
 }

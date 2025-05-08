@@ -35,7 +35,7 @@
         <img id="main_background" src="../img/main_image.png">
         <p id="promotion_title">Promotion Title</p>
         <p id="promotion_line">Promotion line</p>
-        <div id="order_btn"><a href="jsp/Order.jsp">ORDER NOW</a></div>
+        <div id="order_btn"><a href="Order.jsp">ORDER NOW</a></div>
     </div>
 
     <!-- Second -->

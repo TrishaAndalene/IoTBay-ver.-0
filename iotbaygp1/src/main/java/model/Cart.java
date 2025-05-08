@@ -9,25 +9,36 @@ import java.util.*;
 // Cart Object (partially dependent on Customer.java)
 public class Cart implements Serializable{
     private final Customer customer;
+    private String code;
     private ArrayList<Purchase> products;
     private double totalCost;
 
     // Constructor
-    Cart(Customer customer){
+    public Cart(Customer customer, String code){
         this.customer = customer;
         this.products = new ArrayList<>();
         this.totalCost = 0;
+
+        if (this.code.equals("")){
+            this.code = Order.generateRandomStringList(1, 8);
+        }
     }
 
     // Constructor for non-registered customer
-    Cart(){
+    public Cart(){
         this.customer = null;
         this.products = new ArrayList<>();
+        this.totalCost = 0;
+        this.code = Order.generateRandomStringList(1, 8);
     }
 
     // Update methods
     public void addItemToCart(Purchase item){
         this.products.add(item);
+    }
+
+    public void addItemToCart(ArrayList<Purchase> items){
+        this.products = items;
     }
 
     public void updateCost(){
@@ -87,6 +98,14 @@ public class Cart implements Serializable{
                 if (name.equals(p.product.getName())){
                     this.products.remove(p);
                 }
+            }
+        }
+    }
+
+    public void deleteAllItem(){
+        if (this.products.size() != 0){
+            for (Purchase p : this.products){
+                this.products.remove(p);
             }
         }
     }

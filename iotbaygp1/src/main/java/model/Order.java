@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 enum Status{
     RECEIVED, PROCESSED, ONDELIVERY, FINISHED, CANCELLED;
@@ -12,26 +14,55 @@ public class Order implements Serializable{
     // Attributes lists
     private Status status;
     private Customer customer;
-    private String name;
+    private String name, code;
     private ArrayList<Purchase> orderList;
     private double cost;
 
     // Constructor
-    Order(Cart cart){
+    public Order(Cart cart, String code){
         this.status = Status.RECEIVED;
         this.customer = cart.getCustomer();
         this.orderList = cart.getList();
+        this.cost = cart.getTotalCost();
+        this.code = code;
         try {
             this.name = this.customer.getFirstName();
+            this.customer.addOrder(this.code);
         } catch (NullPointerException e){
             this.name = "anonymous";
         }
-        this.cost = cart.getTotalCost();
+
+        if (this.code.equals("")){
+            this.code = this.generateRandomStringList(1, 8);
+        }
     }
 
     // Update methods
     public void setName(String newName){
         this.name = newName;
+    }
+
+    // randomiser code (don't know if it's work yet)
+    public static String generateRandomStringList(int numberOfStrings, int stringLength) {
+        List<String> stringList = new ArrayList<>();
+        Random random = new Random();
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        String result = "";
+
+        for (int i = 0; i < numberOfStrings; i++) {
+            StringBuilder sb = new StringBuilder(stringLength);
+            for (int j = 0; j < stringLength; j++) {
+                int randomIndex = random.nextInt(characters.length());
+                sb.append(characters.charAt(randomIndex));
+            }
+            stringList.add(sb.toString());
+        }
+
+        for (int n = 0; n < stringList.size(); n++){
+            result += stringList.get(n);
+        }
+
+        return result;
     }
 
     public void updateStatus(int code){
@@ -59,5 +90,49 @@ public class Order implements Serializable{
         } else {
             // command here to show on the html
         }
+    }
+
+    public String getCode(){
+        return this.code;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public ArrayList<Purchase> getList(){
+        return this.orderList;
+    }
+
+    public double getCost(){
+        return this.cost;
+    }
+
+    public String getStatus(){
+        if (this.status == Status.RECEIVED){
+            return "Received";
+        } else if (this.status == Status.PROCESSED){
+            return "Processed";
+        } else if (this.status == Status.ONDELIVERY){
+            return "On delivery";
+        } else if (this.status == Status.FINISHED){
+            return "Finished";
+        } else {
+            return "Cancelled";
+        }
+    }
+
+    public int getTotalItem(){
+        int num = 0;
+        if (this.orderList.size() != 0){
+            for (Purchase p : this.orderList){
+                num += p.getQuantity();
+            }
+        }
+        return num;
+    }
+
+    public String toString(){
+        return "Order code : " + this.getCode() + " | Customer name: " + this.getName() + " | Items : " + this.getList() + " | Total Cost: " + this.getCost() + " | Status : " + this.getStatus();
     }
 }
