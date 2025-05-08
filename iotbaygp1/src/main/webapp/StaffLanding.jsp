@@ -64,8 +64,5 @@
         <img id="email" src="img/email.png">
         <p id="email_address">staff@iotbay.com</p>
     </footer>
-    
- 
-<jsp:include page="/ConnServlet" flush="true"/>
 </body>
 </html>

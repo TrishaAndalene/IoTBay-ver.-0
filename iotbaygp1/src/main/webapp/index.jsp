@@ -204,6 +204,6 @@
         <p id="email_address">aaaa@gmail.com</p>
     </footer>
 
-
+    <jsp:include page="/ConnServlet" flush="true"/>
 </body>
 </html>
