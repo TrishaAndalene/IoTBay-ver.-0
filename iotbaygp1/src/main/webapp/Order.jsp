@@ -1,7 +1,6 @@
 <%@ page import="model.Order" %>
-<%@ page import="model.TrialDatabase" %>
+<%@ page import="dao.OrderDAO" %>
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -53,23 +52,6 @@
                         <th>Price</th>
                         <th>Status</th>
                     </tr>
-                <%
-                    Order[] productList = TrialDatabase.getAllOrders();
-                    if (productList != null) {
-                        for (Order o : productList) {
-                %>
-                    <tr>
-                        <td><%= o.getCode() %></td>
-                        <td><%= o.getList() %></td>
-                        <td><%= o.getQuantity() %></td>
-                        <td><%= o.getCost() %></td>
-                        <td><%= o.getStatus() %></td>
-                    </tr>
-                <%
-                        }
-                    }
-                %>
-                    
                  </table>
             </div>
         </section>
