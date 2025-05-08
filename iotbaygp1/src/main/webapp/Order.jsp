@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page import="model.Order" %>
+<%@ page import="dao.OrderDAO" %>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,6 +43,16 @@
                         <button>Previous Order</button>
                     </div>
                 </div>
+                <!-- Order Table Content -->
+                 <table>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Items</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                 </table>
             </div>
         </section>
         
