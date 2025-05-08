@@ -23,7 +23,7 @@
             <li><a href="Logout.jsp" id="logout_btn">Log Out</a></li>
         </ul>
         <div class="search-container">
-            <form action="browse.jsp">
+            <form action="BrowseItems.jsp">
               <input type="text" placeholder="Search.." name="search">
               <button type="submit">Submit</button>
             </form>
