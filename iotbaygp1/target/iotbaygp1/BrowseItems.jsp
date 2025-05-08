@@ -1,8 +1,6 @@
 <%@ page import="model.Product" %>
 <%@ page import="model.TrialDatabase" %>
 
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
