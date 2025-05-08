@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dao.DBConnector;
+import dao.ProductDAO;
 import dao.StaffDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,7 +21,8 @@ import jakarta.servlet.http.HttpSession;
 public class ConnServlet extends HttpServlet {
 
     private DBConnector db;
-    private StaffDAO manager;
+    private StaffDAO staffManager;
+    private ProductDAO productManager;
     private Connection conn;
 
     @Override //Create and instance of DBConnector for the deployment session
@@ -41,13 +43,16 @@ public class ConnServlet extends HttpServlet {
         conn = db.openConnection();       
         try {            
             // THIS IS WHERE WE ADD ALL THE DAO
-            manager = new StaffDAO(conn);
+            staffManager = new StaffDAO(conn);
+            productManager = new ProductDAO(conn);
+
 
         } catch (SQLException ex) {
             Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
            //export the DB manager to the view-session (JSPs)
-           session.setAttribute("manager", manager);           
+           session.setAttribute("staffManager", staffManager);  
+           session.setAttribute("productManager", productManager);           
        }   
 
     @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)

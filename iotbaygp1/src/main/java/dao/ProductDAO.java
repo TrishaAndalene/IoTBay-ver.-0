@@ -1,21 +1,14 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-import model.Cart;
 import model.Categories;
-import model.Customer;
 import model.Product;
-import model.Purchase;
-
-import dao.CustomerDAO;
-
-import java.util.*;
-import java.util.Locale.Category;
 
 public class ProductDAO {
 
@@ -27,9 +20,9 @@ public ProductDAO(Connection conn) throws SQLException {
     this.conn = conn;
 }
 
-public Product findProduct(String code) throws SQLException {   
+public Product findProduct(String upc) throws SQLException {   
     //setup the select sql query string
-    String query = "SELECT * FROM Products WHERE code = '" + code  + "' ";
+    String query = "SELECT * FROM Products WHERE upc = '" + upc  + "' ";
 
     //execute this query using the statement field 
     //add the results to a ResultSet 

@@ -10,19 +10,7 @@
 </head>
 <body>
 
-    <%
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        Staff staff = null;
 
-        if (email != null && password != null) {
-            staff = TrialDatabase.findStaff(email, password);
-        }
-
-        if (staff == null){
-            System.out.println("Error");}
-
-    %>
 
     <!-- navigation bar -->
     <nav class="nav-bar">
@@ -41,10 +29,17 @@
             </form>
         </div>
     </nav>
-
+    <%
+    Staff staff = (Staff) session.getAttribute("staff");
+    if (staff == null){    
+ %>
+        <p>Please log in first.</p>
+<%   
+        } else {
+%>   
     <!-- main screen -->
     <div id="main_screen">
-        <h2 id="staff_name">Welcome <%=staff.getFirstName()%></h2>
+        <h2 id="staff_name">Welcome <%=staff.getFirstName()%>!</h2>
         <div id="stockmgmt_btn"><a href="StockMgmt.jsp">Stock Management</a></div>
         <div id="ordermgmt_btn"><a href="Order_Mgmt.jsp">Order Management</a></div>
     </div>
@@ -64,5 +59,8 @@
         <img id="email" src="img/email.png">
         <p id="email_address">staff@iotbay.com</p>
     </footer>
+    <%
+}
+%>
 </body>
 </html>

@@ -13,6 +13,8 @@
 
 </head>
 <body>
+    <jsp:include page="/ConnServlet" flush="true"/>
+
     <header>
         <!-- main company logo -->
         <img id="company_logo" src="img/company_logo.png">
@@ -204,6 +206,5 @@
         <p id="email_address">aaaa@gmail.com</p>
     </footer>
 
-    <jsp:include page="/ConnServlet" flush="true"/>
 </body>
 </html>

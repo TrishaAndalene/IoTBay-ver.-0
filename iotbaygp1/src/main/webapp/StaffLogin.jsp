@@ -15,6 +15,10 @@
 </head>
 
 <body>
+
+    
+
+
     <section class="login">
         <div class="left-1">
             <div class="left-content">
@@ -27,14 +31,17 @@
             <div class="right-content">
                 <h1>SIGN IN</h1>
 
-                <form action="iotbaygp1/StaffLoginServlet" method="post">
+                <form action="StaffLoginServlet" method="post">
                     <input type="text" name="email" placeholder="Staff Email">
                     <br>
                     <input type="password" name="password" placeholder="Password">
                     <br>
                     <input type="submit" id="signInBtn" value="Sign In">
                 </form>
-                
+                <% String error = (String) request.getAttribute("errorMsg"); %>
+                <% if (error != null) { %>
+                    <p style="color:red;"><%= error %></p>
+                <% } %>
 
                 <br>
                 <h4 id="alternativeLabel">Forget your password? <a href="#" id="alternativeLink">Click here</a></h4>

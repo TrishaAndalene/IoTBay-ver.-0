@@ -1,1 +1,4 @@
+
 DELETE FROM Products;
+DELETE FROM Staff;
+DELETE FROM Customers;

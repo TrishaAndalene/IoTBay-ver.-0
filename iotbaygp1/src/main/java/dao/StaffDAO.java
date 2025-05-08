@@ -39,8 +39,6 @@ public Staff findStaff(String email, String password) throws SQLException {
         return new Staff(firstName, lastName, email, phoneNum, password);
 
    }
-
-
     return null;
   }
 
