@@ -25,7 +25,7 @@
         <a href="BrowseItems.jsp" id="menu_browse"><h1>Browse</h1></a>
         <a href="" id="menu_about"><h1>About</h1></a>
 
-        <button id="login_btn"><a href="Login.jsp">LOGIN</a></button>
+        <button id="login_btn"><a href="login.jsp">LOGIN</a></button>
         <button id="signup_btn"><a href="Signup.jsp">SIGN UP</a></button>
         <button id="signup_btn"><a href="StaffLogin.jsp">Staff</a></button>
     </nav>
@@ -35,7 +35,7 @@
         <img id="main_background" src="img/main_image.png">
         <p id="promotion_title">Promotion Title</p>
         <p id="promotion_line">Promotion line</p>
-        <div id="order_btn"><a href="jsp/Order.jsp">ORDER NOW</a></div>
+        <div id="order_btn"><a href="Order.jsp">ORDER NOW</a></div>
     </div>
 
     <!-- Second -->
