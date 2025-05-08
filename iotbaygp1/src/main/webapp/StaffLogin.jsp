@@ -27,7 +27,7 @@
             <div class="right-content">
                 <h1>SIGN IN</h1>
 
-                <form action="/StaffLoginServlet" method="post">
+                <form action="iotbaygp1/StaffLoginServlet" method="post">
                     <input type="text" name="email" placeholder="Staff Email">
                     <br>
                     <input type="password" name="password" placeholder="Password">
@@ -41,5 +41,6 @@
             </div>
         </div>
     </section>
+
 </body>
 </html>
