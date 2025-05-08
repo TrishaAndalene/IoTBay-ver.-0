@@ -48,7 +48,8 @@ public Order findOrder(String code) throws SQLException {
           
           Product p = new Product(rs2.getString("upc"), rs2.getString("name"), rs2.getDouble("price"), rs2.getString("brand"), rs2.getString("colour"), rs2.getString("size"), rs2.getString("image"), rs2.getInt("quantity"), Categories.ACTIVITY_TRACKERS);
 
-          lists.add(new Purchase(p, Integer.parseInt(quantityList[i])));
+          String rawValue = quantityList[i].replaceAll("\\[|\\]", "").trim();
+          lists.add(new Purchase(p, Integer.parseInt(rawValue)));
 
         }
 
@@ -90,7 +91,8 @@ public List<Order> listAllOrders() throws SQLException{
       
       Product p = new Product(rs2.getString("upc"), rs2.getString("name"), rs2.getDouble("price"), rs2.getString("brand"), rs2.getString("colour"), rs2.getString("size"), rs2.getString("image"), rs2.getInt("quantity"), Categories.ACTIVITY_TRACKERS);
 
-      lists.add(new Purchase(p, Integer.parseInt(quantityList[i])));
+      String rawValue = quantityList[i].replaceAll("\\[|\\]", "").trim();
+      lists.add(new Purchase(p, Integer.parseInt(rawValue)));
 
     }
 
@@ -130,7 +132,8 @@ public List<Order> listAllOrders(int customerID) throws SQLException{
       
       Product p = new Product(rs2.getString("upc"), rs2.getString("name"), rs2.getDouble("price"), rs2.getString("brand"), rs2.getString("colour"), rs2.getString("size"), rs2.getString("image"), rs2.getInt("quantity"), Categories.ACTIVITY_TRACKERS);
 
-      lists.add(new Purchase(p, Integer.parseInt(quantityList[i])));
+      String rawValue = quantityList[i].replaceAll("\\[|\\]", "").trim();
+          lists.add(new Purchase(p, Integer.parseInt(rawValue)));
 
     }
 
@@ -164,11 +167,17 @@ public void updateOrder(String code, int statusCode){
     try {
       Order o = this.findOrder(code);
       
-      o.updateStatus(statusCode);
+      if (o != null){
+        o.updateStatus(statusCode);
 
-      String query = "UPDATE Orders SET status = '" + o.getStatus() + "' WHERE code = '" + code + "'";
+        String query = "UPDATE Orders SET status = '" + o.getStatus() + "' WHERE code = '" + code + "'";
 
-      st.executeUpdate(query);
+        st.executeUpdate(query);
+
+        System.out.println(o.getStatus());
+      } else {
+        System.out.println("Not found");
+      }
 
       System.err.println("Here");
 

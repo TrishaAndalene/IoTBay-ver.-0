@@ -122,6 +122,16 @@ public class Order implements Serializable{
         }
     }
 
+    public int getTotalItem(){
+        int num = 0;
+        if (this.orderList.size() != 0){
+            for (Purchase p : this.orderList){
+                num += p.getQuantity();
+            }
+        }
+        return num;
+    }
+
     public String toString(){
         return "Order code : " + this.getCode() + " | Customer name: " + this.getName() + " | Items : " + this.getList() + " | Total Cost: " + this.getCost() + " | Status : " + this.getStatus();
     }

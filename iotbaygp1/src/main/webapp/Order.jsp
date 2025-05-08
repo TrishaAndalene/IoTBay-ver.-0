@@ -1,3 +1,6 @@
+<%@ page import="model.Order" %>
+<%@ page import="model.TrialDatabase" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,6 +44,33 @@
                         <button>Previous Order</button>
                     </div>
                 </div>
+                <!-- Order Table Content -->
+                 <table>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Items</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                <%
+                    Order[] productList = TrialDatabase.getAllOrders();
+                    if (productList != null) {
+                        for (Order o : productList) {
+                %>
+                    <tr>
+                        <td><%= o.getCode() %></td>
+                        <td><%= o.getList() %></td>
+                        <td><%= o.getQuantity() %></td>
+                        <td><%= o.getCost() %></td>
+                        <td><%= o.getStatus() %></td>
+                    </tr>
+                <%
+                        }
+                    }
+                %>
+                    
+                 </table>
             </div>
         </section>
         

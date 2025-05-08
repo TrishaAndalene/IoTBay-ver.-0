@@ -47,7 +47,8 @@ try {
     // orderDB.addOrder(unitC);
 
     // Order status update (success)
-    orderDB.updateOrder("y8h0f0hS", 3);
+    orderDB.updateOrder("123456789", 3);
+    System.out.println(orderDB.findOrder("123456789"));
 
 connector.closeConnection();
 

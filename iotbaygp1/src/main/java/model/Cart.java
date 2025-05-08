@@ -29,10 +29,7 @@ public class Cart implements Serializable{
         this.customer = null;
         this.products = new ArrayList<>();
         this.totalCost = 0;
-
-        if (this.code.equals("")){
-            this.code = Order.generateRandomStringList(1, 8);
-        }
+        this.code = Order.generateRandomStringList(1, 8);
     }
 
     // Update methods
