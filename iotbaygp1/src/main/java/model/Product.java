@@ -137,6 +137,7 @@ public class Product implements Serializable{
         return this.categories;
     }
 
+    @Override
     public String toString (){
         return this.getName();
     }
