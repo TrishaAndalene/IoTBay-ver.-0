@@ -1,7 +1,5 @@
 <%@ page import="model.Product" %>
 
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">

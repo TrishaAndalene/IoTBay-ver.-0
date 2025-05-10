@@ -9,14 +9,14 @@ public class Product implements Serializable{
     
     // Attributes
     // "type" was added by elle for her trial db
-    protected String upc, name, colour, brand, size, img, description, type;
+    protected String upc, name, colour, brand, size, img, description;
     protected double price, ratings;
     protected int quantity, reviews;
     protected StockStatus stock;
     protected Categories categories;
 
     // Construtor
-    public Product(String upc, String name, double price, String brand, String colour, String size, String img, int quantity, Categories category, String description){
+    public Product(String upc, String name, Double price, String brand, String colour, String size, String img, Integer quantity, Categories category, String description){
         this.upc = upc;
         this.name = name;
         this.brand = brand;
@@ -29,19 +29,6 @@ public class Product implements Serializable{
         this.description = description;
     }
 
-    // this is the one elle is working on
-    public Product(String upc, String name, double price, String brand, String colour, String size, String img, int quantity, String description, String type){
-        this.upc = upc;
-        this.name = name;
-        this.brand = brand;
-        this.price = price;
-        this.colour = colour;
-        this.size = size;
-        this.img = img;
-        this.quantity = quantity;
-        this.description = description;
-        this.type = type;
-    }
 
     // Update methods
     public void setName(String newName){

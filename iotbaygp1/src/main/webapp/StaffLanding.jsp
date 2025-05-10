@@ -17,7 +17,7 @@
         <h1 id="company_name">IoT Bay</h1>
         <ul class="nav-links">
             <li><a href="index.jsp" id="menu_home">Main Home</a></li>
-            <li><a href="BrowseItems.jsp" id="menu_browse">Browse</a></li>
+            <li><a href="BrowseItemsServlet" id="menu_browse">Browse</a></li>
             <li><a href="" id="menu_account">Account</a></li>
             <li><a href="Logout.jsp" id="logout_btn">Log Out</a></li>
         </ul>
@@ -39,7 +39,7 @@
     <!-- main screen -->
     <div id="main_screen">
         <h2 id="staff_name">Welcome <%=staff.getFirstName()%>!</h2>
-        <div id="stockmgmt_btn"><a href="StockMgmt.jsp">Stock Management</a></div>
+        <div id="stockmgmt_btn"><a href="StockMgmtServlet" id="stock_mgmt">Stock Management</a></div>
         <div id="ordermgmt_btn"><a href="Order_Mgmt.jsp">Order Management</a></div>
     </div>
     

@@ -1,7 +1,7 @@
-package controller;
-
+/*package controller;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,11 +14,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Product;
 
-
-@WebServlet("/ProductEditServlet")
-public class ProductEditServlet extends HttpServlet{
+@WebServlet("/LandingServlet")
+public class LandingServlet extends HttpServlet {
     
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -29,33 +27,34 @@ public class ProductEditServlet extends HttpServlet{
         //1- retrieve the current session
         HttpSession session = request.getSession();
     
-        //3- capture the posted email - check jsp form name to see what parameter name
-        String upc = request.getParameter("upc");      
-        
         //5- retrieve the manager instance from session      
         ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
         if (productManager == null) throw new IOException("DB manager not found");
     
     
-        Product product = null;       
+        List<Product> allProduct = null; 
+        
+        System.out.println("Session ID: " + session.getId());
+        System.out.println("productManager is null: " + (productManager == null));
+
      
         try {       
-            product = productManager.findProduct(upc);
+            allProduct = productManager.listAllProducts();
             
         } catch (SQLException ex) {           
-            Logger.getLogger(ProductEditServlet.class.getName()).log(Level.SEVERE, null, ex);    
+            Logger.getLogger(BrowseItemsServlet.class.getName()).log(Level.SEVERE, null, ex);    
         }
     
-        if (product != null) {                     
+        if (allProduct != null) {                     
             //13-save the logged in user object to the session
-            request.setAttribute("product", product);
+            request.setAttribute("allProduct", allProduct);
             //14- redirect user to the main.jsp
-            request.getRequestDispatcher("/ProductEdit.jsp").include(request, response);   
+            request.getRequestDispatcher("/StockMgmt.jsp").forward(request, response);   
         } else {                       
             //15-set user does not exist error to the session
-            session.setAttribute("errorMsg", "Incorrect upc :(");        
+            request.setAttribute("errorMsg", "Idk what is going on :(");        
             //16- redirect user back to the login.jsp
-            request.getRequestDispatcher("/StockMgmt.jsp").include(request, response);  
+            request.getRequestDispatcher("/BrowseItems.jsp").include(request, response);  
             }   
         }
-}
+} */

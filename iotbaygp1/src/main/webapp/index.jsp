@@ -24,7 +24,7 @@
     <!-- navigation bar -->
     <nav>
         <a href="" id="menu_home"><h1>Home</h1></a>
-            <a href="BrowseItemsServlet" id="menu_browse"><h1>Browse</h1></a>
+        <a href="BrowseItemsServlet" id="menu_browse"><h1>Browse</h1></a>
         <a href="" id="menu_about"><h1>About</h1></a>
 
         <button id="login_btn"><a href="Login.jsp">LOGIN</a></button>

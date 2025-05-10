@@ -20,10 +20,7 @@ public class StaffLoginServlet extends HttpServlet {
 @Override   
 protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
     //1- retrieve the current session
-    HttpSession session = request.getSession();
-
-    //2- create an instance of the Validator class 
-    Validator validator = new Validator();  
+    HttpSession session = request.getSession(); 
 
     //3- capture the posted email - check jsp form name to see what parameter name
     String email = request.getParameter("email");      
@@ -58,18 +55,3 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         }   
     }
 }
-
-/* 
-    // validator not super necessary for logging in 
-    if (validator.validateEmail(email)) {           
-        //8-set incorrect email error to the session  
-        session.setAttribute("errorMsg", "email does not fit correct format");         
-        //9- redirect user back to the login.jsp
-        request.getRequestDispatcher("/StaffLogin.jsp").include(request, response);     
-    } else if (validator.validatePassword(password)) {                  
-        //11-set incorrect password error to the session
-        session.setAttribute("errorMsg", "password does not fit correct format");           
-        //12- redirect user back to the login.jsp  
-        request.getRequestDispatcher("/StaffLogin.jsp").include(request, response);        
-    }
-        */

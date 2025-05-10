@@ -1,7 +1,5 @@
 <%@ page import="model.Product" %>
 
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +16,8 @@
         <h1 id="company_name">IoT Bay</h1>
         <ul class="nav-links">
             <li><a href="index.jsp" id="menu_home">Main Home</a></li>
-            <li><a href="" id="menu_browse">Browse</a></li>
+            <li><a href="StaffLanding.jsp" id="staff_landing"><h1>Staff Home</h1></a></li>
+            <li><a href="BrowseItemsServlet" id="menu_browse"><h1>Browse</h1></a></li>
             <li><a href="" id="menu_account">Account</a></li>
             <li><a href="Logout.jsp" id="logout_btn">Log Out</a></li>
         </ul>

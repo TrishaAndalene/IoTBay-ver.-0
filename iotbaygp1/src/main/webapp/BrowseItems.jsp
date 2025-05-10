@@ -27,33 +27,36 @@
         </div>
     </nav>
 
-    
+    <%
+    List<Product> allProduct = (List<Product>) request.getAttribute("allProduct");
+    if (allProduct == null) {
+    %>
+    <p>Oh no!!!!!!!</p>
+    <%
+    } else {
+        %>
     <!-- main screen -->
     <div id="main_screen">
         <h2>Our Products</h2>
-            <%
-            List<Product> allProduct = (List<Product>) request.getAttribute("allProduct");
-            if (allProduct == null) {
-            %>
-            <p>Oh no!!!!!!!</p>
-            <%
-            } else {
-                %>
+        
+        <form action="BrowseItemsServlet" method="post">
         <div id="btn-container">
-            <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-            <button class="btn" onclick="filterSelection('wifi')">Wifi</button>
-            <button class="btn" onclick="filterSelection('home_security')"> Home Security</button>
-            <button class="btn" onclick="filterSelection('activity_trackers')">Activity Trackers</button>
-            <button class="btn" onclick="filterSelection('actuator')">Actuators</button>
-            <button class="btn" onclick="filterSelection('ambient_iot')">Ambient IoT</button>
-            <button class="btn" onclick="filterSelection('mini_pc')">Mini PC</button>
+            <button type="submit" name="filter" value="all"> Show all</button>
+            <button type="submit" name="filter" value="WIFI">Wifi</button>
+            <button type="submit" name="filter" value="HOME_SECURITY">Home Security</button>
+            <button type="submit" name="filter" value="ACTIVITY_TRACKERS">Activity Trackers</button>
+            <button type="submit" name="filter" value="ACTUATOR">Actuators</button>
+            <button type="submit" name="filter" value="AMBIENT_IOT">Ambient IoT</button>
+            <button type="submit" name="filter" value="MINI_PC">Mini PC</button>
         </div>
+    </form>
 
-                        <%
+                        
+        <div id="product-grid">
+            <%
                         for (Product p : allProduct) {
                 %>
-        <div id="product-grid">
-                <div id="product-card">
+                <div class="product-card">
                     <img src="<%= p.getImg() %>" alt="<%= p.getName() %>" />
                     <h5><%= p.getName() %></h5>
                     <p>$<%= p.getPrice() %></p>
@@ -62,18 +65,13 @@
                         <button type="submit">View Product</button>
                     </form>
                 </div>
-
+                <%
+             }
+            }
+        %>
             </div>
-            <%
-        }
-    }
-%>
+            
     </div>
-
-    
-
-
-
 
 
     <!-- footer -->

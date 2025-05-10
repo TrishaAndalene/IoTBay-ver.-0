@@ -110,6 +110,44 @@ public ProductDAO(Connection conn) throws SQLException {
         return productList;
     }
 
+    public List<Product> getProductsByCat(String filter) throws SQLException{
+        List<Product> productList = new ArrayList<>();
+
+        String query = "SELECT" + " * FROM Products WHERE category = '" + filter + "'";
+
+        ResultSet result = st.executeQuery(query);
+
+        while (result.next()){
+            String upc = result.getString("upc");
+            String name = result.getString("name");
+            double price = result.getDouble("price");
+            String brand = result.getString("brand");
+            String colour = result.getString("colour");
+            String size = result.getString("size");
+            String image = result.getString("image");
+            int quantity = result.getInt("quantity");
+
+            String categoryStr = result.getString("category");
+            String description = result.getString("description");
+
+
+            Categories cat = null;
+            if (categoryStr != null) {
+            try {
+                cat = Categories.valueOf(categoryStr.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                System.err.println("Unknown category: " + categoryStr);
+            }
+        }
+
+            Product p = new Product(upc, name, price, brand, colour, size, image, quantity, cat, description);
+            productList.add(p);
+            System.out.println("Total products loaded: " + productList.size());
+        }
+
+        return productList;
+    }
+
 
     public void addProduct(Product product) throws SQLException {  
         //code for add-operation 
@@ -124,12 +162,46 @@ public ProductDAO(Connection conn) throws SQLException {
         String image = product.getImg();
         Categories category = product.getCategories();
 
-        String sql = "INSERT" + " INTO Products (upc, name, price, brand, colour, size, image, quantity, description, category) VALUES ('" + upc + "', '" + name + "', " + price + ", '" + brand + "', '" + colour + "', '" + size + "', '" + image + "', " + quantity + ", '" + description + "', '" + category + "');";
+
+        String sql = "INSERT" + " INTO Products (upc, name, price, brand, colour, size, image, quantity, category, description) VALUES ('" + upc + "', '" + name + "', " + price + ", '" + brand + "', '" + colour + "', '" + size + "', '" + image + "', " + quantity + ", '" + category + "', '" + description + "');";
 
         st.executeUpdate(sql);
         System.out.println("Product Added!");
 
 
+    }
+
+    public void updateProduct(String field, String upc, String value) throws SQLException {  
+        //code for add-operation 
+        List<String> strings = List.of("name", "brand", "colour", "size", "description", "category", "image");
+        
+        String sql;
+        if (strings.contains(field)){
+            sql = "UPDATE" + " Products SET " + field  + " = '" + value + "' WHERE upc = '" + upc + "'";
+    }
+        else {
+            sql = "UPDATE" + " Products SET " + field  + " = " + value + " WHERE upc = '" + upc + "'";
+        }
+        st.executeUpdate(sql);
+        System.out.println(sql);
+    }
+
+    public void updateStock(String upc, int qty) throws SQLException {  
+        //code for add-operation 
+        
+        String sql = "UPDATE" + " Products SET quantity = quantity + " + qty + " WHERE upc = '" + upc + "'";
+        
+        st.executeUpdate(sql);
+        System.out.println(sql);
+    }
+
+    public void removeProduct(String upc) throws SQLException {  
+        //code for add-operation 
+        
+        String sql = "DELETE" + " from Products WHERE upc = '" + upc + "'";
+        
+        st.executeUpdate(sql);
+        System.out.println(sql);
     }
 
 
