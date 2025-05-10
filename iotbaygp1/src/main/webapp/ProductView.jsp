@@ -1,5 +1,4 @@
 <%@ page import="model.Product" %>
-<%@ page import="model.TrialDatabase" %>
 
 
 
@@ -13,13 +12,14 @@
 <body>
 
     <%
-        String upc = request.getParameter("upc");
-        Product p = null;
+    Product product = (Product) request.getAttribute("product");
+    if (product == null){    
+ %>
+        <p>Uh oh!!!</p>
+<%   
+        } else {
 
-        if (upc != null) {
-            p = TrialDatabase.findProduct(upc);
-        }
-    %>
+%> 
     <!-- navigation bar -->
     <nav class="nav-bar">
         <img src="img/company_logo.png" class="company-logo">
@@ -42,17 +42,17 @@
 
     <!-- main screen -->
     <div id="main_screen">
-        <h2><%= p.getName() %></h2>
+        <h2><%= product.getName() %></h2>
         <div class="product-img">
-            <img src="<%= p.getImg() %>" alt="<%= p.getName() %>" />
+            <img src="<%= product.getImg() %>" alt="<%= product.getName() %>" />
         </div>
         <div class="product-info">
-            <p>Brand: <%= p.getBrand() %></p>
-            <p>Colour: <%= p.getColour() %> </p>
-            <p>Size: <%= p.getSize() %></p>
-            <p>Description: <%= p.getDescription() %></p>
+            <p>Brand: <%= product.getBrand() %></p>
+            <p>Colour: <%= product.getColour() %> </p>
+            <p>Size: <%= product.getSize() %></p>
+            <p>Description: <%= product.getDescription() %></p>
             <br><br>
-            <p>Price: <%= p.getPrice() %></p>
+            <p>Price: <%= product.getPrice() %></p>
             <p>add qty here</p>
             <p>Add to cart (replace with button)</p>
 
@@ -80,7 +80,9 @@
         <img id="email" src="img/email.png">
         <p id="email_address">staff@iotbay.com</p>
     </footer>
-    
+    <%
+}
+%>  
  
     
 </body>

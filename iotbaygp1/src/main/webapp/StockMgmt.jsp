@@ -34,6 +34,15 @@
     <div id="main_screen">
         <h2 id="staff_name">Stock Management</h2>
 
+        <%
+            List<Product> allProduct = (List<Product>) request.getAttribute("allProduct");
+            if (allProduct == null) {
+            %>
+            <p>Oh no!!!!!!!</p>
+            <%
+            } else {
+                %>
+
         <div id="add_btn">
             <a href="AddProduct.jsp">Add Product</a>
         </div> 
@@ -50,11 +59,9 @@
                 </tr>
             </thead>
                 <tbody>  
-                <%
-                        Product[] productList = TrialDatabase.getAllProducts();
-                        if (productList != null) {
-                            for (Product p : productList) {
-                    %>
+                    <%
+                    for (Product p : allProduct) {
+            %>
                
                 <tr>
                   <td><%= p.getUPC() %></td>

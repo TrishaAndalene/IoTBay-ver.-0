@@ -35,7 +35,7 @@ public class ProductServlet extends HttpServlet {
 
         } catch (ClassNotFoundException | SQLException ex) {
 
-            Logger.getLogger(StaffServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }      
 
     }

@@ -1,5 +1,4 @@
 <%@ page import="model.Product" %>
-<%@ page import="model.TrialDatabase" %>
 
 
 
@@ -36,7 +35,7 @@
      <!-- main screen -->
      <div id="main_screen">
         <h2 id="staff_name">Add Item</h2>
-        <form action="StockMgmt.jsp" method="post">
+        <form action="AddProductServlet" method="post">
             <table id="form-table">
             <tr>
                 <td>Product UPC: </td>
@@ -68,13 +67,28 @@
             </tr>
             <tr>
                 <td>Product Image URL: </td>
-                <td><input type="text" name="img" placeholder="Image URL"></td>
+                <td><input type="text" name="image" placeholder="Image URL"></td>
+            </tr>
+            <tr>
+                <td>Product QTY: </td>    
+                <td><input type="number" name="quantity" placeholder="QTY"></td>
+            </tr>
+            <tr>
+                <td>Product Category: </td>
+                <td><select name="category" id="categoryStr">
+                        <option value="wifi">WiFi</option>
+                        <option value="home_security">Home Security</option>
+                        <option value="activity_trackers">Activity Trackers</option>
+                        <option value="actuator">Actuators</option>
+                        <option value="ambient_iot">Ambient IoT</option>
+                        <option value="mini_pc">Mini PC</option>
+                    </select>
+                </td>
             </tr>
         </table>
         <input type="submit" id="add-item" value="Add Item">
         </form>
     </div>
-
     
     <!-- footer -->
     <footer class="footer">

@@ -1,5 +1,5 @@
 <%@ page import="model.Product" %>
-<%@ page import="model.TrialDatabase" %>
+<%@ page import="java.util.List" %>
 
 <html lang="en">
 <head>
@@ -27,9 +27,18 @@
         </div>
     </nav>
 
+    
     <!-- main screen -->
     <div id="main_screen">
         <h2>Our Products</h2>
+            <%
+            List<Product> allProduct = (List<Product>) request.getAttribute("allProduct");
+            if (allProduct == null) {
+            %>
+            <p>Oh no!!!!!!!</p>
+            <%
+            } else {
+                %>
         <div id="btn-container">
             <button class="btn active" onclick="filterSelection('all')"> Show all</button>
             <button class="btn" onclick="filterSelection('wifi')">Wifi</button>
@@ -40,26 +49,25 @@
             <button class="btn" onclick="filterSelection('mini_pc')">Mini PC</button>
         </div>
 
+                        <%
+                        for (Product p : allProduct) {
+                %>
         <div id="product-grid">
-            <%
-                Product[] productList = TrialDatabase.getAllProducts();
-                if (productList != null) {
-                    for (Product p : productList) {
-            %>
                 <div id="product-card">
                     <img src="<%= p.getImg() %>" alt="<%= p.getName() %>" />
                     <h5><%= p.getName() %></h5>
                     <p>$<%= p.getPrice() %></p>
-                    <form action="ProductView.jsp" method="post">
+                    <form action="ProductViewServlet" method="post">
                         <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
                         <button type="submit">View Product</button>
                     </form>
                 </div>
-            <%
-                    }
-                }
-            %>
+
             </div>
+            <%
+        }
+    }
+%>
     </div>
 
     

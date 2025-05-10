@@ -1,21 +1,16 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Cart;
 import model.Categories;
-import model.Customer;
 import model.Product;
 import model.Purchase;
-
-import dao.CustomerDAO;
-
-import java.util.*;
-import java.util.Locale.Category;
 
 public class CartDAO {
 
@@ -53,7 +48,7 @@ public Cart findCart(String code) throws SQLException {
 
           ResultSet rs2 = st.executeQuery(connectQuery);
           
-          Product p = new Product(rs2.getString("upc"), rs2.getString("name"), rs2.getDouble("price"), rs2.getString("brand"), rs2.getString("colour"), rs2.getString("size"), rs2.getString("image"), rs2.getInt("quantity"), Categories.ACTIVITY_TRACKERS);
+          Product p = new Product(rs2.getString("upc"), rs2.getString("name"), rs2.getDouble("price"), rs2.getString("brand"), rs2.getString("colour"), rs2.getString("size"), rs2.getString("image"), rs2.getInt("quantity"), Categories.ACTIVITY_TRACKERS, rs2.getString("description"));
 
           lists.add(new Purchase(p, Integer.parseInt(quantityList[i])));
 

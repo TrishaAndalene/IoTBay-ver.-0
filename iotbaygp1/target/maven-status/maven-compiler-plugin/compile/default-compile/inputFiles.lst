@@ -1,10 +1,9 @@
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/CartServlet.java
-/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/ListUsers.java
+/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/ProductEditServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/TrialDatabase.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/StaffServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/Categories.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/Purchase.java
-/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/StaffController.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/TestDB.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/OrderDAO.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/StaffLoginServlet.java
@@ -16,7 +15,6 @@
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/Validator.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/CartDAO.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/DB.java
-/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/ListItem.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/DBConnector.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/Staff.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/Cart.java
@@ -24,7 +22,8 @@
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/ConnServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/CustomerDAO.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/StaffDAO.java
-/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/Store.java
+/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/ProductViewServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/Customer.java
-/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/StaffLoginController.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/In.java
+/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/AddProductServlet.java
+/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/BrowseItemsServlet.java

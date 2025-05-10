@@ -45,6 +45,7 @@ public class ConnServlet extends HttpServlet {
             // THIS IS WHERE WE ADD ALL THE DAO
             staffManager = new StaffDAO(conn);
             productManager = new ProductDAO(conn);
+            System.out.println("Session ID: " + session.getId());
 
 
         } catch (SQLException ex) {

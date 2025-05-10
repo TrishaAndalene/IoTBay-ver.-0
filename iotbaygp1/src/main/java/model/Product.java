@@ -16,7 +16,7 @@ public class Product implements Serializable{
     protected Categories categories;
 
     // Construtor
-    public Product(String upc, String name, double price, String brand, String colour, String size, String img, int quantity, Categories category){
+    public Product(String upc, String name, double price, String brand, String colour, String size, String img, int quantity, Categories category, String description){
         this.upc = upc;
         this.name = name;
         this.brand = brand;
@@ -26,6 +26,7 @@ public class Product implements Serializable{
         this.img = img;
         this.quantity = quantity;
         this.categories = category;
+        this.description = description;
     }
 
     // this is the one elle is working on
