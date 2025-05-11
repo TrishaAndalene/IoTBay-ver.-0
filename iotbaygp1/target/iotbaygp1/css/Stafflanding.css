@@ -18,82 +18,6 @@ button{
     outline: inherit;
 }
 
-/* header */
-header{
-    background-color: white;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 10%;
-}
-
-header #company_logo{
-    width: 64px;
-    height: 64px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 3%;
-    top: 50%;
-    z-index: 9999;
-}
-
-header #company_name{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 13.5%;
-    top: 50%;
-    font-style: italic;
-    font-weight: bold;
-    z-index: 9999;
-}
-
-/* Navigation bar */
-.nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: white;
-    padding: 10px 20px;
-}
-
-.company-logo {
-    height: 30px;
-    width: auto;
-}
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-  
-.nav-links li a {
-    color: rgb(64, 51, 151);
-    font-weight: 700;
-}
-
-.search-container {
-    float: right;
-    border: 2px solid black;
-  }
-  
-.nav-bar .input[type=text] {
-    padding: 6px;
-    margin-top: 8px;
-    font-size: 17px;
-  }
-  
-.search-container button {
-    float: right;
-    padding: 6px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background: #ddd;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-  }
-
 /* main screen */
 #main_screen{
     position: absolute;
@@ -102,7 +26,7 @@ header #company_name{
     left: 0%;
     width: 100%;
     height: 90%;
-    background-image: url("../img/background.png");
+    background-image: url("../img/main_image.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-color:rgb(238, 237, 245);
@@ -156,65 +80,4 @@ header #company_name{
     font-weight: bold;
     color: white;
     text-decoration: none;
-}
-
-/* footer */
-.footer{
-    background-color: white;
-    position: absolute;
-    top: 90%;
-    left: 0%;
-    width: 100%;
-    height: 15%;
-    padding: 10px 10px;
-    border-top: 2px solid rgb(50, 28, 199);
-}
-
-#company_logo2{
-    position: absolute;
-    top: 50%;
-    left: 3%;
-    transform:translate(-50%,-50%);
-    width: 60px;
-    height: 60px;
-}
-#company_name2{
-    position: absolute;
-    top: 50%;
-    left: 14%;
-    transform: translate(-50%,-50%);
-    font-weight: bold;
-}
-#instagram{
-    position: absolute;
-    top: 30%;
-    left: 83%;
-    transform: translate(-50%,-50%);
-    width: 40px;
-    height: 40px;
-}
-#insta_address{
-    position: absolute;
-    top: 30%;
-    left: 90%;
-    transform: translate(-50%,-50%);
-    font-size: 16px;
-    font-style: bold;
-}
-
-#email{
-    position: absolute;
-    top: 70%;
-    left: 83%;
-    transform: translate(-50%,-50%);
-    width: 40px;
-    height: 40px;
-}
-#email_address{
-    position: absolute;
-    top: 70%;
-    left: 90%;
-    transform: translate(-50%,-50%);
-    font-size: 16px;
-    font-style: bold;
 }

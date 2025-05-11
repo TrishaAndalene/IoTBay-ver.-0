@@ -7,25 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse Products</title>   
     <link rel="stylesheet" href="css/BrowseItems.css">
+    <link rel="stylesheet" href="css/Header.css">
+    <link rel="stylesheet" href="css/Footer.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <!-- navigation bar -->
-    <nav class="nav-bar">
-        <img src="img/company_logo.png" class="company-logo">
-        <h1 id="company_name">IoT Bay</h1>
-        <ul class="nav-links">
-            <li><a href="index.jsp" id="menu_home">Main Home</a></li>
-            <li><a href="" id="menu_browse">Browse</a></li>
-            <li><a href="" id="menu_account">Account</a></li>
-            <li><a href="Logout.jsp" id="logout_btn">Log Out</a></li>
-        </ul>
-        <div class="search-container">
-            <form action="StockSearchServlet">
-              <input type="text" placeholder="Search.." name="search">
-              <button type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
+    <%@ include file="/Header.jsp" %>
 
     <%
     List<Product> allProduct = (List<Product>) request.getAttribute("allProduct");
@@ -40,7 +32,7 @@
         <h2>Our Products</h2>
         
         <form action="BrowseItemsServlet" method="post">
-        <div id="btn-container">
+        <div class="btn-container">
             <button type="submit" name="filter" value="all"> Show all</button>
             <button type="submit" name="filter" value="WIFI">Wifi</button>
             <button type="submit" name="filter" value="HOME_SECURITY">Home Security</button>
@@ -75,22 +67,6 @@
 
 
     <!-- footer -->
-    <footer class="footer">
-        <!-- main company logo -->
-        <img id="company_logo2" src="img/company_logo.png">
-        <!-- compnay name -->
-        <h1 id="company_name2">IoTBay</h1>
-
-        <!-- instagram -->
-        <img id="instagram" src="img/insta.png">
-        <p id="insta_address">@iotbaysydney</p>
-
-        <!-- Email -->
-        <img id="email" src="img/email.png">
-        <p id="email_address">staff@iotbay.com</p>
-    </footer>
-    
- 
-    
-</body>
+    <%@ include file="/Footer.jsp" %>
+</body>   
 </html>

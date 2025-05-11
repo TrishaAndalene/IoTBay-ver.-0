@@ -6,82 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product: </title>   
     <link rel="stylesheet" href="css/ProductView.css">
+    <link rel="stylesheet" href="css/Header.css">
+    <link rel="stylesheet" href="css/Footer.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
+    <!-- navigation bar -->
+    <%@ include file="/Header.jsp" %>
 
     <%
     Product product = (Product) request.getAttribute("product");
     if (product == null){    
- %>
+    %>
         <p>Uh oh!!!</p>
-<%   
-        } else {
-
-%> 
-    <!-- navigation bar -->
-    <nav class="nav-bar">
-        <img src="img/company_logo.png" class="company-logo">
-        <h1 id="company_name">IoT Bay</h1>
-        <ul class="nav-links">
-            <li><a href="index.jsp" id="menu_home">Main Home</a></li>
-            <li><a href="" id="menu_browse">Browse</a></li>
-            <li><a href="" id="menu_account">Account</a></li>
-            <li><a href="Logout.jsp" id="logout_btn">Log Out</a></li>
-        </ul>
-        <div class="search-container">
-            <form action="browse.jsp">
-              <input type="text" placeholder="Search.." name="search">
-              <button type="submit">Submit</button>
-            </form>
-        </div>
-    </nav>
-
-
+    <%   } else {  %> 
 
     <!-- main screen -->
     <div id="main_screen">
-        <h2><%= product.getName() %></h2>
-        <div class="product-img">
-            <img src="<%= product.getImg() %>" alt="<%= product.getName() %>" />
-        </div>
-        <div class="product-info">
-            <p>Brand: <%= product.getBrand() %></p>
-            <p>Colour: <%= product.getColour() %> </p>
-            <p>Size: <%= product.getSize() %></p>
-            <p>Description: <%= product.getDescription() %></p>
-            <br><br>
-            <p>Price: <%= product.getPrice() %></p>
-            <p>add qty here</p>
-            <p>Add to cart (replace with button)</p>
+        <div class="product-container">
+            <div class="product-img">
+                <img src="<%= product.getImg() %>" alt="<%= product.getName() %>" />
+            </div>
+            <div class="product-info">
+                <div class="heading"><h2><%= product.getName() %></h2></div>
+                <p>Price: <%= product.getPrice() %></p>
+                <br>
+                <p>Brand: <%= product.getBrand() %></p>
+                <p>Colour: <%= product.getColour() %> </p>
+                <p>Size: <%= product.getSize() %></p>
+                <p>Description: <%= product.getDescription() %></p>
+                <br>
+                <br>
+                <%   if (product.getQuantity() <= 0 ){  %> 
+                    <h4>Sold Out</h4>
+                <%   } else {  %> 
+                    <p>add qty here</p>
+                    <p>Add to cart (replace with button)</p>
+                <%   } %> 
+                
 
-        </div>   
+            </div> 
+        </div>  
     </div>
 
-    
-
-
-
-
-
-    <!-- footer -->
-    <footer class="footer">
-        <!-- main company logo -->
-        <img id="company_logo2" src="img/company_logo.png">
-        <!-- compnay name -->
-        <h1 id="company_name2">IoTBay</h1>
-
-        <!-- instagram -->
-        <img id="instagram" src="img/insta.png">
-        <p id="insta_address">@iotbaysydney</p>
-
-        <!-- Email -->
-        <img id="email" src="img/email.png">
-        <p id="email_address">staff@iotbay.com</p>
-    </footer>
-    <%
-}
-%>  
- 
-    
+    <%@ include file="/Footer.jsp" %>
+    <% } %>  
+   
 </body>
 </html>

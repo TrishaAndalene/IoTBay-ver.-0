@@ -24,12 +24,18 @@
     <!-- navigation bar -->
     <nav>
         <a href="" id="menu_home"><h1>Home</h1></a>
-            <a href="BrowseItemsServlet" id="menu_browse"><h1>Browse</h1></a>
+        <a href="BrowseItemsServlet" id="menu_browse"><h1>Browse</h1></a>
         <a href="" id="menu_about"><h1>About</h1></a>
 
         <button id="login_btn"><a href="Login.jsp">LOGIN</a></button>
         <button id="signup_btn"><a href="Signup.jsp">SIGN UP</a></button>
         <button id="signup_btn"><a href="StaffLogin.jsp">Staff</a></button>
+        <div class="search-container">
+            <form action="StockSearchServlet">
+              <input type="text" placeholder="Search.." name="search">
+              <button type="submit">Search</button>
+            </form>
+        </div>
     </nav>
 
     <!-- main screen -->

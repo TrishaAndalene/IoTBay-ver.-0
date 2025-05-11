@@ -6,30 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>   
     <link rel="stylesheet" href="css/AddProduct.css">
+    <link rel="stylesheet" href="css/Header.css">
+    <link rel="stylesheet" href="css/Footer.css">
 </head>
 <body>
 
-
-    <!-- navigation bar -->
-    <nav class="nav-bar">
-        <img src="img/company_logo.png" class="company-logo">
-        <h1 id="company_name">IoT Bay</h1>
-        <ul class="nav-links">
-            <li><a href="index.jsp" id="menu_home">Main Home</a></li>
-            <li><a href="StaffLanding.jsp" id="staff_landing"><h1>Staff Home</h1></a></li>
-            <li><a href="BrowseItemsServlet" id="menu_browse"><h1>Browse</h1></a></li>
-            <li><a href="" id="menu_account">Account</a></li>
-            <li><a href="Logout.jsp" id="logout_btn">Log Out</a></li>
-        </ul>
-        <div class="search-container">
-            <form action="browse.jsp">
-              <input type="text" placeholder="Search.." name="search">
-              <button type="submit">Submit</button>
-            </form>
-        </div>
-    </nav>
-
-
+    <%@ include file="/Header.jsp" %>
 
      <!-- main screen -->
      <div id="main_screen">
@@ -87,25 +69,14 @@
         </table>
         <input type="submit" id="add-item" value="Add Item">
         </form>
+        <div id = "back">
+            <a href="StockMgmtServlet">
+                <button type="button">Back to Stock Mgmt</button>
+            </a>
+        </div>
     </div>
     
-    <!-- footer -->
-    <footer class="footer">
-        <!-- main company logo -->
-        <img id="company_logo2" src="img/company_logo.png">
-        <!-- compnay name -->
-        <h1 id="company_name2">IoTBay</h1>
-
-        <!-- instagram -->
-        <img id="instagram" src="img/insta.png">
-        <p id="insta_address">@iotbaysydney</p>
-
-        <!-- Email -->
-        <img id="email" src="img/email.png">
-        <p id="email_address">staff@iotbay.com</p>
-    </footer>
-    
- 
-    
+    <%@ include file="/Footer.jsp" %>
+   
 </body>
 </html>
