@@ -20,38 +20,29 @@
             <li><a href="Logout.jsp" id="logout_btn">Log Out</a></li>
         </ul>
         <div class="search-container">
-            <form action="StockSearchServlet">
+            <form action="browse.jsp">
               <input type="text" placeholder="Search.." name="search">
-              <button type="submit">Search</button>
+              <button type="submit">Submit</button>
             </form>
         </div>
     </nav>
 
-    <%
-    List<Product> allProduct = (List<Product>) request.getAttribute("allProduct");
-    if (allProduct == null) {
-    %>
-    <p>Oh no!!!!!!!</p>
-    <%
-    } else {
-        %>
+    
     <!-- main screen -->
     <div id="main_screen">
-        <h2>Our Products</h2>
+        <h2>Search Results</h2>
         
-        <form action="BrowseItemsServlet" method="post">
-        <div id="btn-container">
-            <button type="submit" name="filter" value="all"> Show all</button>
-            <button type="submit" name="filter" value="WIFI">Wifi</button>
-            <button type="submit" name="filter" value="HOME_SECURITY">Home Security</button>
-            <button type="submit" name="filter" value="ACTIVITY_TRACKERS">Activity Trackers</button>
-            <button type="submit" name="filter" value="ACTUATOR">Actuators</button>
-            <button type="submit" name="filter" value="AMBIENT_IOT">Ambient IoT</button>
-            <button type="submit" name="filter" value="MINI_PC">Mini PC</button>
-        </div>
-    </form>
+        <%
+            List<Product> allProduct = (List<Product>) request.getAttribute("allProduct");
+            if (allProduct == null) {
+            %>
+            <p>I'm sorry, no items found.</p>
+            <%
+            } else {
+                %>
 
-                        
+
+
         <div id="product-grid">
             <%
                         for (Product p : allProduct) {

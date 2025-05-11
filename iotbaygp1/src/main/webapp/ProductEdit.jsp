@@ -112,6 +112,11 @@
                     </form>
                 </tr>                       
         </table>
+        <div id = "back">
+            <a href="StockMgmtServlet">
+                <button type="button">Back to Stock Mgmt</button>
+            </a>
+        </div>
         <div id = "remove">
             <form action="RemoveProductServlet" method="post">
                 <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
