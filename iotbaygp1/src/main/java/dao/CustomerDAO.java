@@ -55,7 +55,7 @@ public Customer findCustomer(String email, String password) throws SQLException 
     ResultSet rs = st.executeQuery(query);
 
    //search the ResultSet for a user using the parameters 
-   if (rs.next()){
+   if (rs.next()){ 
     
         String firstName = rs.getString("firstName");
         String lastName = rs.getString("lastName");
