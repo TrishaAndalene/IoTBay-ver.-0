@@ -1,2 +1,3 @@
 # Ignore DB initializers or actual DB files
 src/main/java/dao/DB.java
+target/
