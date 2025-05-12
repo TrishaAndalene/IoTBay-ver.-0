@@ -7,11 +7,6 @@ import java.sql.Statement;
 
 import model.Staff;
 
-/* 
-* DBManager is the primary DAO class to interact with the database. 
-* Complete the existing methods of this classes to perform CRUD operations with the db.
-*/
-
 public class StaffDAO {
 private Connection conn;
 private Statement st;

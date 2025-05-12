@@ -8,8 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
-
-    <script src="js/login_script.js"></script>
     
     <link href="css/Signin.css" rel="stylesheet" type="text/css">
 
@@ -23,10 +21,10 @@
         <div class="left-1">
             <div class="left-content">
                 <img src="img/company_logo.png" alt="Company Logo">
-                <h1>IoTBay</h1>
+                <h1>Log in to IoT Bay</h1>
                 <br>
                 <h3>Don't have an account yet?</h3>
-                <button><a href="Signup.jsp"><h4>Sign up</h4></a></button>
+                <button><a href="CustomerRegister.jsp"><h4>Sign up here!</h4></a></button>
             </div>
         </div>
 
@@ -34,14 +32,14 @@
             <div class="right-content">
                 <h1>SIGN IN</h1>
 
-                <form action="" method="get" class="formTemplate">
-                    <input type="email" name="emailLogin" id="emailLogin" placeholder="Username or Email">
+                <form action="CustomerLoginServlet" method="post">
+                    <input type="text" name="email" placeholder="Email">
                     <br>
                     <input type="password" name="password" placeholder="Password">
                     <br>
                     <input type="checkbox" name="rememberMe" id="rememberMe" value="Remember">
                     <label for="rememberMe">Remember me</label> <br>
-                    <input onclick="redirectMain()" type="button" id="signInBtn" value="Sign In">
+                    <input type="submit" id="signInBtn" value="Sign In">
                 </form>
 
                 <!-- line only -->

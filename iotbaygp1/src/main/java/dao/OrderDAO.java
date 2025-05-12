@@ -1,4 +1,4 @@
-package dao;
+/* package dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -186,4 +186,4 @@ public void updateOrder(String code, int statusCode){
   }
 
 }
-
+*/

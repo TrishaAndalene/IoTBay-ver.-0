@@ -10,12 +10,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
-
-    <script src="js/logout_script.js"></script>
     
     <link href="css/Logout.css" rel="stylesheet" type="text/css">
 </head>
-<body onload="continuePage(1)">
+<body>
     <section class="logOut" id="page-1">
         <div class="page-1">
             <img src="img/welcome_logo.png" alt="logo" id="smallerPng">
@@ -25,8 +23,8 @@
             <h2>your order, continue?</h2>
             <br>
             <div class="buttons">
-                <button onclick="toPrevious()" id="leftButton"><h4>No</h4></button>
-                <button onclick="continuePage(2)" id="rightButton"><h4>Yes</h4></button>
+                <a href="index.jsp"><button id="leftButton"><h4>No</h4></button></a>
+                <a href="LogoutServlet"><button id="rightButton"><h4>Yes</h4></button></a>
                 <% 
                     if (request.getParameter("rightButton") != null){
                         session.invalidate();

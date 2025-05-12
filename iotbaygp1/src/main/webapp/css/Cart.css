@@ -1,0 +1,110 @@
+body {
+    margin:0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    color: black;
+    overflow: hidden;
+    font-family: "Sriracha", cursive;
+    font-weight: 300;
+    font-style: normal;
+    letter-spacing: 0.2vw;
+}
+
+section {
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+}
+
+section.content{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Title Navigation Bar */
+.title{
+    background-color: rgb(48, 162, 244);
+    color: rgb(64, 51, 151);
+    max-height: 15vh;
+    text-align: center;
+    font-size: 5vh;
+}
+
+.title h1{
+    margin-top: 0vh;
+    text-align: center;
+    font: 4vh;
+}
+
+.top h1{
+    font-size: 5vh;
+    margin-top: -1vh;
+    text-align: center;
+}
+
+.orderTable{
+    padding-top: 2vh;
+    min-width: 80%;
+    max-width: 80%;
+    align-self: center;
+    margin-left: 15vw;
+}
+
+.orderTable table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.orderTable th, td {
+    min-width: 16vw;
+    max-width: 16vw;
+    text-align: center;
+}
+
+.orderTable row2 {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-evenly;
+}
+
+.line {
+    margin-top: 4vh;
+    background-color:#2440ad;
+    width: 83%;
+    max-height: 0.5vh;
+    overflow: hidden;
+    align-self: center;
+}
+
+button{
+    color: white;
+    background-color: #2440ad;
+    min-width: 70%;
+    margin-left: 5.5vw;
+    min-height: 7vh;
+    max-height: 7vh;
+    border-radius: 80px;
+    align-self: center;
+}
+
+button.inside-row{
+    min-width: 3vh;
+    max-width: 3vh;
+    color: white;
+    background-color: #2440ad;
+    min-height: 3vh;
+    max-height: 3vh;
+    margin-left: 0vw;
+    border-radius: 50%;
+    text-align: center;
+}
+
+button:hover{
+    color: #2440ad;
+    background-color: white;
+}

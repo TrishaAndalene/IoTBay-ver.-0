@@ -44,8 +44,14 @@
                 <%   if (product.getQuantity() <= 0 ){  %> 
                     <h4>Sold Out</h4>
                 <%   } else {  %> 
-                    <p>add qty here</p>
-                    <p>Add to cart (replace with button)</p>
+                    <form action="AddToCartServlet" method="post">
+                    <p>QTY:</p>
+                        <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/>
+                        <input type="hidden" name="upc" value="<%= product.getUPC() %>" />
+                        <input type="hidden" name="userID" value="<%= customerID %>" />
+                    
+                        <button type="submit">Add To Cart</button>
+                    </form>
                 <%   } %> 
                 
 

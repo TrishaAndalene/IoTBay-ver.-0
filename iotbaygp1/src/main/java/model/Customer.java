@@ -1,10 +1,10 @@
 package model;
 import java.io.Serializable;
-
-import java.util.*;
+import java.util.ArrayList;
 
 public class Customer implements Serializable{
     // Attributes
+    private int id;
     private String firstName;
     private String lastName;
     private String email;
@@ -13,6 +13,15 @@ public class Customer implements Serializable{
     private ArrayList<String> orderCodes;
 
     // Constructor
+    public Customer(int id, String firstName, String lastName, String email, String phoneNum, String password){
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneNum = phoneNum;
+    }
+
     public Customer(String firstName, String lastName, String email, String phoneNum, String password){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -88,5 +97,9 @@ public class Customer implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getID(){
+        return this.id;
     }
 }

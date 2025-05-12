@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import dao.CartDAO;
+import dao.CartItemsDAO;
+import dao.CustomerDAO;
 import dao.DBConnector;
 import dao.ProductDAO;
 import dao.StaffDAO;
@@ -23,6 +26,9 @@ public class ConnServlet extends HttpServlet {
     private DBConnector db;
     private StaffDAO staffManager;
     private ProductDAO productManager;
+    private CustomerDAO customerManager;
+    private CartDAO cartManager;
+    private CartItemsDAO cartItemsManager;
     private Connection conn;
 
     @Override //Create and instance of DBConnector for the deployment session
@@ -45,6 +51,9 @@ public class ConnServlet extends HttpServlet {
             // THIS IS WHERE WE ADD ALL THE DAO
             staffManager = new StaffDAO(conn);
             productManager = new ProductDAO(conn);
+            customerManager = new CustomerDAO(conn);
+            cartManager = new CartDAO(conn);
+            cartItemsManager = new CartItemsDAO(conn);
             System.out.println("Session ID: " + session.getId());
 
 
@@ -53,7 +62,10 @@ public class ConnServlet extends HttpServlet {
         }
            //export the DB manager to the view-session (JSPs)
            session.setAttribute("staffManager", staffManager);  
-           session.setAttribute("productManager", productManager);           
+           session.setAttribute("productManager", productManager);  
+           session.setAttribute("customerManager", customerManager); 
+           session.setAttribute("cartManager", cartManager);
+           session.setAttribute("cartItemsManager", cartItemsManager);       
        }   
 
     @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)

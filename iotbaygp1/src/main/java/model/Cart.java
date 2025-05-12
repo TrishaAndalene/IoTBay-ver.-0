@@ -1,113 +1,41 @@
 package model;
 
 import java.io.Serializable;
-
-
-// Java Library
-import java.util.*;
+import java.util.List;
 
 // Cart Object (partially dependent on Customer.java)
 public class Cart implements Serializable{
-    private final Customer customer;
-    private String code;
-    private ArrayList<Purchase> products;
-    private double totalCost;
-
-    // Constructor
-    public Cart(Customer customer, String code){
-        this.customer = customer;
-        this.products = new ArrayList<>();
-        this.totalCost = 0;
-
-        if (this.code.equals("")){
-            this.code = Order.generateRandomStringList(1, 8);
-        }
-    }
+    private int cartID;
+    private final int userID;
+    private String status;
 
     // Constructor for non-registered customer
-    public Cart(){
-        this.customer = null;
-        this.products = new ArrayList<>();
-        this.totalCost = 0;
-        this.code = Order.generateRandomStringList(1, 8);
+    public Cart(int userID){
+        this.userID = userID;
     }
 
-    // Update methods
-    public void addItemToCart(Purchase item){
-        this.products.add(item);
+    public int getCartID() {
+        return cartID;
     }
 
-    public void addItemToCart(ArrayList<Purchase> items){
-        this.products = items;
+    public int getUserID() {
+        return userID;
     }
 
-    public void updateCost(){
-        double cost = 0;
-        for (Purchase p : this.products){
-            cost += p.getTotalCost();
-        }
-        this.totalCost = cost;
+    public String getStatus() {
+        return status;
     }
 
-    // Read methods
-
-    public Customer getCustomer(){
-        return this.customer;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public ArrayList<Purchase> getList(){
-        return this.products;
-    }
-
-    public double getTotalCost(){
-        return this.totalCost;
-    }
-
-    public int getUniqueItemCount(){
-        int count = 0;
-        for (Purchase p : this.products){
-            count++;
-        }
-        return count;
-    }
-
-    public int getTotalQuantity(){
-        int total = 0;
-        for (Purchase purchase : this.products){
-            total += purchase.getQuantity();
-        }
+    public double getTotalCost(List<CartItem> products) {
+        double total = 0.00;
+        // work out how to add this in later - could be taking in a list of the products 
         return total;
     }
 
-    // (this is to get the specific index of a product in the array)
-    public int getProductIndex(String name){
-        if (this.products.size() != 0){
-            for (Purchase p : this.products){
-                if (name.equals(p.product.getName())){
-                    return this.products.indexOf(p);
-                }
-            }
-        }
-        return -1;
-    }
-
-    // Delete methods
-    public void deleteItem(String name){
-        if (this.products.size() != 0){
-            for (Purchase p : this.products){
-                if (name.equals(p.product.getName())){
-                    this.products.remove(p);
-                }
-            }
-        }
-    }
-
-    public void deleteAllItem(){
-        if (this.products.size() != 0){
-            for (Purchase p : this.products){
-                this.products.remove(p);
-            }
-        }
-    }
+    
 
 }

@@ -6,6 +6,8 @@
     <%
     Customer customer = (Customer) session.getAttribute("customer");
     Staff staff = (Staff) session.getAttribute("staff");
+    Integer cardID = (Integer) session.getAttribute("cartID");
+    Integer customerID = (Integer) session.getAttribute("customerID");
 
     if (staff != null) {
 %>
@@ -109,7 +111,7 @@
             <div class="dropdown">
             <img src="img/shopping-cart.jpg" class="dropimg"/>
                 <div class="dropdown-content">
-                    <a href="#">View Cart</a>
+                    <a href="ViewCartServlet">View Cart</a>
                     <a href="#">Check Out</a>
                 </div>
             </div>
@@ -152,8 +154,8 @@
         </div>
         <div class="account-container">
             <ul class="account-links">
-                <li><a href="Signup.jsp" id="signup">Sign Up</a></li>
-                <li><a href="Login.jsp" id="login">Log In</a></li>
+                <li><a href="CustomerRegister.jsp" id="signup">Sign Up</a></li>
+                <li><a href="CustomerLogin.jsp" id="login">Log In</a></li>
                 <li><a href="StaffLogin.jsp" id="signup">Staff</a></li>
             </ul>
         </div>

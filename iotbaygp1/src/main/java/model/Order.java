@@ -1,3 +1,5 @@
+
+/* 
 package model;
 
 import java.io.Serializable;
@@ -136,3 +138,5 @@ public class Order implements Serializable{
         return "Order code : " + this.getCode() + " | Customer name: " + this.getName() + " | Items : " + this.getList() + " | Total Cost: " + this.getCost() + " | Status : " + this.getStatus();
     }
 }
+
+*/

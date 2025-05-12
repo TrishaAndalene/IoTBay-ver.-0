@@ -19,16 +19,12 @@ public class StaffLoginServlet extends HttpServlet {
    
 @Override   
 protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-    //1- retrieve the current session
+
     HttpSession session = request.getSession(); 
 
-    //3- capture the posted email - check jsp form name to see what parameter name
     String email = request.getParameter("email");      
-    
-    //4- capture the posted password 
     String password = request.getParameter("password");
-    
-    //5- retrieve the manager instance from session      
+          
     StaffDAO staffManager = (StaffDAO) session.getAttribute("staffManager");
     if (staffManager == null) throw new IOException("DB manager not found");
 
