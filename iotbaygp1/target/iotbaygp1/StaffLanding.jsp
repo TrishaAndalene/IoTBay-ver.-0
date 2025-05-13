@@ -23,8 +23,9 @@
     <!-- main screen -->
     <div id="main_screen">
         <h2 id="staff_name">Welcome <%=staff.getFirstName()%>!</h2>
+        <div id="storepurchase_btn"><a href="#" id="stock_mgmt">Store Purchase</a></div>
         <div id="stockmgmt_btn"><a href="StockMgmtServlet" id="stock_mgmt">Stock Management</a></div>
-        <div id="ordermgmt_btn"><a href="Order_Mgmt.jsp">Order Management</a></div>
+        <div id="ordermgmt_btn"><a href="#">Order Management</a></div>
     </div>
     
     <%@ include file="/Footer.jsp" %>

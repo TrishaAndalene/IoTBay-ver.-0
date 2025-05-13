@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dao.StaffDAO;
+import dao.StoreCartDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -27,7 +28,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
           
     StaffDAO staffManager = (StaffDAO) session.getAttribute("staffManager");
     if (staffManager == null) throw new IOException("DB manager not found");
-
+    StoreCartDAO storeCartManager = (StoreCartDAO) session.getAttribute("storeCartManager");
 
     Staff staff = null;       
  
@@ -41,6 +42,13 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     if (staff != null) {                     
         //13-save the logged in user object to the session
         session.setAttribute("staff", staff);
+        session.setAttribute("staffID", staff.getID());
+        try {
+            int storeCartID = storeCartManager.getCreateCart(staff.getID());
+            session.setAttribute("storeCartID", storeCartID);
+            } catch (SQLException ex) {
+                Logger.getLogger(StaffLoginServlet.class.getName()).log(Level.SEVERE, null, ex); 
+            }
         //14- redirect user to the main.jsp
         request.getRequestDispatcher("/StaffLanding.jsp").include(request, response);   
     } else {                       

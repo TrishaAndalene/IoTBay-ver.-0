@@ -37,7 +37,7 @@ body{
     left: 15%;
     top: 10%;
     width: 70%;
-    height: 80%;
+    height: 86%;
     overflow: scroll;
     background-color: white;
     padding: 0;
@@ -63,7 +63,15 @@ body{
     border-collapse: collapse;
     margin: 0;
 }
-
+#back button {
+    height: 50px;
+    width: 100px;
+    background-color:cornflowerblue;
+    border-radius: 10%;
+    float: right;
+    align-items: center;
+    justify-content: center;
+}
 #remove button {
     height: 50px;
     width: 100px;

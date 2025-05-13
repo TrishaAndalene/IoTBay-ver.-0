@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,11 +40,18 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         Logger.getLogger(ProductViewServlet.class.getName()).log(Level.SEVERE, null, ex);    
     }
 
-    if (product != null) {                     
-        //13-save the logged in user object to the session
-        request.setAttribute("product", product);
-        //14- redirect user to the main.jsp
-        request.getRequestDispatcher("/ProductView.jsp").include(request, response);   
+
+    if (product != null) {   
+        try {
+            List<Product> recommendedList = productManager.listAllProducts();
+            request.setAttribute("product", product);
+            request.setAttribute("recommendedList", recommendedList);
+            request.getRequestDispatcher("/ProductView.jsp").include(request, response); 
+            }  
+        catch (SQLException ex) {           
+            Logger.getLogger(ProductViewServlet.class.getName()).log(Level.SEVERE, null, ex); 
+            }                
+          
     } else {                       
         //15-set user does not exist error to the session
         session.setAttribute("errorMsg", "Incorrect upc :(");        

@@ -27,11 +27,12 @@ public Staff findStaff(String email, String password) throws SQLException {
 
    //search the ResultSet for a user using the parameters 
    if (rs.next()){
+        int staffID = rs.getInt("id");
         String firstName = rs.getString("firstName");
         String lastName = rs.getString("lastName");
         String phoneNum = rs.getString("phoneNum");
 
-        return new Staff(firstName, lastName, email, phoneNum, password);
+        return new Staff(staffID, firstName, lastName, email, phoneNum, password);
 
    }
     return null;
@@ -41,6 +42,11 @@ public Staff findStaff(String email, String password) throws SQLException {
 
 //Add a user-data into the database   
 public void addUser(String email, String name, String password, String gender, String favcol) throws SQLException {                   //code for add-operation       
+  st.executeUpdate("sql query");   
+
+}
+
+public void addUserWithID(int id, String email, String name, String password, String gender, String favcol) throws SQLException {                   //code for add-operation       
   st.executeUpdate("sql query");   
 
 }
@@ -56,6 +62,17 @@ public void deleteUser(String email) throws SQLException{
    //code for delete-operation   
 
 }
+
+public int getStaffID(String email) throws SQLException {
+        String query = "SELECT" + " id FROM Staff WHERE email = '" + email  + "' ";
+        //find the user ID from the db
+        ResultSet rs = st.executeQuery(query);
+        if (rs.next()) {
+            return rs.getInt("id");
+        } else {
+            throw new SQLException("No staff under email: " + email );
+        }
+    }
 
 
  

@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
     
 </head>
 <body>
@@ -51,7 +54,7 @@
                 <div class="product-card">
                     <img src="<%= p.getImg() %>" alt="<%= p.getName() %>" />
                     <h5><%= p.getName() %></h5>
-                    <p>$<%= p.getPrice() %></p>
+                    <p>$<%= String.format("%.2f", p.getPrice())%></p>
                     <form action="ProductViewServlet" method="post">
                         <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
                         <button type="submit">View Product</button>

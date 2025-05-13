@@ -1,4 +1,6 @@
 <%@ page import="model.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Collections" %>
 
 <html lang="en">
 <head>
@@ -20,6 +22,7 @@
 
     <%
     Product product = (Product) request.getAttribute("product");
+    List<Product> recommendedList = (List<Product>) request.getAttribute("recommendedList");
     if (product == null){    
     %>
         <p>Uh oh!!!</p>
@@ -27,40 +30,75 @@
 
     <!-- main screen -->
     <div id="main_screen">
+        <div class="back-button">
+            <a href="BrowseItemsServlet"><button type="submit"> < Back to Products</button></a>
+        </div>
         <div class="product-container">
             <div class="product-img">
                 <img src="<%= product.getImg() %>" alt="<%= product.getName() %>" />
             </div>
             <div class="product-info">
                 <div class="heading"><h2><%= product.getName() %></h2></div>
-                <p>Price: <%= product.getPrice() %></p>
                 <br>
-                <p>Brand: <%= product.getBrand() %></p>
-                <p>Colour: <%= product.getColour() %> </p>
-                <p>Size: <%= product.getSize() %></p>
-                <p>Description: <%= product.getDescription() %></p>
+                <p><b>Price: </b> $<%= String.format("%.2f", product.getPrice())%></p>
+                <p><b>Brand: </b><%= product.getBrand() %></p>
                 <br>
                 <br>
                 <%   if (product.getQuantity() <= 0 ){  %> 
                     <h4>Sold Out</h4>
                 <%   } else {  %> 
-                    <form action="AddToCartServlet" method="post">
-                    <p>QTY:</p>
+                    <%   if (staff != null){  %> 
+                    <form action="AddToStoreCartServlet" method="post">
+                    <p><b>QTY:  </b></p>
                         <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/>
                         <input type="hidden" name="upc" value="<%= product.getUPC() %>" />
-                        <input type="hidden" name="userID" value="<%= customerID %>" />
+                        <input type="hidden" name="staffID" value="<%= staffID %>" />
+                        <button type="submit">Add To Store Cart</button>
+                    </form>
+                    <br>
+                    <p><b>Colour: </b><%= product.getColour() %> </p>
+                    <p><b>Size: </b><%= product.getSize() %></p>
+                    <p><b>Description: </b><%= product.getDescription() %></p>
+                    <%   } else {  %> 
                     
+                    <form action="AddToCartServlet" method="post">
+                    
+                    <div class = "choose-qty">QTY:
+                    <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/></div>
+                        <br>
+                        <input type="hidden" name="upc" value="<%= product.getUPC() %>" />
+                        <input type="hidden" name="userID" value="<%= customerID %>" />
                         <button type="submit">Add To Cart</button>
                     </form>
-                <%   } %> 
-                
-
+                <br>
+                <p><b>Colour: </b><%= product.getColour() %> </p>
+                <p><b>Size: </b><%= product.getSize() %></p>
+                <p><b>Description: </b><%= product.getDescription() %></p>
+                <%   } }%> 
             </div> 
         </div>  
+        <div class = "rec-header"><h4>Recommended For You:</h4></div>
+        <div class="recommended">
+            <% for (Product p : recommendedList) {  %>
+            <div class="product-card">
+                    <img src="<%= p.getImg() %>" alt="<%= p.getName() %>" />
+                    <h5><%= p.getName() %></h5>
+                    <p>$<%= String.format("%.2f", p.getPrice())%></p>
+                    <form action="ProductViewServlet" method="post">
+                        <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
+                        <button type="submit">View Product</button>
+                    </form>
+                </div>
+                <% } %>
+        </div>
+
     </div>
+        <% } 
+        %> 
+
 
     <%@ include file="/Footer.jsp" %>
-    <% } %>  
+     
    
 </body>
 </html>

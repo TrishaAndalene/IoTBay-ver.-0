@@ -43,10 +43,30 @@ button{
 }
 
 
+#storepurchase_btn{
+    position: absolute;
+    top: 68%;
+    left: 6%;
+    height: 80px;
+    width: 250px;
+    background-color:cornflowerblue;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#storepurchase_btn a{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
 #stockmgmt_btn{
     position: absolute;
     top: 68%;
-    left: 5.5%;
+    left: 36%;
     height: 80px;
     width: 250px;
     background-color:cornflowerblue;
@@ -63,10 +83,10 @@ button{
     text-decoration: none;
 }
 
-#ordermgmt_btn{
+#ordermgmt_btn {
     position: absolute;
     top: 68%;
-    left: 35%;
+    left: 66%;
     height: 80px;
     width: 250px;
     background-color:cornflowerblue;

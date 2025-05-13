@@ -4,8 +4,18 @@ import java.io.Serializable;
 
 public class Staff implements Serializable{
     private String firstName, lastName, email, password, phoneNum;
+    private int id;
 
     public Staff(String firstName, String lastName, String email, String phoneNum, String password){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNum = phoneNum;
+        this.password = password;
+    }
+
+    public Staff(int id, String firstName, String lastName, String email, String phoneNum, String password){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -57,6 +67,10 @@ public class Staff implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getID() {
+        return id;
     }
 
 

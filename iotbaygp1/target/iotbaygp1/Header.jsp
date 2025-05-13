@@ -6,8 +6,10 @@
     <%
     Customer customer = (Customer) session.getAttribute("customer");
     Staff staff = (Staff) session.getAttribute("staff");
-    Integer cardID = (Integer) session.getAttribute("cartID");
+    Integer cartID = (Integer) session.getAttribute("cartID");
     Integer customerID = (Integer) session.getAttribute("customerID");
+    Integer staffID = (Integer) session.getAttribute("staffID");
+    Integer storeCartID = (Integer) session.getAttribute("storeCartID");
 
     if (staff != null) {
 %>
@@ -32,7 +34,7 @@
                   <a href="BrowseItemsServlet?filter=MINI_PC">Mini PC</a>
                 </div> </li>
             <li><a href="StaffLanding.jsp" id="menu_home">Staff Home</a></li>
-            <li><a href="StaffLanding.jsp" id="menu_home">Stock Management</a></li>
+            <li><a href="StockMgmtServlet" id="menu_home">Stock Management</a></li>
         </ul>
         </div>
 
@@ -48,6 +50,7 @@
         <div class="welcome"><p>Welcome <%=staff.getFirstName()%>!</p></div>
         
         <div class ="image-container">
+            <a href="StoreCartServlet"><img src="img/staff_bag.jpg" class="dropimg"/></a>
             <div class="dropdown">
             <img src="img/profile-icon.jpg" class="dropimg"/>
                 <div class="dropdown-content">
@@ -55,16 +58,8 @@
                     <a href="#">Orders</a>
                     <a href="Logout.jsp">Log Out</a>
                 </div>
-            </div>
-            <div class="dropdown">
-            <img src="img/shopping-cart.jpg" class="dropimg"/>
-                <div class="dropdown-content">
-                    <a href="#">View Cart</a>
-                    <a href="#">Check Out</a>
-                </div>
-            </div>
-        </div>
-        
+            </div>  
+        </div>    
     </nav>
     <%
 } else if (customer != null) {

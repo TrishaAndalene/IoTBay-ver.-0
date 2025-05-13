@@ -6,7 +6,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 10%;
+    height: 7%;
     padding: 10px 20px;
     align-items: center;
     justify-content: space-between;
@@ -33,7 +33,7 @@
     align-items: flex-end;
     flex: 1;
     gap: 10px;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: bold;
 }
 
@@ -44,6 +44,6 @@
 }
 
 .social-row img {
-    width: 20px;
-    height: 20px;
+    width: 19px;
+    height: 19px;
 }

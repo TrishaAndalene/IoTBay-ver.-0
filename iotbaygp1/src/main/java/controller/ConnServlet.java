@@ -12,6 +12,8 @@ import dao.CustomerDAO;
 import dao.DBConnector;
 import dao.ProductDAO;
 import dao.StaffDAO;
+import dao.StoreCartDAO;
+import dao.StoreCartItemsDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,7 +31,10 @@ public class ConnServlet extends HttpServlet {
     private CustomerDAO customerManager;
     private CartDAO cartManager;
     private CartItemsDAO cartItemsManager;
+    private StoreCartDAO storeCartManager;
+    private StoreCartItemsDAO storeCartItemsManager;
     private Connection conn;
+    
 
     @Override //Create and instance of DBConnector for the deployment session
     public void init() {
@@ -54,6 +59,9 @@ public class ConnServlet extends HttpServlet {
             customerManager = new CustomerDAO(conn);
             cartManager = new CartDAO(conn);
             cartItemsManager = new CartItemsDAO(conn);
+            storeCartItemsManager = new StoreCartItemsDAO(conn);
+            storeCartManager = new StoreCartDAO(conn);
+
             System.out.println("Session ID: " + session.getId());
 
 
@@ -65,7 +73,9 @@ public class ConnServlet extends HttpServlet {
            session.setAttribute("productManager", productManager);  
            session.setAttribute("customerManager", customerManager); 
            session.setAttribute("cartManager", cartManager);
-           session.setAttribute("cartItemsManager", cartItemsManager);       
+           session.setAttribute("cartItemsManager", cartItemsManager);
+           session.setAttribute("storeCartManager", storeCartManager);  
+           session.setAttribute("storeCartItemsManager", storeCartItemsManager);         
        }   
 
     @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)

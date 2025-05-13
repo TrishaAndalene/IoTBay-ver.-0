@@ -8,6 +8,7 @@ model/Product.class
 controller/TestDB.class
 controller/ConnServlet.class
 controller/ProductServlet.class
+controller/StoreCartServlet.class
 model/StockStatus.class
 model/Cart.class
 dao/CustomerDAO.class
@@ -18,10 +19,14 @@ controller/UpdateStockServlet.class
 controller/Authorize.class
 controller/AddProductServlet.class
 model/Customer.class
+dao/StoreCartDAO.class
 model/CartItem.class
+controller/AddToStoreCartServlet.class
+model/StoreCartItem.class
 dao/DB.class
 controller/CustomerLoginServlet.class
 controller/AddToCartServlet.class
+model/StoreCart.class
 dao/DBConnector.class
 controller/StockMgmtServlet.class
 dao/ProductDAO.class
@@ -29,6 +34,7 @@ controller/ViewCartServlet.class
 controller/CustomerRegisterServlet.class
 model/Categories.class
 controller/LogoutServlet.class
+dao/StoreCartItemsDAO.class
 model/Purchase.class
 controller/StaffLoginServlet.class
 controller/StockSearchServlet.class
