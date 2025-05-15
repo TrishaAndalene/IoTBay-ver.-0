@@ -8,35 +8,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/Landing.css">
+    <link rel="stylesheet" href="css/Header.css">
 
 </head>
 <body>
     <jsp:include page="/ConnServlet" flush="true"/>
 
-    <header>
-        <!-- main company logo -->
-        <img id="company_logo" src="img/company_logo.png">
-        <!-- compnay name -->
-        <h1 id="company_name">IoTBay</h1>
-    </header>
-    <!-- navigation bar -->
-    <nav>
-        <a href="" id="menu_home"><h1>Home</h1></a>
-        <a href="BrowseItemsServlet" id="menu_browse"><h1>Browse</h1></a>
-        <a href="" id="menu_about"><h1>About</h1></a>
-
-        <button id="login_btn"><a href="CustomerLogin.jsp">LOGIN</a></button>
-        <button id="signup_btn"><a href="CustomerRegister.jsp">SIGN UP</a></button>
-        <button id="signup_btn"><a href="StaffLogin.jsp">Staff</a></button>
-        <div class="search-container">
-            <form action="StockSearchServlet">
-              <input type="text" placeholder="Search.." name="search">
-              <button type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
+    <%@ include file="/Header.jsp" %>
+    
 
     <!-- main screen -->
     <div id="main_screen">

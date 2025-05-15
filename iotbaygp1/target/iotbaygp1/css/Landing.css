@@ -18,75 +18,10 @@ button{
     outline: inherit;
 }
 
-/* header */
-header{
-    background-color: white;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 10%;
-}
-
-header #company_logo{
-    width: 64px;
-    height: 64px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 3%;
-    top: 50%;
-    z-index: 9999;
-}
-
-header #company_name{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 13.5%;
-    top: 50%;
-    font-style: italic;
-    font-weight: bold;
-    z-index: 9999;
-}
-
-/* Navigation bar */
-nav {
-    background-color: white;
-    opacity: 0.8;
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 10%;
-    display: flex;
-    align-items: center; /* center align */
-    justify-content: flex-end; /* right */
-    padding-right: 50px; /* right margin */
-    z-index: 9998;
-}
-
-nav #menu_home, #menu_browse, #menu_about{
-    color: rgb(64, 51, 151);
-    margin-right: 100px;
-}
-
-nav #login_btn, #signup_btn{
-    width: 110px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    color: rgb(64, 51, 151);
-}
-
-nav #login_btn{
-    margin-right: 50px;
-}
-
 /* main screen */
 #main_screen{
     position: absolute;
-    top: 10%;
+    top: 7%;
     left: 0%;
     width: 100%;
     height: 90%;

@@ -32,16 +32,17 @@ body{
 
 /* main screen */
 #main_screen{
+    display: flex;
+    flex-direction:column;
     position: fixed;
+    justify-content: center;
+    background-color: white;
     right: 15%;
     left: 15%;
     top: 7%;
+    bottom: 7%;
     width: 70%;
-    height: 86%;
     overflow: scroll;
-    background-color: white;
-    padding: 0;
-    margin: 0;
 }
 
 #main_screen h2 {
@@ -51,20 +52,21 @@ body{
 }
 
 #add_btn {
-    height: 50px;
-    width: 100px;
-    background-color: #2440ad;
-    border-radius: 10%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 5px 10px;
+    justify-items: center;
 }
 
 #add_btn a{
-    font-size: 16px;
+    display: flex;
+    font-size: 14px;
     font-weight: bold;
-    color: white;
+    color: #2440ad;
     text-decoration: none;
+    justify-self: center;
+    border: 2px solid #2440ad;
+    border-radius: 5px;
+    width: 70%;
 }
 
 #product-table {
@@ -73,10 +75,51 @@ body{
     border: 1px solid;
 }
 
+#product-table tr {
+    border-bottom: 1px solid #acb4d6;
+    border-collapse: collapse;
+}
+
 #product-table th, #product-table td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid;
-    border-collapse: collapse;
     margin: 0;
+}
+
+#product-table td {
+    font-size: small;
+}
+
+
+.qty-update {
+    display: flex;
+    align-items: stretch;
+}
+.qty-update input[type="submit"] {
+    font-size: 9px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;   
+}
+
+.qty-update input[type="text"] {
+    padding: 5px 10px;
+    color: #2440ad;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #babfd2;
+    border-radius: 5px;
+    width: 30%;
+}
+
+
+#product-table button[type="submit"] {
+    padding: 5px 10px;
+    border: 2px solid #2440ad;
+    color: #2440ad;
+    font-size: 9px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
 }

@@ -147,6 +147,13 @@
               <button type="submit">Search</button>
             </form>
         </div>
+        <div class="dropdown">
+            <img src="img/shopping-cart.jpg" class="dropimg"/>
+            <div class="dropdown-content">
+                <a href="#">View Cart</a>
+                <a href="#">Check Out</a>
+            </div>
+        </div>
         <div class="account-container">
             <ul class="account-links">
                 <li><a href="CustomerRegister.jsp" id="signup">Sign Up</a></li>

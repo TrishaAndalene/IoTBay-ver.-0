@@ -53,11 +53,11 @@
                   <td><%= p.getBrand() %></td>
                   <td><%= p.getName() %></td>
                   <td><%= p.getQuantity() %></td>
-                  <td><form action="UpdateStockServlet" method="post">
+                  <td><div class="qty-update"><form action="UpdateStockServlet" method="post">
                     <input type="hidden" name="upc" value="<%= p.getUPC() %>">
                     <input type="text" name="quantity" required>
                     <button type="submit">Update Stock</button>
-                  </form></td>
+                  </form></div></td>
                   <td><form action="ProductEditServlet" method="post">
                     <input type="hidden" name="upc" value="<%= p.getUPC() %>">
                     <button type="submit">Manage Product</button>
