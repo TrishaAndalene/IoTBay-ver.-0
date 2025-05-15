@@ -40,4 +40,5 @@ controller/StaffLoginServlet.class
 controller/StockSearchServlet.class
 controller/Validator.class
 dao/StaffDAO.class
+controller/UpdateStaffCartStockServlet.class
 controller/UpdateProductServlet.class

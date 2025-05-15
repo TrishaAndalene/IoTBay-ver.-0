@@ -38,8 +38,8 @@ body{
     right: 15%;
     left: 15%;
     top: 7%;
+    bottom: 7%;
     width: 70%;
-    height: 86%;
     overflow: scroll;
     background-color: white;
 }
@@ -59,12 +59,12 @@ body{
 
 #order-table {
     flex: 2;
-    margin-left: 7%;
+    margin-left: 10px;
     align-self: flex-start;
     font-size: small;
     width: 100%;
+    height: 100%;
     padding: 5px 10px;
-    border: 1px solid;
 }
 
 #order-table th {
@@ -87,9 +87,9 @@ body{
     justify-content: space-around;
 }
 
-#order-table button{
-    padding: 5px 10px;
-    border: 2px solid #2440ad;
+#order-table button[type="submit"]{
+    padding: 5px 5px;
+    border: 1px solid #2440ad;
     color: #2440ad;
     font-size: 10px;
     font-weight: bold;
@@ -113,22 +113,65 @@ body{
 }
 
 .purchase-options {
+    display: flex;
     flex: 1;
     flex-direction: column;
     align-content: space-around;
     align-items: center;
     justify-content: space-evenly;
-    margin-right: 10px;
+    margin-left: 20px;
+    border-left: 1px solid;
+}
+
+.customer, .sales-person, .add-item, .finalise {
+    display: flex;
+    flex: 1;
+}
+
+.customer {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+.sales-person {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+.add-item {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+.finalise {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
 }
 
 .purchase-options button[type="submit"] {
-    padding: 5px 10px;
-    border: 2px solid #2440ad;
+    padding: 5px 5px;
+    border: 1px solid #2440ad;
     color: #2440ad;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     text-decoration: none;
     border-radius: 5px;
+}
+
+.purchase-options input[type="text"] {
+    padding: 5px 5px;
+    font-size: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color:white;
+    color: #2440ad;
+    width: 150px;
+    height: 30px;
+    margin: 5px;
+    box-sizing: border-box;
+    border: 2px solid #2440ad;
 }
 
 

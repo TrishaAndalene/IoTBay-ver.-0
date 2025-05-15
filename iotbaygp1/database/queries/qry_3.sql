@@ -1,13 +1,12 @@
-DROP TABLE IF EXISTS Carts;
-DROP TABLE IF EXISTS CartItems;
-
 
 CREATE TABLE StoreCarts (
     cartID INTEGER PRIMARY KEY AUTOINCREMENT,
     staffID INTEGER,
     customerID INTEGER DEFAULT 0, 
+    salespersonID INTEGER,
     FOREIGN KEY (staffID) REFERENCES Staff(id),
-    FOREIGN KEY (customerID) REFERENCES Customers(id)
+    FOREIGN KEY (customerID) REFERENCES Customers(id),
+    FOREIGN KEY (salespersonID) REFERENCES Staff(id)
     );
 
 
@@ -21,7 +20,7 @@ CREATE TABLE StoreCartItems (
 );
 
 
-INSERT INTO StoreCarts (staffID) VALUES (1);
+INSERT INTO StoreCarts (staffID, salespersonID) VALUES (1, 1);
 INSERT INTO StoreCartItems (cartID, upc, quantity) VALUES
 (1, 197853464414, 2),
 (1, 197853116382, 1),

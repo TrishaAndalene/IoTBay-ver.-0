@@ -29,19 +29,17 @@
     <div id="main_screen">
         <h2 id="staff_name">Stock Management</h2>
 
-        <div id="add_btn">
-            <a href="AddProduct.jsp">Add Product</a>
-        </div> 
+        
         
         <table id="product-table">
             <thead>
                 <tr>
-                  <th scope="col">UPC</th>
-                  <th scope="col">Brand</th>
-                  <th scope="col">Product Name</th>
-                  <th scope="col">Stock Qty</th>
-                  <th scope="col">Update Stock</th>
-                  <th scope="col">Manage Item</th>
+                  <th scope="col" class="mid-col">UPC</th>
+                  <th scope="col" class="mid-col">Brand</th>
+                  <th scope="col" class="wd-col">Product Name</th>
+                  <th scope="col" class="sm-col">Stock Qty</th>
+                  <th scope="col" class="mid-col">Qty +/- </th>
+                  <th scope="col" class="sm-col">Edit</th>
                 </tr>
             </thead>
             <%
@@ -70,6 +68,9 @@
     }
             %>      
         </table>
+        <div id="add_btn">
+            <a href="AddProduct.jsp">Add New Product</a>
+        </div> 
 
     </div>
     <%@ include file="/Footer.jsp" %>

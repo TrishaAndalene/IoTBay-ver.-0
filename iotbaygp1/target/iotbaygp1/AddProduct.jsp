@@ -56,7 +56,7 @@
             </tr>
             <tr>
                 <td>Product Category: </td>
-                <td><select name="category" id="categoryStr">
+                <td><select class="cat" name="category" id="categoryStr">
                         <option value="wifi">WiFi</option>
                         <option value="home_security">Home Security</option>
                         <option value="activity_trackers">Activity Trackers</option>
@@ -67,13 +67,14 @@
                 </td>
             </tr>
         </table>
-        <input type="submit" id="add-item" value="Add Item">
-        </form>
-        <div id = "back">
+        <div id = "button-cont">
             <a href="StockMgmtServlet">
-                <button type="button">Back to Stock Mgmt</button>
+                <button type="button"> < Back to Stock Mgmt</button>
             </a>
+            <input type="submit" id="add-item" value="Add Item">
         </div>
+        </form>
+        
     </div>
     
     <%@ include file="/Footer.jsp" %>

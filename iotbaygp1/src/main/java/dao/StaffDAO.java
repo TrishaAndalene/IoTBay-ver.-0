@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Staff;
 
@@ -72,6 +74,30 @@ public int getStaffID(String email) throws SQLException {
         } else {
             throw new SQLException("No staff under email: " + email );
         }
+    }
+
+  public List<Staff> getAllStaff() throws SQLException{
+        List<Staff> staffList = new ArrayList<>();
+
+        String query = "SELECT" + " * FROM Staff";
+
+        ResultSet result = st.executeQuery(query);
+
+        while (result.next()){
+          int id= result.getInt("id");
+          String firstName = result.getString("firstName");
+          String lastName = result.getString("lastName");
+          String phoneNum = result.getString("phoneNum");
+          String email = result.getString("email");
+          String password = result.getString("password");
+            
+
+            Staff staff = new Staff(id, firstName, lastName, email, phoneNum, password);
+            staffList.add(staff);
+            System.out.println("Total staff loaded: " + staffList.size());
+        }
+
+        return staffList;
     }
 
 

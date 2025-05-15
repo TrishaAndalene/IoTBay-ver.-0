@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS StoreCarts;
+DROP TABLE IF EXISTS StoreCartItems;
+

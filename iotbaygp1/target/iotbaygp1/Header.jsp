@@ -16,7 +16,7 @@
     <nav class="nav-bar">
         <a href="index.jsp"><div class="company-details">
         <img src="img/company_logo.png" class="company-logo">
-        <h1 id="company_name">IoT Bay</h1>
+        <h1 id="company-name">IoT Bay</h1>
         </div></a>
 
 
@@ -42,12 +42,9 @@
         <div class="search-container">
             <form action="StockSearchServlet">
               <input type="text" placeholder="What are you looking for today?" name="search">
-              <button type="submit">Search</button>
+              <button type="submit"> </button>
             </form>
         </div>
-
-
-        <div class="welcome"><p>Welcome <%=staff.getFirstName()%>!</p></div>
         
         <div class ="image-container">
             <a href="StoreCartServlet"><img src="img/staff_bag.jpg" class="dropimg"/></a>
@@ -59,6 +56,7 @@
                     <a href="Logout.jsp">Log Out</a>
                 </div>
             </div>  
+            <p>Welcome <%=staff.getFirstName()%>!</p>
         </div>    
     </nav>
     <%
@@ -89,12 +87,11 @@
         <div class="search-container">
             <form action="StockSearchServlet">
               <input type="text" placeholder="What are you looking for today?" name="search">
-              <button type="submit">Search</button>
+              <button type="submit"></button>
             </form>
         </div>
         
-        <div class ="image-container">
-            <p>Welcome <%=customer.getFirstName()%>!</p>
+        <div class ="image-container">  
             <div class="dropdown">
             <img src="img/profile-icon.jpg" class="dropimg"/>
                 <div class="dropdown-content">
@@ -110,6 +107,7 @@
                     <a href="#">Check Out</a>
                 </div>
             </div>
+            <p>Welcome <%=customer.getFirstName()%>!</p>
         </div>
         
     </nav>
@@ -144,7 +142,7 @@
         <div class="search-container">
             <form action="StockSearchServlet">
               <input type="text" placeholder="What are you looking for today?" name="search">
-              <button type="submit">Search</button>
+              <button type="submit"></button>
             </form>
         </div>
         <div class="dropdown">
@@ -158,7 +156,7 @@
             <ul class="account-links">
                 <li><a href="CustomerRegister.jsp" id="signup">Sign Up</a></li>
                 <li><a href="CustomerLogin.jsp" id="login">Log In</a></li>
-                <li><a href="StaffLogin.jsp" id="signup">Staff</a></li>
+                <li><a href="StaffLogin.jsp" id="signup">Staff Login</a></li>
             </ul>
         </div>
     </nav>

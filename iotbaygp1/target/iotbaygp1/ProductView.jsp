@@ -48,35 +48,40 @@
                     <h4>Sold Out</h4>
                 <%   } else {  %> 
                     <%   if (staff != null){  %> 
+
                     <form action="AddToStoreCartServlet" method="post">
-                    <p><b>QTY:  </b></p>
-                        <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/>
+                    <div class = "choose-qty"><b>QTY:</b>
+                    <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/></div>
+                        <br>
                         <input type="hidden" name="upc" value="<%= product.getUPC() %>" />
                         <input type="hidden" name="staffID" value="<%= staffID %>" />
-                        <button type="submit">Add To Store Cart</button>
+                        <button type="submit">Add To Store Purchase</button>
                     </form>
                     <br>
                     <p><b>Colour: </b><%= product.getColour() %> </p>
                     <p><b>Size: </b><%= product.getSize() %></p>
                     <p><b>Description: </b><%= product.getDescription() %></p>
-                    <%   } else {  %> 
+                <%   } else {  %> 
                     
                     <form action="AddToCartServlet" method="post">
                     
-                    <div class = "choose-qty">QTY:
+                    <div class = "choose-qty"><b>QTY:</b>
                     <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/></div>
                         <br>
                         <input type="hidden" name="upc" value="<%= product.getUPC() %>" />
                         <input type="hidden" name="userID" value="<%= customerID %>" />
                         <button type="submit">Add To Cart</button>
                     </form>
+                    
                 <br>
                 <p><b>Colour: </b><%= product.getColour() %> </p>
                 <p><b>Size: </b><%= product.getSize() %></p>
                 <p><b>Description: </b><%= product.getDescription() %></p>
                 <%   } }%> 
             </div> 
-        </div>  
+        </div> 
+        
+        
         <div class = "rec-header"><h4>Recommended For You:</h4></div>
         <div class="recommended">
             <% for (Product p : recommendedList) {  %>

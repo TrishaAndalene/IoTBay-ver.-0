@@ -4,25 +4,32 @@ import java.util.List;
 
 public class StoreCart {
     private int cartID;
-    private final String firstName;
-    private final String lastName;
+    private int staffID;
     private String status;
-    private Customer customer = null;
+    private int customerID;
+    private int salespersonID;
 
-    // Constructor for non-registered customer
-    public StoreCart(String firstName, String lastName){
-        this.firstName = firstName;
-        this.lastName = lastName;
+
+    public StoreCart (int staffID, int cartID){
+        this.cartID = cartID;
     }
 
     public int getCartID() {
         return this.cartID;
     }
 
-    public String getStaffName() {
-        return this.firstName + " " + this.lastName;
+    public int getStaffID(){
+        return this.staffID;
     }
 
+    public void setSalesperson(int salespersonID){
+        this.salespersonID = salespersonID;   
+    }
+
+    public int getSalesperson(){
+        return this.salespersonID;
+    }
+    
     public String getStatus() {
         return status;
     }
@@ -31,8 +38,12 @@ public class StoreCart {
         this.status = status;
     }
 
-    public void setCustomer(Customer customer){
-        this.customer = customer;
+    public void setCustomer(int customerID){
+        this.customerID = customerID;
+    }
+
+    public int getCustomer(){
+        return this.customerID;
     }
 
     public double getTotalCost(List<CartItem> products) {

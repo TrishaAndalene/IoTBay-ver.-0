@@ -47,7 +47,7 @@
                 <h1 style="margin-left: 19vw;">IoTBay</h1>
                 <br>
                 <h3>Already have an account?</h3>
-                <button><a href="Login.jsp"><h4>Sign in</h4></a></button>
+                <button><a href="/CustomerLogin.jsp"><h4>Sign in</h4></a></button>
             </div>
         </div>
     </section>

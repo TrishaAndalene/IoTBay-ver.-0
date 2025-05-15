@@ -23,7 +23,7 @@ button{
 body{
     padding: 0;
     margin: 0;
-    font-family: Tahoma, Verdana, sans-serif;
+    font-family: "Roboto", Tahoma, sans-serif;
     background-image: url("../img/main_image.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -62,31 +62,36 @@ body{
     margin: 0;
 }
 
-#form-table input[type="text"], input[type="number"] {
+#form-table input[type="text"], input[type="number"], .cat {
     padding: 12px 20px;
     width: 600px;
+    height: 7px;
     box-sizing: border-box;
     border: 2px solid #2440ad;
     border-radius: 4px;
     right: 0%;
-    
+    font-size: 12px;  
+}
+.cat {
+    height: 15px;
+    padding: 5px 10px;
 }
 
-#main_screen input[type="submit"] {
-    padding: 5px 10px;
-    border: 2px solid #2440ad;
-    color: #2440ad;
-    font-size: 15px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
+#button-cont {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 100px;
 }
 
-#main_screen button[type="button"] {
+#button-cont button[type="button"], input[type="submit"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px 10px;
-    border: 2px solid #2440ad;
-    color: #2440ad;
-    font-size: 15px;
+    color: white;
+    background-color: #2440ad; 
+    font-size: 10px;
     font-weight: bold;
     text-decoration: none;
     border-radius: 5px;

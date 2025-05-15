@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dao.ProductDAO;
+import dao.StaffDAO;
 import dao.StoreCartItemsDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,6 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Product;
+import model.Staff;
 import model.StoreCartItem;
  
 @WebServlet("/StoreCartServlet")
@@ -40,10 +42,12 @@ public class StoreCartServlet extends HttpServlet {
         if (storeCartItemsManager == null) throw new IOException("DB manager not found");
         ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
         if (productManager == null) throw new IOException("DB manager not found");
+        StaffDAO staffManager = (StaffDAO) session.getAttribute("staffManager");
+        if (staffManager == null) throw new IOException("Staff manager not found");
           
      
         try {    
-
+            List<Staff> staffList = staffManager.getAllStaff();
             List<StoreCartItem> storeCartItemList = storeCartItemsManager.getCartItems(storeCartID);
             Map<Product, Integer> cartItems = new HashMap<>();
 
@@ -52,8 +56,10 @@ public class StoreCartServlet extends HttpServlet {
                 int qty = i.getQuantity();
                 Product p = productManager.findProduct(upc);
                 cartItems.put(p, qty);}
-
+            
             request.setAttribute("cartItems", cartItems);
+            request.setAttribute("staffList", staffList);
+
             //14- redirect user to the main.jsp
             request.getRequestDispatcher("/StoreCart.jsp").include(request, response);
 

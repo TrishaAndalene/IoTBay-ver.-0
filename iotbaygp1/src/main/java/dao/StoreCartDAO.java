@@ -1,9 +1,10 @@
 package dao;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+//import model.StoreCart;
 
 public class StoreCartDAO {
     private Statement st;
@@ -13,6 +14,7 @@ public StoreCartDAO(Connection conn) throws SQLException {
     st = conn.createStatement();
     this.conn = conn;
 }
+
 
   public int getCreateCart(int staffID) throws SQLException {
     String q1 = "SELECT" + " cartID from StoreCarts WHERE staffID = " + staffID;
@@ -50,5 +52,20 @@ public StoreCartDAO(Connection conn) throws SQLException {
     }
 
     }
+
+    /*
+    public StoreCart getCart(int cartID) throws SQLException {
+    String q1 = "SELECT" + " cartID from StoreCarts WHERE cartID = " + cartID;
+    ResultSet rs1= st.executeQuery(q1);
+    
+    if (rs1.next()) {
+        int staffID = rs1.getInt("staffID");
+        StoreCart storeCart = new StoreCart(staffID, cartID);
+        return storeCart;  
+    } else {
+            throw new SQLException("Failed to retrieve cart.");
+    }   
+  }
+     */
 
 
