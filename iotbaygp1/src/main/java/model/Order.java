@@ -1,8 +1,9 @@
 
-/* 
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,34 +15,38 @@ enum Status{
 // Order Object (dependent on Cart.java)
 public class Order implements Serializable{
     // Attributes lists
+
+    private int customerID;
+    private String orderID, date;
     private Status status;
-    private Customer customer;
-    private String name, code;
-    private ArrayList<Purchase> orderList;
     private double cost;
 
-    // Constructor
-    public Order(Cart cart, String code){
-        this.status = Status.RECEIVED;
-        this.customer = cart.getCustomer();
-        this.orderList = cart.getList();
-        this.cost = cart.getTotalCost();
-        this.code = code;
-        try {
-            this.name = this.customer.getFirstName();
-            this.customer.addOrder(this.code);
-        } catch (NullPointerException e){
-            this.name = "anonymous";
-        }
+    private final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        if (this.code.equals("")){
-            this.code = this.generateRandomStringList(1, 8);
-        }
+    // Constructor
+    public Order(int customerID, double cost){
+        this.status = Status.RECEIVED;
+        this.date = LocalDate.now().format(dateFormat);
+        System.out.println(date); // -> debugging
+        this.orderID = this.generateRandomStringList(1, 8);
+        this.customerID = customerID;
+        this.cost = cost;
     }
 
-    // Update methods
-    public void setName(String newName){
-        this.name = newName;
+    public Order(String code, int customerID, String date, double cost){
+        this.status = Status.RECEIVED;
+        this.customerID = customerID;
+        this.orderID = code;
+        this.date = date;
+        this.cost = cost;
+    }
+
+    public Order(String code, int customerID, String date, double cost, String status){
+        this.status = this.getStatus(status);
+        this.customerID = customerID;
+        this.orderID = code;
+        this.date = date;
+        this.cost = cost;
     }
 
     // randomiser code (don't know if it's work yet)
@@ -83,31 +88,32 @@ public class Order implements Serializable{
         }
     }
 
-    // Read methods
-    public void getAllList(){
-        if (this.orderList.size() != 0){
-            for (Purchase p : this.orderList){
-                // command here to show on the html
-            }
-        } else {
-            // command here to show on the html
+    public Status updateStatus(String status){
+        if (status.equalsIgnoreCase("Received")){
+            return Status.RECEIVED;
+        } else if (status.equalsIgnoreCase("Processed")){
+            return Status.PROCESSED;
+        } else if (status.equalsIgnoreCase("On delivery")){
+            return Status.ONDELIVERY;
+        } else if (status.equalsIgnoreCase("Finished")){
+            return Status.FINISHED;
+        } else if (status.equalsIgnoreCase("Cancelled")){
+            return Status.CANCELLED;
         }
+        return Status.FINISHED;
     }
 
-    public String getCode(){
-        return this.code;
-    }
-
-    public String getName(){
-        return this.name;
-    }
-
-    public ArrayList<Purchase> getList(){
-        return this.orderList;
+    // Read methods
+    public String getOrderId(){
+        return this.orderID;
     }
 
     public double getCost(){
         return this.cost;
+    }
+
+    public String getDate(){
+        return this.date;
     }
 
     public String getStatus(){
@@ -124,19 +130,22 @@ public class Order implements Serializable{
         }
     }
 
-    public int getTotalItem(){
-        int num = 0;
-        if (this.orderList.size() != 0){
-            for (Purchase p : this.orderList){
-                num += p.getQuantity();
-            }
+    public Status getStatus(String status){
+        if (status.equalsIgnoreCase("Received")){
+            return Status.RECEIVED;
+        } else if (status.equalsIgnoreCase("Processed")){
+            return Status.PROCESSED;
+        } else if (status.equalsIgnoreCase("On delivery")){
+            return Status.ONDELIVERY;
+        } else if (status.equalsIgnoreCase("Finished")){
+            return Status.FINISHED;
+        } else if (status.equalsIgnoreCase("Cancelled")){
+            return Status.CANCELLED;
         }
-        return num;
+        return Status.FINISHED;
     }
 
     public String toString(){
-        return "Order code : " + this.getCode() + " | Customer name: " + this.getName() + " | Items : " + this.getList() + " | Total Cost: " + this.getCost() + " | Status : " + this.getStatus();
+        return "Order code : " + this.getOrderId() + " | Total Cost: " + this.getCost() + " | Status : " + this.getStatus();
     }
 }
-
-*/

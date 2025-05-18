@@ -1,4 +1,4 @@
-/* package controller;
+package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -39,8 +39,6 @@ public class OrderServlet extends HttpServlet {
         }      
 
     }
-
-    
 
     @Override //Add the DBConnector, DBManager, Connection instances to the session
 
@@ -88,4 +86,4 @@ public class OrderServlet extends HttpServlet {
 
     }
 
-} */
+}

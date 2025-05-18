@@ -1,0 +1,99 @@
+/* Default setting */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", Tahoma, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Tahoma, Verdana, sans-serif;
+    background-image: url("../img/main_image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+}
+
+/* Content base */
+section.content{
+    position: fixed;
+    align-items: center;
+    justify-content: space-evenly;
+    right: 15%;
+    left: 15%;
+    top: 7%;
+    bottom: 7%;
+    width: 70%;
+    overflow: scroll;
+    background-color: white;
+}
+
+h1 {
+    color: rgb(64, 51, 151);
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+div.orderTable{
+    padding-top: 2vh;
+    min-width: 100%;
+    max-width: 100%;
+    align-self: center;
+}
+
+table {
+    margin-left: 5%;
+}
+
+div.orderTable table, th, td {
+    border-collapse: collapse;
+}
+
+div.orderTable th, td {
+    min-width: 12vw;
+    max-width: 12vw;
+    text-align: center;
+}
+
+.orderTable img{
+    max-width: 150px;
+    min-width: 150px;
+    height: auto;
+}
+
+div.line {
+    margin-top: 4vh;
+    background-color:#2440ad;
+    width: 90%;
+    margin-left: 5%;
+    max-height: 0.5vh;
+    overflow: hidden;
+    align-self: center;
+}
+
+input[type="submit"].buttonEntry{
+    color: white;
+    background-color: #2440ad;
+    min-width: 90%;
+    max-width: 90%;
+    min-height: 5vh;
+    max-height: 5vh;
+    border-radius: 80px;
+    align-self: center;
+    margin-left: 3vw;
+}

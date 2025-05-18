@@ -77,14 +77,14 @@
                         }
                     %>
                 </table>
-            
+                <form action="StorePurchaseServlet" method="post">
                 <div class="purchase-options">
+
                     <div class="customer">
                         <h5>Add Customer to Sale</h5>
-                        <form action="AddStoreCartCustomer" method="post">
-                            <input type="text" name="phone" required>
+                        <a href="/AddCustomerToPurchase.jsp">
                             <button type="submit">Search for Customer</button>
-                        </form>
+                        </a>
                     </div>
                     <br>
                     <br>
@@ -94,17 +94,15 @@
                         <h5><b>Salesperson:</b> <%= staff.getFirstName() %> <%= staff.getLastName().charAt(0) %></h5>
                         </div>
                         <br>
-                        <div class="staf-dropdown"><form action="ChangeStoreCartStaff" method="post">
-                            <select class="staff-list" name="staff" id="staff">
+                        <div class="staff-dropdown">
+                            <select class="staff-list" name="salespersonID" id="staff">
                                 <%for (Staff s : staffList) {%>
-                                <option value="<%=s.getID()%>"><%=s.getFirstName()%> <%=s.getLastName().charAt(0)%>.</option>
+                                <option value="<%=s.getID()%>">
+                                    <%=s.getFirstName()%> <%=s.getLastName().charAt(0)%>.
+                                </option>
                                 <% }%>
                             </select>
                         </div>
-                        <div class="submit-change">
-                            <button type="submit">Change Staff Member</button>
-                        </div>
-                        </form>
                     </div>
                     <br>
                     <br>
@@ -117,7 +115,11 @@
                     
                     <div class ="finalise">
                     <div class="total-cost"><h3>Cart Total: A$<%= String.format("%.2f", totalPrice)%></h3></div>
+                    
+                    <input type="hidden" name="storeCartID" value="<%= storeCartID %>" />
+
                     <div class="finalise-btn"><button type="submit">Complete Sale</button></div>
+                    </form>
                     </div>
                 </div>  
             </div>   

@@ -38,12 +38,8 @@ public StoreCartDAO(Connection conn) throws SQLException {
   }
 
   public int addCustomerToCart (int cartID, int customerID) throws SQLException {
-    
-    String q1 = "UPDATE" + " StoreCarts SET customerID = " + customerID + " where cartID = " + cartID;
-
-        
-    int updatedCustomer = st.executeUpdate(q1);
-        
+    String q1 = "UPDATE" + " StoreCarts SET customerID = " + customerID + " where cartID = " + cartID;  
+    int updatedCustomer = st.executeUpdate(q1);    
         if (updatedCustomer > 0){
             return customerID;
         } else {
@@ -52,20 +48,5 @@ public StoreCartDAO(Connection conn) throws SQLException {
     }
 
     }
-
-    /*
-    public StoreCart getCart(int cartID) throws SQLException {
-    String q1 = "SELECT" + " cartID from StoreCarts WHERE cartID = " + cartID;
-    ResultSet rs1= st.executeQuery(q1);
-    
-    if (rs1.next()) {
-        int staffID = rs1.getInt("staffID");
-        StoreCart storeCart = new StoreCart(staffID, cartID);
-        return storeCart;  
-    } else {
-            throw new SQLException("Failed to retrieve cart.");
-    }   
-  }
-     */
 
 

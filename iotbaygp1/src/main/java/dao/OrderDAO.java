@@ -1,189 +1,121 @@
-/* package dao;
+package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Cart;
-import model.Categories;
 import model.Order;
-import model.Product;
-import model.Purchase;
 
 public class OrderDAO {
 
 private Statement st;
+private Connection conn;
+private ProductDAO productManager;
    
 public OrderDAO(Connection conn) throws SQLException {       
-   st = conn.createStatement();
+    st = conn.createStatement();
+    this.conn = conn;
+    this.productManager = new ProductDAO(conn);
 }
 
-public Order findOrder(String code) throws SQLException {   
-    //setup the select sql query string
-    String query = "SELECT * FROM Orders WHERE code = '" + code  + "' ";
+  public Order getOrder(String orderID) throws SQLException {
+    
 
-    //execute this query using the statement field 
-    //add the results to a ResultSet 
-    ResultSet rs = st.executeQuery(query);
+    String q1 = "SELECT * from Orders WHERE orderID = ?";
+    PreparedStatement ps = conn.prepareStatement(q1);
+    ps.setString(1, orderID);
+    ResultSet rs1 = ps.executeQuery();
+    
+    if (rs1.next()) {
+        String date = rs1.getString("datePlaced");
+        double cost = rs1.getDouble("totalCost");
+        String status = rs1.getString("status");
+        int userID = rs1.getInt("userID");
 
-   //search the ResultSet for a user using the parameters 
-   if (rs.next()){
-        String customerName = rs.getString("name"); // to get the customer name
-        double cost = rs.getDouble("cost");
-        String[] orderList = rs.getString("orderList").split(",");
-        String[] quantityList = rs.getString("quantityList").split(",");
+        Order order = new Order(orderID, userID, date, cost, status);
 
-        ArrayList<Purchase> lists = new ArrayList<>();
+        System.out.println(order.getStatus());
 
-        // need to add another list of count in database
-        for (int i = 0; i < orderList.length; i++){ 
-          String name = orderList[i];
-          String connectQuery = "SELECT * FROM Products WHERE name = '" + name + "'";
-
-          ResultSet rs2 = st.executeQuery(connectQuery);
-          
-          Product p = new Product(rs2.getString("upc"), rs2.getString("name"), rs2.getDouble("price"), rs2.getString("brand"), rs2.getString("colour"), rs2.getString("size"), rs2.getString("image"), rs2.getInt("quantity"), Categories.ACTIVITY_TRACKERS, rs2.getString("description"));
-
-          String rawValue = quantityList[i].replaceAll("\\[|\\]", "").trim();
-          lists.add(new Purchase(p, Integer.parseInt(rawValue)));
-
-        }
-
-        Cart placeholder = new Cart();
-        placeholder.addItemToCart(lists);
-
-        Order o = new Order(placeholder, code);
-        o.setName(customerName);
-
-        return o;
-
-  }
+        return order;
+    } 
     return null;
   }
 
-  // overloading for staff and the customer
-public List<Order> listAllOrders() throws SQLException{
-  List<Order> orderList = new ArrayList<>();
+  public ArrayList<String> getOrders(int userID) throws SQLException{
+    String q1 = "SELECT" + " * from Orders WHERE userID = " + userID;
+    ResultSet rs1= st.executeQuery(q1);
+    
+    ArrayList<String> container = new ArrayList<>();
 
-  String query = "SELECT * from Orders";
-
-  ResultSet rs = st.executeQuery(query);
-
-  while (rs.next()){
-    String code = rs.getString("code");
-    String customerName = rs.getString("name"); // to get the customer name
-    double cost = rs.getDouble("cost");
-    String[] orderLists = rs.getString("orderList").split(",");
-    String[] quantityList = rs.getString("quantityList").split(",");
-
-    ArrayList<Purchase> lists = new ArrayList<>();
-
-    // need to add another list of count in database
-    for (int i = 0; i < orderLists.length; i++){ 
-      String name = orderLists[i];
-      String connectQuery = "SELECT * FROM Products WHERE name = '" + name + "'";
-
-      ResultSet rs2 = st.executeQuery(connectQuery);
-      
-      Product p = new Product(rs2.getString("upc"), rs2.getString("name"), rs2.getDouble("price"), rs2.getString("brand"), rs2.getString("colour"), rs2.getString("size"), rs2.getString("image"), rs2.getInt("quantity"), Categories.ACTIVITY_TRACKERS, rs2.getString("description"));
-
-      String rawValue = quantityList[i].replaceAll("\\[|\\]", "").trim();
-      lists.add(new Purchase(p, Integer.parseInt(rawValue)));
-
-    }
-
-    Cart placeholder = new Cart();
-    placeholder.addItemToCart(lists);
-
-    Order o = new Order(placeholder, code);
-    o.setName(customerName);
-
-    orderList.add(o);
+    while (rs1.next()) {
+        String orderID = rs1.getString("orderID");
+        container.add(orderID);
+    } 
+    return container;
   }
-  return orderList;
-}
 
-public List<Order> listAllOrders(int customerID) throws SQLException{
-  List<Order> orderList = new ArrayList<>();
+  public List<String> getOrdersByStatus(int userID, String filter) throws SQLException{
+        List<String> orderList = new ArrayList<>();
 
-  String query = "SELECT * FROM Orders WHERE customerID = '" + customerID  + "' ";
+        String query = "SELECT" + " * FROM Orders WHERE status = '" + filter + "' AND userID = " + userID;
 
-  ResultSet rs = st.executeQuery(query);
+        ResultSet result = st.executeQuery(query);
 
-  while (rs.next()){
-    String code = rs.getString("code");
-    String customerName = rs.getString("name"); // to get the customer name
-    double cost = rs.getDouble("cost");
-    String[] orderLists = rs.getString("orderList").split(",");
-    String[] quantityList = rs.getString("quantityList").split(",");
-
-    ArrayList<Purchase> lists = new ArrayList<>();
-
-    // need to add another list of count in database
-    for (int i = 0; i < orderLists.length; i++){ 
-      String name = orderLists[i];
-      String connectQuery = "SELECT * FROM Products WHERE name = '" + name + "'";
-
-      ResultSet rs2 = st.executeQuery(connectQuery);
-      
-      Product p = new Product(rs2.getString("upc"), rs2.getString("name"), rs2.getDouble("price"), rs2.getString("brand"), rs2.getString("colour"), rs2.getString("size"), rs2.getString("image"), rs2.getInt("quantity"), Categories.ACTIVITY_TRACKERS, rs2.getString("description"));
-
-      String rawValue = quantityList[i].replaceAll("\\[|\\]", "").trim();
-          lists.add(new Purchase(p, Integer.parseInt(rawValue)));
-
+        while (result.next()){
+          String orderID = result.getString("orderID");
+          orderList.add(orderID);;
+        }
+        return orderList;
     }
 
-    Cart placeholder = new Cart();
-    placeholder.addItemToCart(lists);
+  public String createOrder(Integer userID, double cost) throws SQLException{
+    Order order = new Order(userID, cost);
+    String orderID = order.getOrderId();
+    String date = order.getDate();
+    String status = order.getStatus();
 
-    Order o = new Order(placeholder, code);
-    o.setName(customerName);
+    String query = "INSERT INTO Orders(orderID, userID, datePlaced, totalCost, status) VALUES (?, ?, ?, ?, ?)";
+    PreparedStatement ps = conn.prepareStatement(query);
+    ps.setString(1, orderID);
+    ps.setInt(2, userID);
+    ps.setString(3, date);    
+    ps.setDouble(4, cost);
+    ps.setString(5, status);
 
-    orderList.add(o);
+    ps.executeUpdate();
+    
+    return orderID;
   }
-  return orderList;
-}
 
-//Add a user-data into the database   
-public void addOrder(Cart cart) throws SQLException {                   //code for add-operation       
-  Order placeholder = new Order(cart, "");
-  String sqlQuery = "INSERT INTO Orders (code, name, orderList, cost, status) VALUES ('" +
-                  placeholder.getCode()+ "', '" +
-                  placeholder.getName() + "', '" +
-                  placeholder.getList() + "', '" +
-                  placeholder.getCost() + "', '" +
-                  placeholder.getStatus() + "')";
-  st.executeUpdate(sqlQuery);
-}
+  public void deleteOrder(String orderID) throws SQLException{
+    String query = "DELETE FROM Orders where orderID = ?";
 
-// Update order status (Order is unable to be deleted -> business rule)
-public void updateOrder(String code, int statusCode){
-    //setup the select sql query string
+    PreparedStatement ps = conn.prepareStatement(query);
+    ps.setString(1, orderID);
+    ps.executeUpdate();
+  }
 
-    try {
-      Order o = this.findOrder(code);
-      
-      if (o != null){
-        o.updateStatus(statusCode);
+  public void cancelOrder(String orderID) throws SQLException{
+    String query = "SELECT status FROM Orders where orderID = ?";
 
-        String query = "UPDATE Orders SET status = '" + o.getStatus() + "' WHERE code = '" + code + "'";
+    PreparedStatement ps = conn.prepareStatement(query);
+    ps.setString(1, orderID);
 
-        st.executeUpdate(query);
+    ResultSet rs = ps.executeQuery();
 
-        System.out.println(o.getStatus());
-      } else {
-        System.out.println("Not found");
-      }
+    if (rs.next()){
+      String query2 = "UPDATE Orders SET status = 'Cancelled' WHERE orderID = ?";
 
-      System.err.println("Here");
+      PreparedStatement ps2 = conn.prepareStatement(query2);
+      ps2.setString(1, orderID);
 
+      ps2.executeUpdate();
     }
-    catch (SQLException s){};
-  
+
   }
 
 }
-*/

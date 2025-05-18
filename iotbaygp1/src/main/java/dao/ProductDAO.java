@@ -190,6 +190,13 @@ public ProductDAO(Connection conn) throws SQLException {
         System.out.println(sql);
     }
 
+    public void updateStockAfterOrder(String upc, int qty) throws SQLException{
+        String sql = "UPDATE" + " Products SET quantity = " + qty + " WHERE upc = '" + upc + "'";
+        
+        st.executeUpdate(sql);
+        System.out.println(sql);
+    }
+
     public void removeProduct(String upc) throws SQLException {  
         //code for add-operation 
         

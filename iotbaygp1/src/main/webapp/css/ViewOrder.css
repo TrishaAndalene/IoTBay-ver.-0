@@ -1,0 +1,137 @@
+/* Default setting */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", Tahoma, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Tahoma, Verdana, sans-serif;
+    background-image: url("../img/main_image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+}
+
+/* Content base */
+section.content{
+    position: fixed;
+    align-items: center;
+    justify-content: space-evenly;
+    right: 15%;
+    left: 15%;
+    top: 7%;
+    padding-bottom: 7%;
+    width: 70%;
+    height: 86%;
+    overflow: scroll;
+    background-color: white;
+}
+
+h1 {
+    color: rgb(64, 51, 151);
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-container {
+    display: flex;
+    background-color: whitesmoke;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.btn-container button[type="submit"] {
+    padding: 5px 10px;
+    color: #5e6376;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10%;
+    border-right: 1px outset #b1b6ca;
+    border-left: 1px outset #b1b6ca;
+}
+
+/* Search bar */
+
+.search-container {
+    max-width: 90%;
+    min-width: 90%;
+    margin-left: 5vw;
+}
+
+.search-container, .dropdown {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+.search-container input[type="text"] {
+    padding: 12px 20px;
+    width: 80%;
+    box-sizing: border-box;
+    border: 2px solid #2440ad;
+    border-radius: 4px;
+    right: 0%;
+  }
+  
+.search-container button[type="submit"] {
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    border: 2px solid #2440ad;
+  }
+
+/* Table */
+div.order-container{
+    padding-top: 2vh;
+    min-width: 100%;
+    max-width: 100%;
+    align-self: center;
+}
+
+table {
+    margin-left: 5%;
+}
+
+div.order-container table, th, td {
+    border-collapse: collapse;
+}
+
+div.order-container th, td {
+    min-width: 12vw;
+    max-width: 12vw;
+    text-align: center;
+}
+
+
+input[type="submit"].buttonEntry{
+    color: white;
+    background-color: #2440ad;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 5vh;
+    max-height: 5vh;
+    border-radius: 80px;
+    align-self: center;
+    margin-left: 3vw;
+}

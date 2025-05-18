@@ -17,15 +17,12 @@ private Connection conn;
 public CartItemsDAO(Connection conn) throws SQLException {       
     st = conn.createStatement();
     this.conn = conn;
-}
-
+    }
 
 public void addItemToCart(int cartId, String upc, int quantity) throws SQLException {
     String query = "INSERT" + " INTO CartItems (cartId, upc, quantity) VALUES (" + cartId + ", '" + upc + "', " + quantity + ")";
     st.executeUpdate(query);
-}
-
-
+    }
 
 public List<CartItem> getCartItems(int cartID) throws SQLException{
         List<CartItem> cartItemsList = new ArrayList<>();
@@ -41,8 +38,24 @@ public List<CartItem> getCartItems(int cartID) throws SQLException{
             cartItemsList.add(p);
             System.out.println("Total products loaded: " + cartItemsList.size());
         }
-
         return cartItemsList;
-    
+    }
+
+public void updateCartItem(int cartID, int itemID, String upc, int quantity) throws SQLException{
+    String query = "UPDATE" + " CartItems SET cartId =" + cartID + ", upc = " + upc + ", quantity =" + quantity + " WHERE cartItemID = " + itemID;
+    st.executeUpdate(query);
+    System.out.println("update succesfully");
 }
+
+public void removeCartItem(int cartID, String upc) throws SQLException{
+    String query = "DELETE" + " FROM CartItems WHERE upc = " + upc + " and cartID = " + cartID;
+    st.executeUpdate(query);
+    System.out.println("remove succesfully");
+}
+
+public void removeAllItem(int cartID) throws SQLException{
+    String query = "DELETE" + " FROM CartItems WHERE cartID = " + cartID;
+    st.executeUpdate(query);
+    System.out.println("Cart cleared");
+    }
 }

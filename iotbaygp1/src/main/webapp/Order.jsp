@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="http://localhost:8080/webapp/css/OrderStyle.css">
+    <link rel="stylesheet" href="css/OrderStyle.css">
+    <link rel="stylesheet" href="css/Header.css">
+    <link rel="stylesheet" href="css/Footer.css">
 
 </head>
 <body>

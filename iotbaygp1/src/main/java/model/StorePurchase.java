@@ -3,19 +3,21 @@ package model;
 import java.util.List;
 
 public class StorePurchase {
-    private int cartID;
-    private String status = "Purchase";
+    private int purchaseID;
+    private String transType;
     private int customerID;
     private int salespersonID;
+    
 
-    public StorePurchase (int salespersonID, int cartID, int customerID){
-        this.cartID = cartID;
+    public StorePurchase (int salespersonID, int purchaseID, int customerID, String transType){
+        this.purchaseID = purchaseID;
         this.salespersonID = salespersonID;
         this.customerID = customerID;
+        this.transType = transType;
     }
 
-    public int getCartID() {
-        return this.cartID;
+    public int getPurchaseID() {
+        return this.purchaseID;
     }
 
     public void setSalesperson(int salespersonID){
@@ -26,12 +28,12 @@ public class StorePurchase {
         return this.salespersonID;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTransType(String transType) {
+        this.transType = transType;
     }
 
-    public String getStatus(){
-        return this.status;
+    public String getTransType(){
+        return this.transType;
     }
 
     public void setCustomer(int customerID){
