@@ -3,21 +3,17 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import dao.CartItemsDAO;
 import dao.OrderDAO;
 import dao.OrderItemsDAO;
-import dao.CartDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Order;
 
 @WebServlet("/DeleteOrderServlet")
 public class DeleteOrderServlet extends HttpServlet {
