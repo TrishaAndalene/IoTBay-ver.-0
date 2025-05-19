@@ -60,7 +60,7 @@
             <div class="dropdown">
             <img src="img/profile-icon.jpg" class="dropimg"/>
                 <div class="dropdown-content">
-                    <a href="#">My Account</a>
+                    <a href="Myaccount.jsp">My Account</a>
                     <a href="#">Orders</a>
                     <a href="Logout.jsp">Log Out</a>
                 </div>
@@ -104,7 +104,7 @@
             <div class="dropdown">
             <img src="img/profile-icon.jpg" class="dropimg"/>
                 <div class="dropdown-content">
-                    <a href="#">My Account</a>
+                    <a href="Myaccount.jsp">My Account</a>
                     <a href="ViewOrderServlet">Orders</a>
                     <a href="Logout.jsp">Log Out</a>
                 </div>

@@ -28,9 +28,12 @@
     <!-- main screen -->
     <div id="main_screen">
         <h2 id="staff_name">Stock Management</h2>
-
-        
-        
+                <div class="err">
+                  <% String errorMsg = (String) request.getAttribute("errorMsg"); 
+                    if (errorMsg != null) { %>
+                    <p style="color:red;"><%= errorMsg %></p>
+                    <% } %>
+                </div>       
         <table id="product-table">
             <thead>
                 <tr>
@@ -55,7 +58,9 @@
                     <input type="hidden" name="upc" value="<%= p.getUPC() %>">
                     <input type="text" name="quantity" required>
                     <button type="submit">Update Stock</button>
-                  </form></div></td>
+                  </form>
+                </div>
+              </td>
                   <td><form action="ProductEditServlet" method="post">
                     <input type="hidden" name="upc" value="<%= p.getUPC() %>">
                     <button type="submit">Manage Product</button>

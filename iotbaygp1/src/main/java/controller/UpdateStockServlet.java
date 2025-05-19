@@ -20,20 +20,21 @@ public class UpdateStockServlet extends HttpServlet {
 protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
     //1- retrieve the current session
     HttpSession session = request.getSession();
+    ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
+    if (productManager == null) throw new IOException("DB manager not found");
 
     //3- capture the posted details
     String upc = request.getParameter("upc");
-    int qty = Integer.parseInt(request.getParameter("quantity"));
+    String qtystr = request.getParameter("quantity");
 
     
-    //5- retrieve the manager instance from session      
-    ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
-
-    if (productManager == null) throw new IOException("DB manager not found");
- 
-    try {       
-        productManager.updateStock(upc, qty);
-        
+    try {   
+        int qty = Integer.parseInt(qtystr); 
+        productManager.updateStock(upc, qty);   
+    } catch (NumberFormatException ex) {           
+        request.setAttribute("errorMsg", "Update quantity must be an integer");
+        request.getRequestDispatcher("StockMgmtServlet").forward(request, response);
+        return;  
     } catch (SQLException ex) {           
         Logger.getLogger(AddProductServlet.class.getName()).log(Level.SEVERE, null, ex);    
     }

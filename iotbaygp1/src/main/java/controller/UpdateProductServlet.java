@@ -21,18 +21,37 @@ public class UpdateProductServlet extends HttpServlet {
 protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
     //1- retrieve the current session
     HttpSession session = request.getSession();
+        //5- retrieve the manager instance from session      
+    ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
 
+    if (productManager == null) throw new IOException("DB manager not found");
     //3- capture the posted details
     String upc = request.getParameter("upc");
     String field = request.getParameter("field");
     String value = request.getParameter("value"); 
     
-    //5- retrieve the manager instance from session      
-    ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
-
-    if (productManager == null) throw new IOException("DB manager not found");
- 
+    if (field.equals("price")){
+        try {
+            double pricedouble = Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            request.setAttribute("errorMsg", "Update quantity must be an integer");
+            request.getRequestDispatcher("ProductEditServlet").forward(request, response);
+            return; 
+            }
+        }
+    if (field.equals("image")){
+            try {
+                if (!value.contains("https://")){
+                request.setAttribute("errorMesg", "Image URL Update must be a URL");
+                request.getRequestDispatcher("ProductEditServlet").forward(request, response);
+            return;
+                }
+            } catch (Exception e){    
+        }
+    }
+    
     try {       
+
         productManager.updateProduct(field, upc, value);
         
     } catch (SQLException ex) {           

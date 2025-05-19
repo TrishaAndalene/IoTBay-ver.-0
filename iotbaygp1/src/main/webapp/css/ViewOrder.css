@@ -21,7 +21,7 @@ button{
 body{
     padding: 0;
     margin: 0;
-    font-family: Tahoma, Verdana, sans-serif;
+    font-family: "Roboto", Tahoma, sans-serif;
     background-image: url("../img/main_image.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -70,20 +70,20 @@ h1 {
 
 /* Search bar */
 
-.search-container {
+.search-bar {
     max-width: 90%;
     min-width: 90%;
     margin-left: 5vw;
 }
 
-.search-container, .dropdown {
+.search-bar, .dropdown {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
-.search-container input[type="text"] {
+.search-bar input[type="text"] {
     padding: 12px 20px;
     width: 80%;
     box-sizing: border-box;
@@ -92,7 +92,7 @@ h1 {
     right: 0%;
   }
   
-.search-container button[type="submit"] {
+.search-bar button[type="submit"] {
     float: right;
     padding: 6px;
     margin-top: 8px;

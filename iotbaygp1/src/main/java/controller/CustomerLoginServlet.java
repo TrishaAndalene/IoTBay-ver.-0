@@ -37,7 +37,7 @@ public class CustomerLoginServlet extends HttpServlet{
         if(customer != null){
             session.setAttribute("customer", customer);
             session.setAttribute("customerID", customer.getID());
-            request.getRequestDispatcher("/index.jsp").include(request, response);
+            request.getRequestDispatcher("/Main.jsp").include(request, response);
         }else{
             session.setAttribute("errorMsg", "User does not exist in the system");
             request.getRequestDispatcher("/CustomerLogin.jsp").include(request, response);

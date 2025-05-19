@@ -46,7 +46,7 @@
             <button type="submit" name="filter" value="MINI_PC">Mini PC</button>
         </div>
     </form>
-
+        
                         
         <div id="product-grid">
             <%

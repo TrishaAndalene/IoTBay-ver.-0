@@ -27,7 +27,6 @@
 
 </head>
 
-<jsp:include page="Header.jsp" />
 
 <%
     String action = request.getParameter("action");
@@ -82,6 +81,7 @@
 
 
 <body>
+    <%@ include file="/Header.jsp" %>
 
 <br><br><br>
 

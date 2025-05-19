@@ -109,30 +109,24 @@ public class CustomerDAO {
 
         return customerList;
     }
-}
 
-/*
+        public int updateCustomer(int id, String firstName, String lastName, String email, String phoneNum, String password) throws SQLException{
+        String query = "UPDATE Customers SET firstName='"+firstName+"', lastName='"+lastName+"', email='"+email+"', phoneNum='"+phoneNum+"', password='"+password+"' WHERE id='"+id+"'";
 
-    public Customer findCustomerbyId(int code) throws SQLException{
-        String query = "SELECT * FROM Customers WHERE id = ?";
+        int success = st.executeUpdate(query);
 
-        PreparedStatement ps = conn.prepareStatement(query);
-        ps.setInt(1, code);
-
-        ResultSet rs = ps.executeQuery(query);
-
-        if(rs.next()){
-            String firstName = rs.getString("firstName");
-            String lastName = rs.getString("lastName");
-            String phoneNum = rs.getString("phoneNum");
-            String email = rs.getString("email");
-            String password = rs.getString("password");
-
-            return new Customer(firstName, lastName, phoneNum, email, password);
-        }
-
-        return null;
+        return success;
     }
 
+    public int deleteCustomer(Customer customer, String password) throws SQLException{
+        int id = customer.getID();
 
- */
+        String query = "DELETE FROM Customers where id='"+id+"'";
+
+        System.out.println("Delete query >>> " + query);
+
+        int success = st.executeUpdate(query);
+
+        return success;
+    }
+}

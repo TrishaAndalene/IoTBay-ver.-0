@@ -122,6 +122,26 @@ public int getStaffID(String email) throws SQLException {
         return staffList;
     }
 
+        public int updateStaff(int id, String firstName, String lastName, String email, String phoneNum, String password) throws SQLException{
+        String query = "UPDATE Staff SET firstName='"+firstName+"', lastName='"+lastName+"', email='"+email+"', phoneNum='"+phoneNum+"', password='"+password+"' WHERE id='"+id+"'";
+
+        int success = st.executeUpdate(query);
+
+        return success;
+    }
+
+    public int deleteStaff(Staff staff, String password) throws SQLException{
+        int id = staff.getID();
+
+        String query = "DELETE FROM Staff where id='"+id+"'";
+
+        System.out.println("Delete query >>> " + query);
+
+        int success = st.executeUpdate(query);
+
+        return success;
+    }
+
 
  
 
