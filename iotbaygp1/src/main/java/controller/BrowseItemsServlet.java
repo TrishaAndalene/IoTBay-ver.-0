@@ -62,6 +62,6 @@ public class BrowseItemsServlet extends HttpServlet {
             }   
 
             System.out.println("Session ID: " + session.getId());
-            System.out.println("productManager is null: " + (productManager == null));
+            System.out.println("productManager is null");
         }
     }

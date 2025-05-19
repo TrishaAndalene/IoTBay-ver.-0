@@ -35,7 +35,7 @@ public class StoreCartServlet extends HttpServlet {
         HttpSession session = request.getSession();
     
         //3- capture the posted email - check jsp form name to see what parameter name
-        Integer storeCartID = (Integer) session.getAttribute("storeCartID");      
+        Integer storeCartID = (Integer) session.getAttribute("storeCartID");   
         
         //5- retrieve the manager instance from session      
         StoreCartItemsDAO storeCartItemsManager = (StoreCartItemsDAO) session.getAttribute("storeCartItemsManager");

@@ -12,6 +12,7 @@ import dao.CustomerDAO;
 import dao.DBConnector;
 import dao.OrderDAO;
 import dao.OrderItemsDAO;
+import dao.PaymentDAO;
 import dao.ProductDAO;
 import dao.StaffDAO;
 import dao.StoreCartDAO;
@@ -39,6 +40,7 @@ public class ConnServlet extends HttpServlet {
     private OrderDAO orderManager;
     private OrderItemsDAO orderItemsManager;
     private StorePurchaseDAO storePurchaseManager;
+    private PaymentDAO paymentManager;
     private Connection conn;
     
 
@@ -68,15 +70,11 @@ public class ConnServlet extends HttpServlet {
             orderManager = new OrderDAO(conn);
             orderItemsManager = new OrderItemsDAO(conn);
             storePurchaseManager = new StorePurchaseDAO(conn);
+            paymentManager = new PaymentDAO(conn);
 
             // These are non-essential ones (not part of our assignment features)
             storeCartItemsManager = new StoreCartItemsDAO(conn);
             storeCartManager = new StoreCartDAO(conn);
-
-
-            System.out.println("Session ID: " + session.getId());
-
-
         } catch (SQLException ex) {
             Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -88,6 +86,7 @@ public class ConnServlet extends HttpServlet {
             session.setAttribute("cartItemsManager", cartItemsManager);
             session.setAttribute("orderManager", orderManager);
             session.setAttribute("orderItemsManager", orderItemsManager);
+            session.setAttribute("paymentManager", paymentManager);
             
             // These are non-essential ones (not part of our assignment features)
             session.setAttribute("storeCartManager", storeCartManager);  

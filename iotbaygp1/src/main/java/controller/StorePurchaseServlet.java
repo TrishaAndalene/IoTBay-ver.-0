@@ -20,18 +20,21 @@ public class StorePurchaseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
+        int customerID = Integer.parseInt(request.getParameter("storeCustomerID"));
+        double totalCost = Double.parseDouble(request.getParameter("totalPrice"));
         int storeCartID = Integer.parseInt(request.getParameter("storeCartID"));
         int salespersonID = Integer.parseInt(request.getParameter("salespersonID"));
-
-        // Double cost = Double.parseDouble(request.getParameter("totalPrice"));
 
         // Manager tab
         StorePurchaseDAO storePurchaseManager = (StorePurchaseDAO) session.getAttribute("storePurchaseManager");
         if (storePurchaseManager == null) throw new IOException("cartManager is null");
+        //ProductDAO productManager = (ProductDAO) session. getAttribute("productManager");
+        //if (productManager == null) throw new IOException("productManager is null");
 
         try {
-            storePurchaseManager.createPurchase(storeCartID, salespersonID);
+            storePurchaseManager.createPurchase(customerID, storeCartID, salespersonID, totalCost);
             System.out.println("Purchase successful!");
+
 
             request.getRequestDispatcher("/StorePurchaseConfirmation.jsp").forward(request, response);
 

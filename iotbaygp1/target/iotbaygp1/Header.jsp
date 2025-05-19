@@ -38,8 +38,8 @@
             <li class="dropdown">
                 <a href="ReportingServlet" class="dropbtn">Reporting</a>
                 <div class="dropdown-content">
+                    <a href="InStoreSalesServlet">In-Store Sales</a>
                     <a href="ReportingServlet?filter=daily">Daily Sales</a>
-                    <a href="ReportingServlet?filter=instore">In-Store Sales</a>
                     <a href="ReportingServlet?filter=salesperson">Sales by Salesperson</a>
                     <a href="ReportingServlet?filter=item">Sales by Item</a>
                     <a href="ReportingServlet?filter=item">Sales by Customer</a>

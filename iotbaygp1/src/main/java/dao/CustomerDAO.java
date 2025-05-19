@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Customer;
 
@@ -82,6 +84,30 @@ public class CustomerDAO {
             throw new SQLException("Could not get ID.");
         }
         
+    }
+
+    public List<Customer> getAllCustomers() throws SQLException{
+        List<Customer> customerList = new ArrayList<>();
+
+        String query = "SELECT" + " * FROM Customers";
+
+        ResultSet result = st.executeQuery(query);
+
+        while (result.next()){
+          int id= result.getInt("id");
+          String firstName = result.getString("firstName");
+          String lastName = result.getString("lastName");
+          String phoneNum = result.getString("phoneNum");
+          String email = result.getString("email");
+          String password = result.getString("password");
+            
+
+            Customer customer = new Customer(id, firstName, lastName, email, phoneNum, password);
+            customerList.add(customer);
+            System.out.println("Total customers loaded: " + customerList.size());
+        }
+
+        return customerList;
     }
 }
 

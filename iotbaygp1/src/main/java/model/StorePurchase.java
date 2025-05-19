@@ -20,11 +20,11 @@ public class StorePurchase {
         return this.purchaseID;
     }
 
-    public void setSalesperson(int salespersonID){
+    public void setSalespersonID(int salespersonID){
         this.salespersonID = salespersonID;   
     }
 
-    public int getSalesperson(){
+    public int getSalespersonID(){
         return this.salespersonID;
     }
 
@@ -36,11 +36,11 @@ public class StorePurchase {
         return this.transType;
     }
 
-    public void setCustomer(int customerID){
+    public void setCustomerID(int customerID){
         this.customerID = customerID;
     }
 
-    public int getCustomer(){
+    public int getCustomerID(){
         return this.customerID;
     }
 

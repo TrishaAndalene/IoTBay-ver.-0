@@ -98,10 +98,30 @@ body{
     height: 200px;
 }
 
-.product-card button[type="submit"] {
+.add-view-cont {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.add-view-cont button[type="submit"] {
+    display: flex;
+    flex: 1;
     padding: 5px 10px;
     border: 2px solid #2440ad;
     color: #2440ad;
+    font-size: 9px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.add-view-cont .sold-out {
+    display: flex;
+    flex: 1;
+    padding: 5px 10px;
+    border: 2px solid #e90c0c;
+    color: #e90c0c;
     font-size: 9px;
     font-weight: bold;
     text-decoration: none;

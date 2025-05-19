@@ -1,5 +1,6 @@
 <%@ page import="model.Product" %>
 <%@ page import="model.Staff" %>
+<%@ page import="model.Customer" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
@@ -23,6 +24,7 @@
 
 
     <%
+    Customer storeCustomer= (Customer) session.getAttribute("storeCustomer");
     List<Staff> staffList = (List<Staff>) request.getAttribute("staffList");
     Map<Product, Integer> cartItems = (Map<Product, Integer>) request.getAttribute("cartItems");
     %>
@@ -77,18 +79,38 @@
                         }
                     %>
                 </table>
-                <form action="StorePurchaseServlet" method="post">
+                
                 <div class="purchase-options">
-
+                    <form action="AddStoreCustomerServlet" method="post">
                     <div class="customer">
                         <h5>Add Customer to Sale</h5>
-                        <a href="/AddCustomerToPurchase.jsp">
+                        <% if (storeCustomer != null)
+                         { %> <h5><b>Customer:</b> <%= storeCustomer.getFirstName() %> <%= storeCustomer.getLastName() %></h5>
+                        <% } else { %> 
+                            <h5><b>Cusomter:</b> No Current Customer</h5>
+                        <% } %> 
+                            <input type="text" name="customerPhn" placeholder="Search Phone #">
                             <button type="submit">Search for Customer</button>
-                        </a>
+                        </form>
                     </div>
                     <br>
                     <br>
 
+
+                    <form action="AddToStoreCartServlet" method="post">
+                    <div class="add-item">
+                        <h5>Add Item to Sale</h5>
+                            <input type="text" name="upc" placeholder="Item UPC">
+                            <input type="hidden" name="staffID" value="<%= staffID %>" />
+                            <input type="hidden" name="quantity" value="1" />
+                            <button type="submit">Search for Item</button>
+                    </div>
+                    </form>
+
+                    <br>
+                    <br>
+
+                    <form action="StorePurchaseServlet" method="post">
                     <div class="sales-person">
                         <div>
                         <h5><b>Salesperson:</b> <%= staff.getFirstName() %> <%= staff.getLastName().charAt(0) %></h5>
@@ -104,20 +126,20 @@
                             </select>
                         </div>
                     </div>
-                    <br>
-                    <br>
 
-                    <div class="add-item">
-                        <p>spaceholder for adding an item</p>
-                    </div>
                     <br>
                     <br>
                     
                     <div class ="finalise">
                     <div class="total-cost"><h3>Cart Total: A$<%= String.format("%.2f", totalPrice)%></h3></div>
-                    
                     <input type="hidden" name="storeCartID" value="<%= storeCartID %>" />
-
+                    <% if (storeCustomer != null)
+                         { %> 
+                        <input type="hidden" name="storeCustomerID" value="<%= storeCustomer.getID() %>" />
+                        <% } else { %> 
+                            <input type="hidden" name="storeCustomerID" value="0" />
+                        <% } %> 
+                    <input type="hidden" name="totalPrice" value="<%= totalPrice %>" />
                     <div class="finalise-btn"><button type="submit">Complete Sale</button></div>
                     </form>
                     </div>

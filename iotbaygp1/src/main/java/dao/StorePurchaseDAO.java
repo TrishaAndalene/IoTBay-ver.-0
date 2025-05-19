@@ -20,67 +20,55 @@ public StorePurchaseDAO(Connection conn) throws SQLException {
 }
 
 
-public void createPurchase(int cartID, int salespersonID) throws SQLException {
+public void createPurchase(int customerID, int cartID, int salespersonID, double totalCost) throws SQLException {
     try {
-    String q1 = "INSERT" + " INTO StorePurchases (salespersonID, purchaseDate) VALUES ( " + salespersonID + ", CURRENT_TIMESTAMP)";
-    st.executeUpdate(q1);
-    ResultSet rs = st.executeQuery("SELECT" + " last_insert_rowid()");
-    int purchaseID = rs.next() ? rs.getInt(1) : 0;
+        String q1 = "INSERT" + " INTO StorePurchases (customerID, salespersonID, purchaseDate, totalCost) VALUES (" + customerID + ", " + salespersonID + ", CURRENT_TIMESTAMP, " + totalCost + ")";
+        st.executeUpdate(q1);
+        
+        ResultSet rs = st.executeQuery("SELECT" + " last_insert_rowid()");
+        int purchaseID = rs.next() ? rs.getInt(1) : 0;
 
-    st.executeUpdate("INSERT" + " INTO StorePurchaseItems (purchaseID, upc, quantity) " + "SELECT" + " " + purchaseID + ", upc, quantity FROM StoreCartItems WHERE cartID = " + cartID);
+        st.executeUpdate("INSERT" + " INTO StorePurchaseItems (purchaseID, upc, quantity) " + "SELECT" + " " + purchaseID + ", upc, quantity FROM StoreCartItems WHERE cartID = " + cartID);
+
+        String q2 = "SELECT" + " * FROM StoreCartItems WHERE cartID = " + cartID;
+        ResultSet rs2 = st.executeQuery(q2);
+        while (rs2.next()){
+            String upc = rs2.getString("upc");
+            int qty = rs2.getInt("quantity");
+            
+            String sql = "UPDATE" + " Products SET quantity = quantity - " + qty + " WHERE upc = '" + upc + "'";
+            st.executeUpdate(sql);
+            System.out.println(sql);  
+        }
+
+        st.executeUpdate("DELETE" + " FROM StoreCartItems WHERE cartID = " + cartID);
+        st.executeUpdate("DELETE" + " FROM StoreCarts WHERE cartID = " + cartID);
     
-    st.executeUpdate("DELETE" + " FROM StoreCartItems WHERE cartID = " + cartID);
-    st.executeUpdate("DELETE" + " FROM StoreCarts WHERE cartID = " + cartID);
-    
-} catch (SQLException e) {
+    } catch (SQLException e) {
         throw new SQLException("Failed to create cart.");
     }
-
     } 
 
-    public List<StorePurchase> getPurchasesByFilter(String filter){
+    public List<StorePurchase> getStorePurchases() throws SQLException{
 
         List<StorePurchase> storePurchaseList = new ArrayList<>();
+            String query = "SELECT" + " * FROM StorePurchases";
 
+            ResultSet result = st.executeQuery(query);
+            while (result.next()){
+            int salespersonID = result.getInt("salespersonID");
+            int purchaseID = result.getInt("purchaseID");
+            int customerID = result.getInt("customerID");
+            String transType = result.getString("transType");
+
+
+            StorePurchase p = new StorePurchase(salespersonID, purchaseID, customerID, transType);
+            storePurchaseList.add(p);
+            System.out.println("Total products loaded: " + storePurchaseList.size());
+            }    
         return storePurchaseList;
-
-
-        /* 
-         List<Product> productList = new ArrayList<>();
-
-        String query = "SELECT" + " * FROM Products WHERE category = '" + filter + "'";
-
-        ResultSet result = st.executeQuery(query);
-
-        while (result.next()){
-            String upc = result.getString("upc");
-            String name = result.getString("name");
-            double price = result.getDouble("price");
-            String brand = result.getString("brand");
-            String colour = result.getString("colour");
-            String size = result.getString("size");
-            String image = result.getString("image");
-            int quantity = result.getInt("quantity");
-
-            String categoryStr = result.getString("category");
-            String description = result.getString("description");
-
-            Categories cat = null;
-            if (categoryStr != null) {
-            try {
-                cat = Categories.valueOf(categoryStr.toUpperCase());
-            } catch (IllegalArgumentException e) {
-                System.err.println("Unknown category: " + categoryStr);
-            }
-        }
-            Product p = new Product(upc, name, price, brand, colour, size, image, quantity, cat, description);
-            productList.add(p);
-            System.out.println("Total products loaded: " + productList.size());
-        }
-        return productList;
-        */
-
     }
+
 
     }
 

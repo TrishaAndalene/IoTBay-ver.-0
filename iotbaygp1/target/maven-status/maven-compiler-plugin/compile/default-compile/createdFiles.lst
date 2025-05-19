@@ -5,6 +5,7 @@ controller/CancelOrderServlet.class
 controller/TestDB.class
 controller/OrderConfirmationServlet.class
 controller/ProductServlet.class
+dao/StorePurchaseItemsDAO.class
 model/StockStatus.class
 model/Cart.class
 dao/CartItemsDAO.class
@@ -28,9 +29,12 @@ model/Purchase.class
 controller/StorePurchaseServlet.class
 dao/StorePurchaseDAO.class
 controller/Validator.class
+controller/InStoreSalesServlet.class
 controller/CartServlet.class
 model/Status.class
 dao/StaffDAO.class
+controller/AddStoreCustomerServlet.class
+model/StorePurchaseItem.class
 controller/UpdateProductServlet.class
 model/StorePurchase.class
 dao/CartDAO.class
@@ -39,7 +43,6 @@ controller/RemoveProductServlet.class
 model/Staff.class
 controller/OrderDetailsServlet.class
 controller/ConnServlet.class
-controller/ReportingServlet.class
 controller/StoreCartServlet.class
 dao/OrderItemsDAO.class
 dao/CustomerDAO.class

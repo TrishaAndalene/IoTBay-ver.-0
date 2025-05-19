@@ -56,10 +56,37 @@
                     <img src="<%= p.getImg() %>" alt="<%= p.getName() %>" />
                     <h5><%= p.getName() %></h5>
                     <p>$<%= String.format("%.2f", p.getPrice())%></p>
-                    <form action="ProductViewServlet" method="post">
-                        <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
-                        <button type="submit">View Product</button>
-                    </form>
+                    <div class="add-view-cont">
+                        <%   if (p.getQuantity() <= 0 ){  %> 
+                            <button class="sold-out">Sold Out</button>
+                        <%   } else {  %> 
+                            <%   if (staff != null){  %> 
+                                <form action="AddToStoreCartServlet" method="post">
+                                    <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
+                                    <input type="hidden" name="quantity" value="1" />
+                                    <button type="submit">Add to Cart</button>
+                                </form>
+                            <%   } else if (customer != null){  %> 
+                                <form action="AddToCartServlet" method="post">
+                                    <input type="hidden" name="userID" value="<%= customerID %>" />
+                                    <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
+                                    <input type="hidden" name="quantity" value="1" />
+                                    <button type="submit">Add to Cart</button>
+                                </form>
+                            <%   } else {  %>
+                                <form action="AddToCartServlet" method="post">
+                                    <input type="hidden" name="userID" value="9" />
+                                    <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
+                                    <input type="hidden" name="quantity" value="1" />
+                                    <button type="submit">Add to Cart</button>
+                                </form>
+                        <%   }} %> 
+                        <form action="ProductViewServlet" method="post">
+                            <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
+                            <button type="submit">View Product</button>
+                        </form>
+                    </div>
+
                 </div>
                 <%
              }

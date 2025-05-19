@@ -61,15 +61,22 @@
                     <p><b>Colour: </b><%= product.getColour() %> </p>
                     <p><b>Size: </b><%= product.getSize() %></p>
                     <p><b>Description: </b><%= product.getDescription() %></p>
-                <%   } else {  %> 
-                    
+                <%   } else if (customer != null){  %> 
                     <form action="AddToCartServlet" method="post">
-                    
                     <div class = "choose-qty"><b>QTY:</b>
                     <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/></div>
                         <br>
                         <input type="hidden" name="upc" value="<%= product.getUPC() %>" />
                         <input type="hidden" name="userID" value="<%= customerID %>" />
+                        <button type="submit">Add To Cart</button>
+                    </form>
+                <%   } else {  %> 
+                    <form action="AddToCartServlet" method="post">
+                    <div class = "choose-qty"><b>QTY:</b>
+                    <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/></div>
+                        <br>
+                        <input type="hidden" name="upc" value="<%= product.getUPC() %>" />
+                        <input type="hidden" name="userID" value="9" />
                         <button type="submit">Add To Cart</button>
                     </form>
                     

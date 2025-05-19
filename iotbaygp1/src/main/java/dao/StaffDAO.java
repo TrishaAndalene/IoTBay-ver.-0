@@ -40,6 +40,28 @@ public Staff findStaff(String email, String password) throws SQLException {
     return null;
   }
 
+  //Find user by email and password in the database   
+public Staff findStaffByID(int staffID) throws SQLException {   
+    //setup the select sql query string
+    String query = "SELECT * FROM Staff WHERE id = " + staffID;
+
+    //execute this query using the statement field 
+    //add the results to a ResultSet 
+    ResultSet rs = st.executeQuery(query);
+
+   //search the ResultSet for a user using the parameters 
+   if (rs.next()){
+        String firstName = rs.getString("firstName");
+        String lastName = rs.getString("lastName");
+        String phoneNum = rs.getString("phoneNum");
+        String email = rs.getString("email");
+        String password = rs.getString("password");
+
+        return new Staff(staffID, firstName, lastName, email, phoneNum, password);
+   }
+    return null;
+  }
+
 
 
 //Add a user-data into the database   

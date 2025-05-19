@@ -1,42 +1,69 @@
 package model;
 
 public class CartItem {
-    private int itemID;
-    private int cartID;
-    private String upc;
+    private final int itemID;
+    private final int cartID;
+    private final String upc;
     private int quantity;
+    private Product product;
 
-    public CartItem(int itemID, int cartID, String upc, int quantity){
+    public CartItem(int itemID, int cartID, Product product, int quantity){
         this.itemID = itemID;
         this.cartID = cartID;
-        this.upc = upc;
+        this.upc = product.getUPC();
         this.quantity = quantity;
+        this.product = product;
     }
 
-    public int getItemID() {
-        return itemID;
+    // Update methods
+    public void addQuantity(int addition){
+        if (this.product.getQuantity() >= (this.quantity + addition)){
+            this.quantity += addition;
+        } else {
+            System.out.println("Out of Stock");
+        }
     }
 
-    public int getCartID() {
-        return cartID;
+    public void substractQuantity(int substract){
+        if (this.quantity != 0){
+            this.quantity -= substract;
+        } else {
+            System.out.println("Error object does not exist");
+        }
+    }
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public String getUPC() {
-        return upc;
+    // Read methods
+    public Product getProduct(){
+        return this.product;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getCartId(){
+        return this.cartID;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public int getItemId(){
+        return this.itemID;
     }
 
+    public String getUPC(){
+        return this.upc;
+    }
 
+    public int getQuantity(){
+        return this.quantity;
+    }
 
+    public double getTotalCost(){
+        return this.quantity*this.product.getPrice();
+    }
 
-
+    @Override
+    public String toString() {
+        return "Quantity: " + this.quantity + " | " + this.product.toString();
+    }
 
 
 }

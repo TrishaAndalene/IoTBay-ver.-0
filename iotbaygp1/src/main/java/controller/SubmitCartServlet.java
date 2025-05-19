@@ -10,7 +10,6 @@ import dao.CartDAO;
 import dao.CartItemsDAO;
 import dao.OrderDAO;
 import dao.OrderItemsDAO;
-import dao.ProductDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,7 +18,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.CartItem;
 import model.OrderItem;
-import model.Product;
 
 @WebServlet("/SubmitCartServlet")
 public class SubmitCartServlet extends HttpServlet{
@@ -45,9 +43,6 @@ public class SubmitCartServlet extends HttpServlet{
         OrderItemsDAO orderItemManager = (OrderItemsDAO) session.getAttribute("orderItemsManager");
         if (orderItemManager == null) throw new IOException("orderItemManager is not found");
 
-        ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
-        if (productManager == null) throw new IOException("productManager is not found");
-
         try {
             if (customerID != null){
                 int cartID = cartManager.getCreateCart(customerID);
@@ -57,17 +52,9 @@ public class SubmitCartServlet extends HttpServlet{
                 String orderID = orderManager.createOrder(customerID, cost);
                 System.out.println("No, I'm here");
                 for (CartItem c : cartItems){
-                    if (c.getQuantity() != 0){
-                        orderItemManager.addItemToOrder(orderID, c.getUPC(), c.getQuantity());
-                        Product p = productManager.findProduct(c.getUPC());
-                        int stock = p.getQuantity() - c.getQuantity();
-                        System.out.println(p.getQuantity());
-                        System.out.println(c.getQuantity());
-                        System.out.println(stock);
-                        productManager.updateStockAfterOrder(c.getUPC(), stock);
-                        System.out.println(c.getUPC());
-                        System.out.println("here2");
-                    }
+                    orderItemManager.addItemToOrder(orderID, c.getUPC(), c.getQuantity());
+                    System.out.println(c.getUPC());
+                    System.out.println("here2");
                 }
 
                 List<OrderItem> orderItemsList = orderItemManager.getOrderItems(orderID);
@@ -76,14 +63,14 @@ public class SubmitCartServlet extends HttpServlet{
                 request.setAttribute("orderItems", orderItemsList);
                 request.setAttribute("orderID", orderID);
 
-                request.getRequestDispatcher("/OrderConfirmation.jsp").include(request, response);;
+                request.getRequestDispatcher("OrderConfirmation.jsp").include(request, response);;
             } else {
                 System.out.println("customerID is null");
             }
 
             // Create order object
         } catch (SQLException e){
-            Logger.getLogger(SubmitCartServlet.class.getName()).log(Level.SEVERE, null, e);    
+            Logger.getLogger(RemoveProductServlet.class.getName()).log(Level.SEVERE, null, e);    
         };
 
     }

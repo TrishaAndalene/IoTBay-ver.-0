@@ -39,7 +39,7 @@ public class ViewCartServlet extends HttpServlet {
         CartItemsDAO cartItemsManager = (CartItemsDAO) session.getAttribute("cartItemsManager");
         if (cartItemsManager == null) throw new IOException("DB manager not found");
         ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
-        if (cartItemsManager == null) throw new IOException("DB manager not found");
+        if (productManager == null) throw new IOException("Cart items manager not found");
           
      
         try {    

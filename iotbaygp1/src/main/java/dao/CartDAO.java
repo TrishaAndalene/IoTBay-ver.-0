@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -58,5 +59,14 @@ public CartDAO(Connection conn) throws SQLException {
     }
     return placeholder;
   }
+
+    public void clearCart(int cartID) throws SQLException {
+        String query = "DELETE FROM Cart WHERE cartID = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, cartID);
+            ps.executeUpdate();
+            System.out.println("Cart cleared for cartID: " + cartID);
+        }
+    }
 
 }
