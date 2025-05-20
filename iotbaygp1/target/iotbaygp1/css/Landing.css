@@ -22,6 +22,7 @@ button{
 #main_screen{
     position: absolute;
     top: 7%;
+    bottom: 7%;
     left: 0%;
     width: 100%;
     height: 90%;
@@ -504,62 +505,4 @@ button{
     transform: translate(0, -50%);
     width: 30px;
     height: 30px;
-}
-
-/* footer */
-footer{
-    position: absolute;
-    top: 600%;
-    left: 0%;
-    width: 100%;
-    height: 15%;
-    border-top: 2px solid rgb(50, 28, 199);
-}
-#company_logo2{
-    position: absolute;
-    top: 50%;
-    left: 3%;
-    transform:translate(-50%,-50%);
-    width: 60px;
-    height: 60px;
-}
-#company_name2{
-    position: absolute;
-    top: 50%;
-    left: 14%;
-    transform: translate(-50%,-50%);
-    font-weight: bold;
-}
-#instagram{
-    position: absolute;
-    top: 30%;
-    left: 85%;
-    transform: translate(-50%,-50%);
-    width: 40px;
-    height: 40px;
-}
-#insta_address{
-    position: absolute;
-    top: 30%;
-    left: 89.5%;
-    transform: translate(-50%,-50%);
-    font-size: 18px;
-    font-style: bold;
-}
-
-#email{
-    position: absolute;
-    top: 70%;
-    left: 85%;
-    transform: translate(-50%,-50%);
-    width: 40px;
-    height: 40px;
-}
-#email_address{
-    position: absolute;
-    top: 70%;
-    left: 91%;
-    transform: translate(-50%,-50%);
-    font-size: 18px;
-    font-style: bold;
 }

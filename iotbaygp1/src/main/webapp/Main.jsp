@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IoT_Landing_Page</title>
+    <title>IoT Bay</title>
 
     <!-- Style overloading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +15,7 @@
     
     <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/Main.css">
+    <link rel="stylesheet" href="css/Footer.css">
 
 </head>
 <body>
@@ -250,20 +251,7 @@
         </div>
     </div>
     <!-- footer -->
-    <footer>
-        <!-- main company logo -->
-        <img id="company_logo2" src="img/company_logo.png">
-        <!-- compnay name -->
-        <h1 id="company_name2">IoTBay</h1>
-
-        <!-- instagram -->
-        <img id="instagram" src="img/insta.png">
-        <p id="insta_address">@aaaaaaaa</p>
-
-        <!-- Email -->
-        <img id="email" src="img/email.png">
-        <p id="email_address">aaaa@gmail.com</p>
-    </footer>
+    <%@ include file="/Footer.jsp" %>
     
 </body>
 </html>

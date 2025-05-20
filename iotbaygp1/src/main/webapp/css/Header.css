@@ -1,5 +1,5 @@
 /* Navigation bar */
-.nav-bar {
+.headernav-bar {
     z-index: 1000;
     display: flex;
     position: fixed;
@@ -15,7 +15,7 @@
     border-bottom: 2px solid rgb(50, 28, 199);
 }
 
-.company-details {
+.headercompany-details {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
@@ -25,17 +25,17 @@
   font-family: "Sriracha", cursive;
 
 }
-.company-logo {
+.headercompany-logo {
     height: 30px;
     width: auto;
     margin-right: 5px;
 }
 
-.company-name h1{
+.headercompany-name h1{
   font-family: "Sriracha", cursive;
 }
 
-.links {
+.headerlinks {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,7 +44,7 @@
   width: 30%;
   min-width: 300px;
 }
-.nav-links {
+.headernav-links {
     flex: 1;
     padding: 0;
     gap: 20px;
@@ -54,54 +54,68 @@
     font-family: "Roboto", Tahoma, sans-serif;
 }
   
-.nav-links li a {
+.headernav-links li a {
     color: rgb(64, 51, 151);
     font-weight: 600;
     font-size: 14px;
 }
 
-.search-container, .dropdown {
+.headersearch-container, .headerdropdown {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: center;
     gap: 10px;
-      font-family: "Roboto", Tahoma, sans-serif;
+    font-family: "Roboto", Tahoma, sans-serif;
   }
 
-.search-container {
+.headersearch-container {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   margin: 10px;
   border: 2px solid #2440ad;
   border-radius: 20px;
   width: 30%;
   min-width: 300px;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
+  background-color: white;
   font-family: "Roboto", Tahoma, sans-serif;
 }
 
-.search-container input[type="text"] {
-    flex: 9;
+.headersearch-container form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.headersearch-container input[type="text"] {
+    flex: 1;
     padding: 12px 20px;
     border-radius: 20px;
     min-width: 250px;
     border: 2px solid white;
-      font-family: "Roboto", Tahoma, sans-serif;
+    font-family: "Roboto", Tahoma, sans-serif;
+    outline: none;
   }
   
-.search-container button[type="submit"] {
-    flex: 1;
-    background: url("../img/search_icon.png");
+.headersearch-container button[type="submit"] {
+    background: url("../img/search_icon.png") no-repeat center;
     background-size: contain;
+    width: 32px;
+    height: 32px;
+    margin-left: 8px;
+    margin-right: 8px;
     border: none;
+    cursor: pointer;
     height: 20px;
     width: 20px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 25%;
   }
 
-.account-container {
+.headeraccount-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,7 +125,7 @@
   margin: 20px;
   font-family: "Roboto", Tahoma, sans-serif;
 }
-.account-links {
+.headeraccount-links {
     flex: 1;
     padding: 0;
     gap: 10px;
@@ -120,14 +134,14 @@
     list-style: none;
 }
   
-.account-links li a {
+.headeraccount-links li a {
     color: rgb(64, 51, 151);
     font-weight: 600;
     font-size: 14px;
     font-family: "Roboto", Tahoma, sans-serif;
 }
 
-.staff-btn {
+.headerstaff-btn {
     padding: 5px 10px;
     background-color: #2440ad;
     color: white;
@@ -137,7 +151,7 @@
     font-family: "Roboto", Tahoma, sans-serif;
 }
 
-  .image-container {
+  .headerimage-container {
     flex: 1;
     display: flex;
     width: 25%;
@@ -148,19 +162,19 @@
   }
 
   /* Dropdown Button */
-  .dropbtn {
+  .headerdropbtn {
     color: rgb(64, 51, 151);
     padding: 16px;
     font-size: 12px;
     border-radius: 15px;
   } 
   /* The container <div> - needed to position the dropdown content */
-  .dropdown {
+  .headerdropdown {
     position: relative;
     display: inline-block;
   }
 
-  .dropimg {
+  .headerdropimg {
     height: 20px;
     width: 20px;
     cursor: pointer;
@@ -170,7 +184,7 @@
 
   
   /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
+  .headerdropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -182,7 +196,7 @@
   }
 
   /* Links inside the dropdown */
-  .dropdown-content a {
+  .headerdropdown-content a {
     color: #2440ad;
     padding: 12px 16px;
     text-decoration: none;
@@ -191,16 +205,16 @@
   }
   
   /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {
+  .headerdropdown-content a:hover {
     background-color: #2440ad;
     color: white;
     font-family: "Roboto", Tahoma, sans-serif;
   }
   
   /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {display: block;}
+  .headerdropdown:hover .headerdropdown-content {display: block;}
   
   /* Change the background colour */
-  .dropdown:hover .dropbtn {
+  .headerdropdown:hover .headerdropbtn {
     background-color: #2440ad;
     color: white;}
