@@ -68,20 +68,32 @@
                         <% double itemTotal = p.getPrice() * quantity; %>
                         <td><img style="max-width: 150px; height: auto; min-width: 150px;" src="<%= p.getImg()%>" alt=""></td>
                         <td><%= p.getName() %></td>
-                        <td class ="rows2"><!--<button class="inside-row">+</button>--><%= quantity %><!--<button class="inside-row">-</button> --></td>
-                        <td><%= p.getPrice() * quantity %></td>
-                        <td style="min-width: 4vw; max-width: 4vw;">
+                        <td class ="rows2" style="display: flex; justify-content: space-evenly; flex-direction: row; padding-top: 10vh;">
                             <form action="UpdateCartStockServlet" method="post">
-                            <input type="hidden" name="upc" value="<%= p.getUPC() %>">
-                            <button type="submit" name = "symbol" value="minus">-  </button>
-                            <%= quantity %>
-                            <button type="submit" name = "symbol" value="plus">  +</button>
+                                <input type="hidden" name="upc" value="<%= p.getUPC() %>">
+                                <button type="submit" name = "symbol" value="minus" class="circleButton">-  </button>
+                            </form>
+                                <%= quantity %>
+                            <form action="UpdateCartStockServlet" method="post">
+                                <input type="hidden" name="upc" value="<%= p.getUPC() %>">
+                                <button type="submit" name = "symbol" value="plus" class="circleButton">  +</button>
                             </form>
                         </td>
+                        <td><%= p.getPrice() * quantity %></td>
+                        <!-- <td style="min-width: 7vw; max-width: 7vw;">
+                            <form action="UpdateCartStockServlet" method="post" style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                            <input type="hidden" name="upc" value="<%= p.getUPC() %>">
+                            <button type="submit" name = "symbol" value="minus" class="circleButton">-  </button>
+                            <%= quantity %>
+                            <button type="submit" name = "symbol" value="plus" class="circleButton">  +</button>
+                            </form>
+                        </td> -->
                         <td style="min-width: 4vw; max-width: 4vw;">
                             <form action="UpdateCartStockServlet" method="post">
                             <input type="hidden" name="upc" value="<%= p.getUPC() %>">
-                            <button type="submit" name = "symbol" value="remove">Remove</button>
+                            <button type="submit" name = "symbol" value="remove" style="padding: 5px 10px;
+                            border: 3px solid #2440ad;
+                            color: #2440ad;">Remove</button>
                             </form>
                         </td>
                     </tr>   
@@ -99,9 +111,9 @@
                     <div class="line"><h4>_______</h4></div>
                     <h3 style="margin-left: 5%;">Total : A$<%= totalPrice %></h3>
 
+                    <% if (!cartItems.isEmpty()) { %>
                     <form action="OrderConfirmationServlet" method="post">
                         <% 
-                        if (cartItems != null) {
                             for (Map.Entry<Product, Integer> item: cartItems.entrySet()) {
                                 p = item.getKey();
                                 quantity = item.getValue();
@@ -109,11 +121,16 @@
                                 <input type="hidden" name="upc" value="<%= p.getUPC() %>">
                                 <input type="hidden" name="quantity" value="<%= quantity %>">
                         <%
-                            }}
+                            }
                         %>
                         <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
                         <input type="submit" value="Place Order" style="margin-left: 5%;" class="buttonEntry">
                     </form>
+                    <% } else { %>
+                        <form action="" method="post">
+                            <input type="submit" value="No Item" style="margin-left: 5%;" class="buttonEntry">
+                        </form>
+                    <% } %>
                     <br><br>
             </div>
         </section>   

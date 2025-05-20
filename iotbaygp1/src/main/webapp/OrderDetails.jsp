@@ -54,6 +54,7 @@
         <h3>Order id: #<%=order.getOrderId() %></h3>
         <h3>Status: <%= order.getStatus() %></h3>
         <h3>Date placed: <%= order.getDate() %></h3>
+        <h3>Total cost: <%= order.getCost() %></h3>
         <br>
     <%
     }
@@ -85,7 +86,7 @@
                             <td><img style="max-width: 150px; height: auto; min-width: 150px;" src="<%= p.getImg()%>" alt=""></td>
                             <td><%= p.getName() %></td>
                             <td class ="rows2"><!--<button class="inside-row">+</button>--><%= quantity %><!--<button class="inside-row">-</button> --></td>
-                            <td><%= totalPrice%></td>
+                            <td><%= p.getPrice()*quantity%></td>
                         </tr>
                         <%
                             }
@@ -101,7 +102,7 @@
                                     <td><img style="max-width: 150px; height: auto; min-width: 150px;" src="<%= p.getImg()%>" alt=""></td>
                                     <td><%= p.getName() %></td>
                                     <td class ="rows2"><!--<button class="inside-row">+</button>--><%= quantity %><!--<button class="inside-row">-</button> --></td>
-                                    <td><%= totalPrice%></td>
+                                    <td><%= p.getPrice() * quantity%></td>
                                 </tr>
                                 <%
                                 }}
@@ -114,10 +115,18 @@
 
                 %>
                 </table>
+                                <%
 
+                        if (customer != null){
+                        %>
                 <form action="ViewOrderServlet">
-                    <input type="submit" value="Return">
+                    <input type="submit" value="Return to My Orders">
                 </form>
+                <% } else { %>
+                <form action="index.jsp">
+                    <input type="submit" value="Return to Home">
+                </form>
+                <% } %>
     </div>
     </section>
     

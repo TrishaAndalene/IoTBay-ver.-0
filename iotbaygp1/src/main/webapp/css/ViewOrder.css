@@ -124,7 +124,7 @@ div.order-container th, td {
 }
 
 
-input[type="submit"].buttonEntry{
+.order-container input[type="submit"].buttonEntry{
     color: white;
     background-color: #2440ad;
     min-width: 100%;
