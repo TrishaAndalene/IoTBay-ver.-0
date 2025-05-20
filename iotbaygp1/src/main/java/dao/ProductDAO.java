@@ -102,7 +102,6 @@ public ProductDAO(Connection conn) throws SQLException {
 
             Product p = new Product(upc, name, price, brand, colour, size, image, quantity, cat, description);
             productList.add(p);
-            System.out.println("Total products loaded: " + productList.size());
         }
 
         return productList;
@@ -138,7 +137,6 @@ public ProductDAO(Connection conn) throws SQLException {
         }
             Product p = new Product(upc, name, price, brand, colour, size, image, quantity, cat, description);
             productList.add(p);
-            System.out.println("Total products loaded: " + productList.size());
         }
         return productList;
     }

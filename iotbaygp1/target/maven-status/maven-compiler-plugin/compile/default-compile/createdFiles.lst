@@ -21,6 +21,7 @@ controller/CustomerLoginServlet.class
 dao/OrderDAO.class
 controller/AddToCartServlet.class
 controller/OrderSearchServlet.class
+controller/UpdateCartStockServlet.class
 controller/StockMgmtServlet.class
 model/OrderItem.class
 dao/ProductDAO.class
@@ -44,8 +45,10 @@ controller/BrowseItemsServlet.class
 controller/RemoveProductServlet.class
 model/Staff.class
 controller/OrderDetailsServlet.class
+controller/AccountDeleteServlet.class
 controller/ConnServlet.class
 controller/StoreCartServlet.class
+controller/AccountDetailServlet.class
 dao/OrderItemsDAO.class
 dao/CustomerDAO.class
 controller/StaffServlet.class

@@ -7,6 +7,11 @@
     <title>Manage Product</title>   
 
 
+    <!-- Style overloading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -105,17 +110,25 @@
                     </td>
                     </form>
                 </tr> 
+                <form action="UpdateProductServlet" method="post">
                 <tr>
-                    <form action="UpdateProductServlet" method="post"> 
                     <td><b>Update Category: </b></td>
-                    <td><input type="text" name="value" value="<%= p.getCategories() %>"></td>
+                    <td><select class="cat" name="value" id="categoryStr">
+                        <option value="WIFI">WiFi</option>
+                        <option value="HOME_SECURITY">Home Security</option>
+                        <option value="ACTIVITY_TRACKERS">Activity Trackers</option>
+                        <option value="ACTUATOR">Actuators</option>
+                        <option value="AMBIENT_IOT">Ambient IoT</option>
+                        <option value="MINI_PC">Mini PC</option>
+                    </select>
+                </td>
                     <td> 
                         <input type="hidden" name="upc" value="<%= p.getUPC() %>">
                         <input type="hidden" name="field" value="category">
                         <button type="submit">Update</button>
                     </td>
-                    </form>
-                </tr>                       
+                </tr>  
+                </form>                     
         </table>
         <div class="btm-btns">
         <div class="back">

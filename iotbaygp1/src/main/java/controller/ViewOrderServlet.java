@@ -36,7 +36,7 @@ public class ViewOrderServlet extends HttpServlet {
     
         //3- capture the posted email - check jsp form name to see what parameter name
         Integer customerID = (Integer) session.getAttribute("customerID");  
-        if (customerID == null){customerID = 0;};   
+        if (customerID == null){customerID = 9;}
 
         @SuppressWarnings("unchecked")
         ArrayList<Order> orderLists = (ArrayList<Order>) request.getAttribute("orderLists");

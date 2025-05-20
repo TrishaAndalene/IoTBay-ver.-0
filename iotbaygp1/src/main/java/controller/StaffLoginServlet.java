@@ -53,7 +53,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         request.getRequestDispatcher("/StaffLanding.jsp").include(request, response);   
     } else {                       
         //15-set user does not exist error to the session
-        session.setAttribute("errorMsg", "Incorrect email or password :(");        
+        session.setAttribute("errorMsg", "Incorrect email or password");        
         //16- redirect user back to the login.jsp
         request.getRequestDispatcher("/StaffLogin.jsp").include(request, response);  
         }   

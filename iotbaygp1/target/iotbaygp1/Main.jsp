@@ -1,5 +1,3 @@
-<%@ page import="model.Customer" %>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,39 +8,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/Main.css">
 
-    <% 
-        Customer customer = (Customer) session.getAttribute("customer");
-    %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/Header.css">
+    <link rel="stylesheet" href="css/Main.css">
 
 </head>
 <body>
-
-    <% if (customer != null){ %>
-
-    <header>
-        <!-- main company logo -->
-        <img id="company_logo" src="img/company_logo.png">
-        <!-- compnay name -->
-        <h1 id="company_name">IoTBay</h1>
-    </header>
-    <!-- navigation bar -->
-    <nav>
-        <a href="" id="menu_home"><h1>Home</h1></a>
-        <a href="" id="menu_browse"><h1>Browse</h1></a>
-        <a href="" id="menu_about"><h1>About</h1></a>
-
-        <button id="signup_btn"><a href="jsp/Logout.jsp">LOG OUT</a></button>
-    </nav>
+    <%-- Header --%>  
+    <%@ include file="/Header.jsp" %>
 
     <!-- main screen -->
     <div id="main_screen">
         <img id="main_background" src="img/main_image.png">
         <p id="promotion_title">Promotion Title</p>
         <p id="promotion_line">Promotion line</p>
-        <div id="order_btn"><a href="jsp/Order.jsp">ORDER NOW</a></div>
+        <div id="order_btn"><a href="Order.jsp">ORDER NOW</a></div>
     </div>
 
     <!-- Second -->
@@ -99,19 +83,19 @@
         <div class="frame_3rd" id="frame1_3">
             <img class="frame_3rd_img" id="frame_3rd_img1" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
-            <button class="order_btn">ORDER NOW</button>
+            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
         </div>
         <!-- frame2 -->
         <div class="frame_3rd" id="frame2_3">
             <img class="frame_3rd_img" id="frame_3rd_img2" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
-            <button class="order_btn">ORDER NOW</button>
+            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
         </div>
         <!-- frame3 -->
         <div class="frame_3rd" id="frame3_3">
             <img class="frame_3rd_img" id="frame_3rd_img3" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
-            <button class="order_btn">ORDER NOW</button>
+            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
         </div>
     </div>
     <div id="customer_favourite2">
@@ -124,19 +108,19 @@
         <div class="frame_3rd" id="frame1_3">
             <img class="frame_3rd_img" id="frame_3rd_img1" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
-            <button class="order_btn">ORDER NOW</button>
+            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
         </div>
         <!-- frame2 -->
         <div class="frame_3rd" id="frame2_3">
             <img class="frame_3rd_img" id="frame_3rd_img2" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
-            <button class="order_btn">ORDER NOW</button>
+            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
         </div>
         <!-- frame3 -->
         <div class="frame_3rd" id="frame3_3">
             <img class="frame_3rd_img" id="frame_3rd_img3" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
-            <button class="order_btn">ORDER NOW</button>
+            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
         </div>
     </div>
     <div id="customer_favourite3">
@@ -149,19 +133,19 @@
         <div class="frame_3rd" id="frame1_3">
             <img class="frame_3rd_img" id="frame_3rd_img1" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
-            <button class="order_btn">ORDER NOW</button>
+            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
         </div>
         <!-- frame2 -->
         <div class="frame_3rd" id="frame2_3">
             <img class="frame_3rd_img" id="frame_3rd_img2" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
-            <button class="order_btn">ORDER NOW</button>
+            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
         </div>
         <!-- frame3 -->
         <div class="frame_3rd" id="frame3_3">
             <img class="frame_3rd_img" id="frame_3rd_img3" src="img/stair.jpg">
             <p class="price">$17.99 AUD</p>
-            <button class="order_btn">ORDER NOW</button>
+            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
         </div>
     </div>
 
@@ -185,7 +169,7 @@
             <img class="arrow" id="arrow_left2" src="img/left.png">
         </button>
         <button>
-            <img class="arrow" id="arrow_right2" src="http://localhost:8080/webapp/img/right.png">
+            <img class="arrow" id="arrow_right2" src="img/right.png">
         </button>
     </div>
 
@@ -201,7 +185,7 @@
                 <p>How would you like to rate your experience with us?</p>
             </div>
             <div>
-                <img id="star" src="/img/star.png">
+                <img id="star" src="img/star.png">
             </div>
             <input type="text" placeholder="Leave your comment here" id="rating_comment">
             <button id="submit_btn">Submit</button>
@@ -243,51 +227,43 @@
         <div class="faq_section" id="faq1">
             <p id="faq_section_text">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING.</p>
             <button>
-                <img id="plus" src="http://localhost:8080/webapp/img/plus.png">
+                <img id="plus" src="img/plus.png">
             </button>
         </div>
         <div class="faq_section" id="faq2">
             <p id="faq_section_text">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING.</p>
             <button>
-                <img id="plus" src="http://localhost:8080/webapp/img/plus.png">
+                <img id="plus" src="img/plus.png">
             </button>
         </div>
         <div class="faq_section" id="faq3">
             <p id="faq_section_text">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING.</p>
             <button>
-                <img id="plus" src="http://localhost:8080/webapp/img/plus.png">
+                <img id="plus" src="img/plus.png">
             </button>
         </div>
         <div class="faq_section" id="faq4">
             <p id="faq_section_text">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING.</p>
             <button>
-                <img id="plus" src="http://localhost:8080/webapp/img/plus.png">
+                <img id="plus" src="img/plus.png">
             </button>
         </div>
     </div>
     <!-- footer -->
     <footer>
         <!-- main company logo -->
-        <img id="company_logo2" src="http://localhost:8080/webapp/img/company_logo.png">
+        <img id="company_logo2" src="img/company_logo.png">
         <!-- compnay name -->
         <h1 id="company_name2">IoTBay</h1>
 
         <!-- instagram -->
-        <img id="instagram" src="http://localhost:8080/webapp/img/insta.png">
+        <img id="instagram" src="img/insta.png">
         <p id="insta_address">@aaaaaaaa</p>
 
         <!-- Email -->
-        <img id="email" src="http://localhost:8080/webapp/img/email.png">
+        <img id="email" src="img/email.png">
         <p id="email_address">aaaa@gmail.com</p>
     </footer>
-    <% } else { %>
-        <h1>You are not logged in yet</h1>
-        <br><br>
-        <h3>Click here to login... <a href="Login.jsp" style="text-decoration: none;">Click here</a></h3>
-        <br><br><br><br><br>
-        <h3>or <a href="../index.jsp" style="text-decoration: none;">Go back</a></h3>
-
-    <% } %>
     
 </body>
 </html>

@@ -7,6 +7,7 @@
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/CartItemsDAO.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/StoreCartServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/StoreCartDAO.java
+/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/AccountDeleteServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/TestDB.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/StaffLoginServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/ProductServlet.java
@@ -22,6 +23,7 @@
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/StorePurchaseServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/CustomerRegisterServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/ViewCartServlet.java
+/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/UpdateCartStockServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/ConnServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/CustomerDAO.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/ProductViewServlet.java
@@ -64,6 +66,7 @@
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/CartItem.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/OrderItem.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/StaffDAO.java
+/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/AccountDetailServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/InStoreSalesServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/OrderSearchServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/BrowseItemsServlet.java

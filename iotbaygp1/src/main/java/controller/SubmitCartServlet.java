@@ -10,6 +10,7 @@ import dao.CartDAO;
 import dao.CartItemsDAO;
 import dao.OrderDAO;
 import dao.OrderItemsDAO;
+import dao.ProductDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,6 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.CartItem;
 import model.OrderItem;
+import model.Product;
 
 @WebServlet("/SubmitCartServlet")
 public class SubmitCartServlet extends HttpServlet{
@@ -29,6 +31,7 @@ public class SubmitCartServlet extends HttpServlet{
         Double cost = Double.parseDouble(request.getParameter("totalPrice"));
 
         Integer customerID = (Integer) session.getAttribute("customerID");
+        if (customerID == null){customerID = 9;}
 
         // Manager tab
         CartDAO cartManager = (CartDAO) session.getAttribute("cartManager");
@@ -43,6 +46,9 @@ public class SubmitCartServlet extends HttpServlet{
         OrderItemsDAO orderItemManager = (OrderItemsDAO) session.getAttribute("orderItemsManager");
         if (orderItemManager == null) throw new IOException("orderItemManager is not found");
 
+        ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
+        if (productManager == null) throw new IOException("productManager is not found");
+
         try {
             if (customerID != null){
                 int cartID = cartManager.getCreateCart(customerID);
@@ -52,9 +58,17 @@ public class SubmitCartServlet extends HttpServlet{
                 String orderID = orderManager.createOrder(customerID, cost);
                 System.out.println("No, I'm here");
                 for (CartItem c : cartItems){
-                    orderItemManager.addItemToOrder(orderID, c.getUPC(), c.getQuantity());
-                    System.out.println(c.getUPC());
-                    System.out.println("here2");
+                    if (c.getQuantity() != 0){
+                        orderItemManager.addItemToOrder(orderID, c.getUPC(), c.getQuantity());
+                        Product p = productManager.findProduct(c.getUPC());
+                        int stock = p.getQuantity() - c.getQuantity();
+                        System.out.println(p.getQuantity());
+                        System.out.println(c.getQuantity());
+                        System.out.println(stock);
+                        productManager.updateStockAfterOrder(c.getUPC(), stock);
+                        System.out.println(c.getUPC());
+                        System.out.println("here2");
+                    }
                 }
 
                 List<OrderItem> orderItemsList = orderItemManager.getOrderItems(orderID);

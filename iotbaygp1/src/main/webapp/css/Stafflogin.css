@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", Tahoma, sans-serif;
+
 }
 
 a{
@@ -24,6 +24,7 @@ body{
     background-image: url("../img/main_image.png");
     background-repeat: no-repeat;
     background-size: cover; 
+    font-family: "Roboto", Tahoma, sans-serif;
 }
 
 /* main screen */

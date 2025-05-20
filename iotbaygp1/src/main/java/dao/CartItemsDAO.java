@@ -41,6 +41,10 @@ public int findCartItem(int cartID, String upc) throws SQLException{
 
 public List<CartItem> getCartItems(int cartID) throws SQLException{
         List<CartItem> cartItemsList = new ArrayList<>();
+
+        String update = "DELETE" + " FROM CartItems WHERE quantity <= 0";
+        st.executeUpdate(update);
+
         String query = "SELECT" + " * FROM CartItems WHERE CartID =" + cartID;
         ResultSet result = st.executeQuery(query);
         while (result.next()){
@@ -76,5 +80,22 @@ public void removeAllItem(int cartID) throws SQLException{
     st.executeUpdate(query);
     System.out.println("Cart cleared");
 }
+
+public void updateStock(int cartID, String upc, String symbol) throws SQLException {  
+        //code for add-operation 
+        String plus = "plus";
+        String remove = "remove";
+        String sql;
+        System.out.println(cartID + ": " + upc + "; " + symbol);
+        if (symbol.equals(plus)){
+            sql = "UPDATE" + " CartItems SET quantity = quantity + 1 WHERE upc = '" + upc + "' AND cartID = " + cartID ;
+        } else if (symbol.equals(remove)) {
+            sql = "DELETE" + " FROM CartItems WHERE upc = '" + upc + "' AND cartID = " + cartID ;
+        } else {
+            sql = "UPDATE" + " CartItems SET quantity = quantity - 1 WHERE upc = '" + upc + "' AND cartID = " + cartID ;
+        }      
+        st.executeUpdate(sql);
+        System.out.println(sql);
+    }
 
 }

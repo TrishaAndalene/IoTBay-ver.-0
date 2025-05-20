@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", Tahoma, sans-serif;
 }
 
 a{
@@ -112,28 +111,22 @@ body{
     color: white;
 }
 
-.btm-btns .back {
+.btm-btns button[type="submit"], button[type="button"]{
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 5px 10px;
     color: white;
-    background-color: #2440ad; 
     font-size: 13px;
     font-weight: bold;
     text-decoration: none;
     border-radius: 5px;
 }
 
+.btm-btns .back {
+    background-color: #2440ad; 
+}
+
 .btm-btns .remove {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px 10px;
-    color: white;
     background-color: #a7051e; 
-    font-size: 13px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
 }

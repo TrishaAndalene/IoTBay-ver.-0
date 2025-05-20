@@ -53,6 +53,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     try {       
 
         productManager.updateProduct(field, upc, value);
+        System.out.println(field + ": " + upc + ": " + value);
         
     } catch (SQLException ex) {           
         Logger.getLogger(AddProductServlet.class.getName()).log(Level.SEVERE, null, ex);    

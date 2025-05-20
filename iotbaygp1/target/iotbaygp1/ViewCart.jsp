@@ -15,6 +15,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/Footer.css">
     <link rel="stylesheet" href="css/ViewCart.css">
@@ -61,20 +65,23 @@
                                     totalPrice += (p.getPrice() * quantity);
                      %>
                     <tr>
+                        <% double itemTotal = p.getPrice() * quantity; %>
                         <td><img style="max-width: 150px; height: auto; min-width: 150px;" src="<%= p.getImg()%>" alt=""></td>
                         <td><%= p.getName() %></td>
                         <td class ="rows2"><!--<button class="inside-row">+</button>--><%= quantity %><!--<button class="inside-row">-</button> --></td>
                         <td><%= p.getPrice() * quantity %></td>
                         <td style="min-width: 4vw; max-width: 4vw;">
-                            <form action="ProductViewServlet" method="post">
-                                <input type="hidden" name="upc" value="<%= p.getUPC()%>">
-                                <input type="submit" value="Edit" class="buttonEntry">
+                            <form action="UpdateCartStockServlet" method="post">
+                            <input type="hidden" name="upc" value="<%= p.getUPC() %>">
+                            <button type="submit" name = "symbol" value="minus">-  </button>
+                            <%= quantity %>
+                            <button type="submit" name = "symbol" value="plus">  +</button>
                             </form>
                         </td>
                         <td style="min-width: 4vw; max-width: 4vw;">
-                            <form action="RemoveCartServlet" method="post">
-                                <input type="hidden" name="upc" value="<%= p.getUPC()%>">
-                                <input type="submit" value="Remove" class="buttonEntry">
+                            <form action="UpdateCartStockServlet" method="post">
+                            <input type="hidden" name="upc" value="<%= p.getUPC() %>">
+                            <button type="submit" name = "symbol" value="remove">Remove</button>
                             </form>
                         </td>
                     </tr>   

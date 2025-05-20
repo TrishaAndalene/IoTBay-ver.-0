@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="css/AddProduct.css">
     <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/Footer.css">
+
+    <!-- Style overloading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -32,7 +41,14 @@
             </tr>
             <tr>
                 <td>Product Price: </td>   
-                <td><input type="number" name="price" placeholder="Price"></td>
+                <td><input type="text" name="price" placeholder="Price">
+                     <div class="err">
+                            <% String errorMsg = (String) request.getAttribute("errorMsg"); 
+                                if (errorMsg != null) { %>
+                                <p><%= errorMsg %></p>
+                                <% } %>
+                        </div>                 
+                </td>
             </tr>
             <tr>
                 <td>Product Colour: </td>
@@ -48,11 +64,25 @@
             </tr>
             <tr>
                 <td>Product Image URL: </td>
-                <td><input type="text" name="image" placeholder="Image URL"></td>
+                <td><input type="text" name="image" placeholder="Image URL">
+                     <div class="err2">
+                            <% String errorMesg = (String) request.getAttribute("errorMesg"); 
+                                if (errorMesg != null) { %>
+                                <p><%= errorMesg %></p>
+                                <% } %>
+                        </div>                  
+                </td>
             </tr>
             <tr>
                 <td>Product QTY: </td>    
-                <td><input type="number" name="quantity" placeholder="QTY"></td>
+                <td><input type="number" name="quantity" placeholder="QTY">
+                     <div class="err3">
+                            <% String errorMessg = (String) request.getAttribute("errorMessg"); 
+                                if (errorMessg != null) { %>
+                                <p><%= errorMessg %></p>
+                                <% } %>
+                        </div>                   
+                </td>
             </tr>
             <tr>
                 <td>Product Category: </td>

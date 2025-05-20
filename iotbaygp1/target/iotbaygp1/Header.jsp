@@ -60,7 +60,7 @@
             <div class="dropdown">
             <img src="img/profile-icon.jpg" class="dropimg"/>
                 <div class="dropdown-content">
-                    <a href="#">My Account</a>
+                    <a href="Myaccount.jsp">My Account</a>
                     <a href="#">Orders</a>
                     <a href="Logout.jsp">Log Out</a>
                 </div>
@@ -104,7 +104,7 @@
             <div class="dropdown">
             <img src="img/profile-icon.jpg" class="dropimg"/>
                 <div class="dropdown-content">
-                    <a href="#">My Account</a>
+                    <a href="Myaccount.jsp">My Account</a>
                     <a href="ViewOrderServlet">Orders</a>
                     <a href="Logout.jsp">Log Out</a>
                 </div>
@@ -113,7 +113,6 @@
             <img src="img/shopping-cart.jpg" class="dropimg"/>
                 <div class="dropdown-content">
                     <a href="ViewCartServlet">View Cart</a>
-                    <a href="#">Check Out</a>
                 </div>
             </div>
             <p>Welcome <%=customer.getFirstName()%>!</p>
@@ -158,14 +157,13 @@
             <img src="img/shopping-cart.jpg" class="dropimg"/>
                 <div class="dropdown-content">
                     <a href="ViewCartServlet">View Cart</a>
-                    <a href="#">Check Out</a>
                 </div>
             </div>
         <div class="account-container">
             <ul class="account-links">
                 <li><a href="CustomerRegister.jsp" id="signup">Sign Up</a></li>
                 <li><a href="CustomerLogin.jsp" id="login">Log In</a></li>
-                <li><a href="StaffLogin.jsp" id="signup"><button class="staff-btn">Staff Portal</button></a></li>
+                <li><a href="StaffLogin.jsp" id="staff-login"><button class="staff-btn">Staff Portal</button></a></li>
             </ul>
         </div>
     </nav>
