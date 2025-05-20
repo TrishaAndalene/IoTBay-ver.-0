@@ -282,6 +282,8 @@ body {
     width: 900px;
     height: 400px;
     justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
     align-content: center;
     align-items: center;
     border: 2px solid rgb(64, 51, 151);

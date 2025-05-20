@@ -14,6 +14,7 @@ import dao.OrderDAO;
 import dao.OrderItemsDAO;
 import dao.PaymentDAO;
 import dao.ProductDAO;
+import dao.ShipmentDAO;
 import dao.StaffDAO;
 import dao.StoreCartDAO;
 import dao.StoreCartItemsDAO;
@@ -41,6 +42,7 @@ public class ConnServlet extends HttpServlet {
     private OrderItemsDAO orderItemsManager;
     private StorePurchaseDAO storePurchaseManager;
     private PaymentDAO paymentManager;
+    private ShipmentDAO shipmentManager;
     private Connection conn;
     
 
@@ -71,6 +73,7 @@ public class ConnServlet extends HttpServlet {
             orderItemsManager = new OrderItemsDAO(conn);
             storePurchaseManager = new StorePurchaseDAO(conn);
             paymentManager = new PaymentDAO(conn);
+            shipmentManager = new ShipmentDAO(conn);
 
             // These are non-essential ones (not part of our assignment features)
             storeCartItemsManager = new StoreCartItemsDAO(conn);
@@ -87,6 +90,7 @@ public class ConnServlet extends HttpServlet {
             session.setAttribute("orderManager", orderManager);
             session.setAttribute("orderItemsManager", orderItemsManager);
             session.setAttribute("paymentManager", paymentManager);
+            session.setAttribute("shipmentManager", shipmentManager);
             
             // These are non-essential ones (not part of our assignment features)
             session.setAttribute("storeCartManager", storeCartManager);  

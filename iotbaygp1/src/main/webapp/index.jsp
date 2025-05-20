@@ -27,7 +27,7 @@
     <!-- main screen -->
     <div id="main_screen">
         <p id="promotion_title">IoT Bay</p>
-        <p id="promotion_line">A very good store!</p>
+        <p id="promotion_line">Connect. Automate. Simplify. Your Smart Home Hub Awaits.</p>
         <div id="order_btn"><a href="BrowseItemsServlet">Shop Now</a></div>
     </div>
 
@@ -45,18 +45,18 @@
                 <img class="arrow" id="arrow_left" src="img/left.png">
             </button>
             <div class="frame_2nd">
-                <img id="frame_2nd_img1" src="img/diamond.jpg">
-                <p class="product_name">NAME</p>
+                <img id="frame_2nd_img1" src="img/minipc.png">
+                <p class="product_name">Mini PC</p>
             </div>
         <!-- frame2 -->
             <div class="frame_2nd">
-                <img id="frame_2nd_img2" src="img/diamond.jpg">
-                <p class="product_name">NAME</p>
+                <img id="frame_2nd_img2" src="img/activitytracker.png">
+                <p class="product_name">Activity Trackers</p>
             </div>
         <!-- frame3 -->
             <div class="frame_2nd">
-                <img id="frame_2nd_img3" src="img/diamond.jpg">
-                <p class="product_name">NAME</p>
+                <img id="frame_2nd_img3" src="img/wifiphoto.png">
+                <p class="product_name">Wifi</p>
             </div>
 
             <button>
@@ -91,20 +91,20 @@
         <!-- frame1 -->
          <div class="customer_fav_frame">
         <div class="frame_3rd">
-            <img id="frame_3rd_img1" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
+            <img id="frame_3rd_img1" src="img/iotboard.jpg">
+            <p class="price">$458.99 AUD</p>
             <button class="order_btn">ORDER NOW</button>
         </div>
         <!-- frame2 -->
         <div class="frame_3rd">
-            <img id="frame_3rd_img2" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
+            <img id="frame_3rd_img2" src="img/rakwireless.gif">
+            <p class="price">$159.95 AUD</p>
             <button class="order_btn">ORDER NOW</button>
         </div>
         <!-- frame3 -->
         <div class="frame_3rd">
-            <img id="frame_3rd_img3" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
+            <img id="frame_3rd_img3" src="img/globalstat.png">
+            <p class="price">$158.99 AUD</p>
             <button class="order_btn">ORDER NOW</button>
         </div>
         </div>
@@ -126,10 +126,14 @@
             <div id="review_section">
                 <div>
                     <!-- img -->
-                    <img id="review_img" src="img/diamond.jpg">
+                    <img id="review_img" src="img/wifiphoto.png">
                 </div>
+                            <div class="wall">
+                <p class="quote">"I recently discovered this IoT store, and I'm genuinely impressed. The selection of smart devices is top-notch and clearly curated with quality in mind. The website was smooth to navigate, and I appreciated the helpful product descriptions and reviews. Plus, the customer service team was responsive and knowledgeable when I had a question about device compatibility.</p><br><p class="quote">If you're looking to upgrade your home or workspace with reliable IoT tech, I highly recommend this store. It's now my go-to for smart devices!"</><br><br>
+                <p class="cust">- Bob C., Sydney</p>
             </div>
-            <div class="wall"></div>
+            </div>
+
             <button>
                 <img class="arrow" src="img/right.png">
             </button>
