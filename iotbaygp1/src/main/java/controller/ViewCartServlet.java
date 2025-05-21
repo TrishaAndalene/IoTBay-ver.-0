@@ -40,7 +40,9 @@ public class ViewCartServlet extends HttpServlet {
     
         //3- capture the posted email - check jsp form name to see what parameter name
         Integer customerID = (Integer) session.getAttribute("customerID");  
-        if (customerID == null){customerID = 9;}
+        if (customerID == null){
+            customerID = 9;
+        }
 
         Integer cartID = (Integer) session.getAttribute("cartID");
         if (cartID == null) {
@@ -64,7 +66,7 @@ public class ViewCartServlet extends HttpServlet {
 
             request.setAttribute("cartItems", cartItems);
             //14- redirect user to the main.jsp
-            request.getRequestDispatcher("ViewCart.jsp").include(request, response);
+            request.getRequestDispatcher("/ViewCart.jsp").include(request, response);
 
             
         } catch (SQLException ex) {           

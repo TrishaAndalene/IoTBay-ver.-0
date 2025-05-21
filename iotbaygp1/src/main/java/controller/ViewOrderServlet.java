@@ -41,7 +41,7 @@ public class ViewOrderServlet extends HttpServlet {
         @SuppressWarnings("unchecked")
         ArrayList<Order> orderLists = (ArrayList<Order>) request.getAttribute("orderLists");
         ArrayList<Order> finalContainer = new ArrayList<>();
-        if (orderLists == null){
+        if (orderLists == null && customerID != 9){
             try {
                 ArrayList<String> orderCodes = orderManager.getOrders(customerID);
                 ArrayList<Order> orderList = new ArrayList<>();
@@ -68,7 +68,7 @@ public class ViewOrderServlet extends HttpServlet {
                 List<String> orderCodes = orderManager.getOrdersByStatus(customerID, filter);
                 for (String s : orderCodes){
                     Order order = orderManager.getOrder(s);
-                    if (order != null){
+                    if (order != null && customerID != 9){
                         filtered.add(order);
                     }
                 }

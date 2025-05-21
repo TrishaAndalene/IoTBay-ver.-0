@@ -134,15 +134,31 @@ public class PaymentDAO {
             double amount = rs.getDouble("amount");
             LocalDate date = rs.getDate("shipmentDate").toLocalDate();
 
-
-            // payments.add(new Payment(cid, name, cardNumber, type, amount, date, orderID));
-            // Payment payment = new Payment(cid, name, cardNumber, type, amount, date, orderID);
-            // payment.setOrderID(orderID);
             Payment payment = new Payment(orderID, customerID, name, cardNumber, type, amount, date);
             payments.add(payment);
             System.out.println(payment);
         }
     }
     return payments;
+    }
+
+    public ArrayList<Payment> getSavedPaymentsByCustomerID(int customerID) throws SQLException {
+        ArrayList<Payment> savedPayments = new ArrayList<>();
+        String query = "SELECT * FROM SavedPayments WHERE customerID = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+        ps.setInt(1, customerID);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String name = rs.getString("name");
+            String cardNumber = rs.getString("cardNumber");
+            String type = rs.getString("type");
+            System.out.println("Retrieving payment method for : " + name + " " + type);
+
+            Payment payment = new Payment(customerID, name, cardNumber, type);
+            savedPayments.add(payment);
+            
+        }
+    }
+    return savedPayments;
     }
 }

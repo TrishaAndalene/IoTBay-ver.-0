@@ -99,12 +99,16 @@
                     <form action="AddToPayment.jsp" method="post">
                         <input type="submit" value="Add Other Payment Method" style="margin-left: 5%;" class="buttonEntry">
                     </form>
-
-                    <form action="#" method="post">
+            <% 
+                if (customerID != null && customerID != 9){
+                            
+                        %>
+                    <form action="SavedPaymentServlet" method="post">
                         <input type="submit" value="Change to Saved Payment Method" style="margin-left: 5%;" class="buttonEntry">
                     </form>
 
                     <% 
+                }
                      } else {
                             
                         %>

@@ -27,7 +27,8 @@
     <!-- main screen -->
     <div id="main_screen">
         <p id="promotion_title">IoT Bay</p>
-        <p id="promotion_line">Connect. Automate. Simplify. Your Smart Home Hub Awaits.</p>
+        <p id="promotion_line">Connect. Automate. Simplify.</p>
+        <p id="promotion_line">Your Smart Home Hub Awaits.</p>
         <div id="order_btn"><a href="BrowseItemsServlet">Shop Now</a></div>
     </div>
 
@@ -70,12 +71,21 @@
             <img src="img/circle_grey.png">
             <img src="img/circle_grey.png">
             <img src="img/circle_grey.png">
+        </div>       
+    </div>
+    <div id="order-search">
+        <div id="search_context">
+            <p>Find Your Order</p>
         </div>
-
-        <!-- slideshow -->
+        
+    <div id="search_bar">
+        <form action="OrderSearchServlet" method="post">
+            <input type="text" placeholder="Enter Order Code" name="searchQuery">
+            <button type="submit"></button>
+        </form>
+    </div>
         
     </div>
-
     <!-- Customer Favourite -->
     <div id="customer_favourite">
         <!-- Customer Favourite Text -->
@@ -83,10 +93,6 @@
             <p>CUSTOMER FAVOURITES</p>
         </div>
         <!-- Search bar -->
-        <div id="search_bar">
-            <input type="text" placeholder="Type to search" id="search_text">
-            <button><img id="search_icon" src="img/search_icon.png"></button>
-        </div>
 
         <!-- frame1 -->
          <div class="customer_fav_frame">

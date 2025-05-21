@@ -23,18 +23,12 @@
 <body>
     <%@ include file="/Header.jsp" %>
     <% 
-        ArrayList<Payment> savedPayments = new ArrayList<>();
-        if (customer != null) {
-            PaymentDAO paymentManager = (PaymentDAO) session.getAttribute("paymentManager");
-            if (paymentManager != null) {
-                savedPayments = (ArrayList<Payment>) paymentManager.getPaymentsByCustomerID(customerID);
-            }
-        }
+        ArrayList<Payment> savedPayments = (ArrayList<Payment>) request.getAttribute("savedPayments");
+
     %>
 
-
     <section class="content">
-        <form method="post" action="SavedPaymentServlet">
+        <form method="post" action="SavedPaymentChoiceServlet">
         <p><strong>Saved Payment Methods</strong></p>
 
         <% if (savedPayments == null || savedPayments.isEmpty()) { %>
@@ -47,23 +41,25 @@
                         <th>Name</th>
                         <th>Card Number</th>
                         <th>Type</th>
-                        <th>Amount</th>
-                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% for (int i = 0; i < savedPayments.size(); i++) {
-                        Payment p = savedPayments.get(i);
+                        Payment payment = savedPayments.get(i);
+                        String name = payment.getName();
+                        String cardNumber = payment.getCardNumber();
+                        String fourDigits = cardNumber.substring(cardNumber.length() - 4);
+                        String type = payment.getType();
+                        String combined = name +"."+ cardNumber +"."+ type;
+                        
                     %>
                     <tr>
                         <td style="text-align: center;">
-                            <input type="radio" name="selected" value="<%= i %>">
+                            <input type="radio" name="selected" value="<%= combined %>" required>
                         </td>
-                        <td><%= p.getName() %></td>
-                        <td><%= p.getCardNumber() %></td>
-                        <td><%= p.getType() %></td>
-                        <td>A$<%= p.getAmount() %></td>
-                        <td><%= p.getDate() %></td>
+                        <td><%= name %></td>
+                        <td>XXXX-<%= fourDigits %></td>
+                        <td><%= type %></td>
                     </tr>
                     <% } %>
                 </tbody>
@@ -72,8 +68,7 @@
         
             <br>
             
-
-            <input type="submit" name="submit" value="Confirm Payment" style="margin-left: 5%;" class="buttonEntry">
+            <input type="submit" name="submit" value="Choose Payment Method" style="margin-left: 5%;" class="buttonEntry">
         </form>  
     </section>
 

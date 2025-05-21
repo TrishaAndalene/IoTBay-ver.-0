@@ -27,7 +27,7 @@ public class StockSearchServlet extends HttpServlet {
         //1- retrieve the current session
         HttpSession session = request.getSession();
 
-        String search = request.getParameter("search");
+        String search = request.getParameter("searchQuery");
 
     
         //5- retrieve the manager instance from session      

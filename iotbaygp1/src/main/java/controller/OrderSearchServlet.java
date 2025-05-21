@@ -2,7 +2,6 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,7 +41,7 @@ public class OrderSearchServlet extends HttpServlet {
         System.out.println("Search received: " + search);
         ArrayList<Order> orderList = new ArrayList<>();
             try {
-                if (customerID != null){
+                if (search != null){
 
                     Order o = orderManager.getOrder(search);
                     orderList.add(o);

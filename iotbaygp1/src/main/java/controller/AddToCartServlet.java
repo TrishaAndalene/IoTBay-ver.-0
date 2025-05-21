@@ -50,6 +50,7 @@ public class AddToCartServlet extends HttpServlet {
             } else {
                 cartItemsManager.addItemToCart(cartID, upc, quantity);
             }
+            
             session.setAttribute("cartID", cartID);
             response.sendRedirect("BrowseItemsServlet");
 
