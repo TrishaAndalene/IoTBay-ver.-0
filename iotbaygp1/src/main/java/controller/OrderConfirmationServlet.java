@@ -50,9 +50,7 @@ public class OrderConfirmationServlet extends HttpServlet{
             try {
                 cartID = cartManager.getCreateCart(customerID);
             } catch (SQLException e){}
-        }
-        
-        //5- retrieve the manager instance from session      
+        }   
 
      
         try {    

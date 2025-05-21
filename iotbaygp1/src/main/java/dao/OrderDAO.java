@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import model.Order;
 
@@ -73,23 +74,38 @@ public OrderDAO(Connection conn) throws SQLException {
     }
 
   public String createOrder(Integer userID, double cost) throws SQLException{
-    Order order = new Order(userID, cost);
-    String orderID = order.getOrderId();
-    String date = order.getDate();
-    String status = order.getStatus();
-
-    String query = "INSERT INTO Orders(orderID, userID, datePlaced, totalCost, status) VALUES (?, ?, ?, ?, ?)";
+    String orderID = this.generateRandomStringList(1, 8);
+    String query = "INSERT INTO Orders(orderID, userID, datePlaced, totalCost, status) VALUES (?, ?, CURRENT_TIMESTAMP, ?, 'RECEIVED')";
     PreparedStatement ps = conn.prepareStatement(query);
-    ps.setString(1, orderID);
-    ps.setInt(2, userID);
-    ps.setString(3, date);    
-    ps.setDouble(4, cost);
-    ps.setString(5, status);
-
+    ps.setString(1, orderID); 
+    ps.setInt(2, userID);  
+    ps.setDouble(3, cost);
     ps.executeUpdate();
-    
+
     return orderID;
   }
+
+      public String generateRandomStringList(int numberOfStrings, int stringLength) {
+        List<String> stringList = new ArrayList<>();
+        Random random = new Random();
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        String result = "";
+
+        for (int i = 0; i < numberOfStrings; i++) {
+            StringBuilder sb = new StringBuilder(stringLength);
+            for (int j = 0; j < stringLength; j++) {
+                int randomIndex = random.nextInt(characters.length());
+                sb.append(characters.charAt(randomIndex));
+            }
+            stringList.add(sb.toString());
+        }
+
+        for (int n = 0; n < stringList.size(); n++){
+            result += stringList.get(n);
+        }
+
+        return result;
+    }
 
   public void deleteOrder(String orderID) throws SQLException{
     String query = "DELETE FROM Orders where orderID = ?";

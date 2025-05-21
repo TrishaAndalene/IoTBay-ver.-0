@@ -16,7 +16,7 @@ enum Status{
 public class Order implements Serializable{
     // Attributes lists
 
-    private int customerID;
+    private int customerID, paymentID;
     private String orderID, date;
     private Status status;
     private double cost;
@@ -33,12 +33,13 @@ public class Order implements Serializable{
         this.cost = cost;
     }
 
-    public Order(String code, int customerID, String date, double cost){
+    public Order(String code, int customerID, String date, double cost, int paymentID){
         this.status = Status.RECEIVED;
         this.customerID = customerID;
         this.orderID = code;
         this.date = date;
         this.cost = cost;
+        this.paymentID = paymentID;
     }
 
     public Order(String code, int customerID, String date, double cost, String status){

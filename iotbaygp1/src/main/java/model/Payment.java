@@ -1,29 +1,47 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import model.Type;
 
 public class Payment implements Serializable{
 
     private String name;
     private String cardNumber;
-    private Type type;
+    private String type;
     private double amount;
-    private LocalDateTime date;
+    private LocalDate date;
     private int customerID;
     private String orderID;
 
-    public Payment(int customerID, String name, String cardNumber, Type type, double amount, LocalDateTime date) {
+
+    // for new 
+    public Payment(String name, String cardNumber, String type) {
+        this.name = name;
+        this.cardNumber = cardNumber;
+        this.type = type;
+    }
+
+    // for db
+    // public Payment(int customerID, String name, String cardNumber, String type, double amount, LocalDateTime date, String orderID) {
+    public Payment(int customerID, String name, String cardNumber, String type) {
+        this.name = name;
+        this.cardNumber = cardNumber;
+        this.type = type;
+        this.customerID = customerID;
+    }
+
+    public Payment(String orderID, int customerID,  String name, String cardNumber, String type, double amount, LocalDate date) {
+        this.orderID = orderID;
+        this.customerID = customerID;
         this.name = name;
         this.cardNumber = cardNumber;
         this.type = type;
         this.amount = amount;
         this.date = date;
-        this.customerID = customerID;
-        this.orderID = null;
+
     }
+   
    
     public String getName() {
         return name;
@@ -33,7 +51,7 @@ public class Payment implements Serializable{
         return cardNumber;
     }
 
-    public Type getType() {
+    public String getType() {
         return type;
     }
 
@@ -49,7 +67,7 @@ public class Payment implements Serializable{
         this.cardNumber = cardNumber;
     }
 
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -69,13 +87,13 @@ public class Payment implements Serializable{
         this.customerID = customerID;
     }
 
-    public String getOrderID() {
-        return orderID;
-    }
+    // public String getOrderID() {
+    //     return orderID;
+    // }
 
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
-    }
+    // public void setOrderID(String orderID) {
+    //     this.orderID = orderID;
+    // }
 
 }
     

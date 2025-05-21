@@ -31,34 +31,25 @@
 
     <section class="content">
         <%
-    List<OrderItem> orderItems = (List<OrderItem>) request.getAttribute("orderItems");
-
-    if (orderItems == null) {
-    %>
-        <p>Wrong!</p>
-    
-    <% } else { %>
-
-    <div class="top">
-        <h1>Order Details</h1>
-    </div>
-    <br><br>
-
-    <%
+        List<OrderItem> orderItems = (List<OrderItem>) request.getAttribute("orderItems");
         Order order = (Order) request.getAttribute("order");
-        if (order == null){
-            out.println("null");
-        } else {
-    %>
-    <div class="content">
-        <h3>Order id: #<%=order.getOrderId() %></h3>
-        <h3>Status: <%= order.getStatus() %></h3>
-        <h3>Date placed: <%= order.getDate() %></h3>
-        <h3>Total cost: <%= order.getCost() %></h3>
-        <br>
-    <%
-    }
-    %>
+        if (orderItems == null) {
+                                        %>
+                <p>No order items</p>
+    
+        <% } else if (order == null){ %>
+
+            <p>No order</p>
+
+           <% } else { %>
+
+        <div class="top"><h1>Order Details</h1></div><br><br>
+        <div class="content">
+            <h3>Order id: #<%=order.getOrderId() %></h3>
+            <h3>Status: <%= order.getStatus() %></h3>
+            <h3>Date placed: <%= order.getDate() %></h3>
+            <h3>Total cost: <%= order.getCost() %></h3>
+            <br>
 
         <!-- Item list -->
         <div class="orderTable">
@@ -69,56 +60,25 @@
                     <th>Quantity</th>
                     <th>Price</th>
                 </tr>
-                <%
-                        Product p;
-                        int quantity;
-                        Order o = (Order) request.getAttribute("order");
-
-                        if (o != null){
-                            double totalPrice = o.getCost();
-                            if (orderItems != null) {
-                                for (OrderItem item: orderItems) {
-                                    p = item.getProduct();
-                                    quantity = item.getQuantity();
-    
+         <%  
+            for (OrderItem item: orderItems) {
+                Product p = item.getProduct();
+                int quantity = item.getQuantity();
+                System.out.println(quantity);
                         %>
                         <tr>
-                            <td><img style="max-width: 150px; height: auto; min-width: 150px;" src="<%= p.getImg()%>" alt=""></td>
+                            <% double itemTotal = p.getPrice() * quantity; %>
+                            <td><img src="<%= p.getImg()%>" alt=""></td>
                             <td><%= p.getName() %></td>
-                            <td class ="rows2"><!--<button class="inside-row">+</button>--><%= quantity %><!--<button class="inside-row">-</button> --></td>
-                            <td><%= p.getPrice()*quantity%></td>
+                            <td><%= quantity %></td>
+                            <td><%= itemTotal %></td>
                         </tr>
-                        <%
-                            }
-                        } else {
-                            if (orderItems != null) {
-                                for (OrderItem item: orderItems) {
-                                    p = item.getProduct();
-                                    quantity = item.getQuantity();
-                                    totalPrice += (p.getPrice() * quantity);
-                                
-                                %>
-                                <tr>
-                                    <td><img style="max-width: 150px; height: auto; min-width: 150px;" src="<%= p.getImg()%>" alt=""></td>
-                                    <td><%= p.getName() %></td>
-                                    <td class ="rows2"><!--<button class="inside-row">+</button>--><%= quantity %><!--<button class="inside-row">-</button> --></td>
-                                    <td><%= p.getPrice() * quantity%></td>
-                                </tr>
-                                <%
-                                }}
-                 %>   
-                <%
-                        }
-                    } else {
-                        System.out.println("is null");
+                        <%   
                     }
-
                 %>
                 </table>
-                                <%
-
-                        if (customer != null){
-                        %>
+                
+        <%    if (customer != null){  %>
                 <form action="ViewOrderServlet">
                     <input type="submit" value="Return to My Orders">
                 </form>
@@ -127,7 +87,7 @@
                     <input type="submit" value="Return to Home">
                 </form>
                 <% } %>
-    </div>
+        </div>
     </section>
     
 

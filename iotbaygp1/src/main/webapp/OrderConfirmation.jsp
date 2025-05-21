@@ -30,6 +30,7 @@
     <%
     List<OrderItem> orderItems = (List<OrderItem>) request.getAttribute("orderItems");
     String orderID = (String) request.getAttribute("orderID");
+    int confirmedPaymentID = (int) request.getAttribute("confirmedPaymentID");
 
     if (orderItems == null) {
     %>

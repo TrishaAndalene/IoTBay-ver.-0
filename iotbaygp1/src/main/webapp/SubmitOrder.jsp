@@ -1,4 +1,5 @@
 <%@ page import="model.Product" %>
+<%@ page import="model.Payment" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
@@ -24,9 +25,13 @@
     <link rel="stylesheet" href="css/ViewCart.css"> <!-- share the same template-->
 </head>
 <body style="overflow-x: hidden; overflow-y: scroll;">
+    
     <%@ include file="/Header.jsp" %>
 
     <%
+    Integer paymentID = (Integer) session.getAttribute("paymentID");
+    Payment payment = (Payment) session.getAttribute("payment");
+
     Map<Product, Integer> cartItems = (Map<Product, Integer>) request.getAttribute("cartItems");
 
     if (cartItems == null) {
@@ -82,6 +87,28 @@
                     <div class="line"><h4>_______</h4></div>
                     <h3  style="margin-left: 5%;">Total : A$<%= totalPrice %></h3>
 
+                    <br><br>
+
+                     <% if (payment == null) { %>
+                    
+
+                    <h1>Enter Payment Details</h1>
+                    <p>Customer ID: <%= session.getAttribute("customerID") %></p>
+                    <p>Payment ID: <%= session.getAttribute("paymentID") %></p>
+
+                    <form action="AddToPayment.jsp" method="post">
+                        <input type="submit" value="Add Other Payment Method" style="margin-left: 5%;" class="buttonEntry">
+                    </form>
+
+                    <form action="#" method="post">
+                        <input type="submit" value="Change to Saved Payment Method" style="margin-left: 5%;" class="buttonEntry">
+                    </form>
+
+                    <% 
+                     } else {
+                            
+                        %>
+                        <p>Payment Details Confirmed!</p><br><br>
                     <form action="SubmitCartServlet" method="post">
                         <% 
                         if (cartItems != null) {
@@ -90,14 +117,17 @@
                                 quantity = item.getValue();
                         %>
                                 <input type="hidden" name="upc" value="<%= p.getUPC() %>">
-                                <input type="hidden" name="quantity" value="<%= quantity %>">
                         <%
                             }}
                         %>
+                        <input type="hidden" name="paymentID" value="paymentID" required>
                         <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
-                        <input type="submit" value="Place order"  style="margin-left: 5%;" class="buttonEntry">
+                        <input type="submit" value="Confirm Payment"  style="margin-left: 5%;" class="buttonEntry">
                     </form>
 
+                        <%
+                            }
+                        %>
                     
                     <form action="ViewCartServlet" method="post">
                         <% 
@@ -116,6 +146,7 @@
                     </form>
                     <br><br>
             </div>
+
         </section style="padding-bottom: 10vh;">
 
 

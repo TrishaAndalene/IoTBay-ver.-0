@@ -41,20 +41,20 @@ public List<OrderItem> getOrderItems(String orderCode) throws SQLException{
         PreparedStatement ps = conn.prepareStatement(query);
         ps.setString(1, orderCode);
 
-        System.out.println("here 567");
-
         ResultSet result = ps.executeQuery();
 
-        System.out.println("here 0998766");
+        System.out.println("Inside OrderItemsDAO");
 
         while (result.next()){
-            int itemID = result.getInt("OrderItemID");
+            int itemID = result.getInt("orderItemID");
             String upc = result.getString("upc");
             int quantity = result.getInt("quantity");
 
-            Product product = this.productManager.findProduct(upc);
 
-            OrderItem p = new OrderItem(itemID, orderCode, product, quantity);
+            Product product = this.productManager.findProduct(upc);
+            System.out.println(product.getName());
+
+            OrderItem p = new OrderItem(itemID, orderCode, upc, product, quantity);
             OrderItemsList.add(p);
             System.out.println("Total products loaded: " + OrderItemsList.size());
         }

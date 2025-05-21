@@ -10,6 +10,7 @@ import dao.CartDAO;
 import dao.CartItemsDAO;
 import dao.OrderDAO;
 import dao.OrderItemsDAO;
+import dao.PaymentDAO;
 import dao.ProductDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,10 +29,6 @@ public class SubmitCartServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        Double cost = Double.parseDouble(request.getParameter("totalPrice"));
-
-        Integer customerID = (Integer) session.getAttribute("customerID");
-        if (customerID == null){customerID = 9;}
 
         // Manager tab
         CartDAO cartManager = (CartDAO) session.getAttribute("cartManager");
@@ -46,17 +43,34 @@ public class SubmitCartServlet extends HttpServlet{
         OrderItemsDAO orderItemManager = (OrderItemsDAO) session.getAttribute("orderItemsManager");
         if (orderItemManager == null) throw new IOException("orderItemManager is not found");
 
+        PaymentDAO paymentManager = (PaymentDAO) session.getAttribute("paymentManager");
+        if (paymentManager == null) throw new IOException("paymentManager is not found");
+
         ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
         if (productManager == null) throw new IOException("productManager is not found");
+
+        Double cost = Double.parseDouble(request.getParameter("totalPrice"));
+        Integer paymentID = (Integer) session.getAttribute("paymentID");
+
+        Integer customerID = (Integer) session.getAttribute("customerID");
+        if (customerID == null){customerID = 9;}
+
+
 
         try {
             if (customerID != null){
                 int cartID = cartManager.getCreateCart(customerID);
                 System.out.println(cartID);
+
                 List<CartItem> cartItems = cartItemsManager.getCartItems(cartID);
                 System.out.println("I am here");
+
                 String orderID = orderManager.createOrder(customerID, cost);
                 System.out.println("No, I'm here");
+
+                int confirmedPaymentID = paymentManager.confirmPayment(orderID, paymentID);
+
+
                 for (CartItem c : cartItems){
                     if (c.getQuantity() != 0){
                         orderItemManager.addItemToOrder(orderID, c.getUPC(), c.getQuantity());
@@ -76,8 +90,9 @@ public class SubmitCartServlet extends HttpServlet{
                 cartItemsManager.removeAllItem(cartID);
                 request.setAttribute("orderItems", orderItemsList);
                 request.setAttribute("orderID", orderID);
+                request.setAttribute("confirmedPaymentID", confirmedPaymentID);
 
-                request.getRequestDispatcher("OrderConfirmation.jsp").include(request, response);;
+                request.getRequestDispatcher("OrderConfirmation.jsp").include(request, response);
             } else {
                 System.out.println("customerID is null");
             }
@@ -85,7 +100,7 @@ public class SubmitCartServlet extends HttpServlet{
             // Create order object
         } catch (SQLException e){
             Logger.getLogger(RemoveProductServlet.class.getName()).log(Level.SEVERE, null, e);    
-        };
+        }
 
     }
 

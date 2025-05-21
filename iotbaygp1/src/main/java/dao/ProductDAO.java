@@ -30,7 +30,6 @@ public ProductDAO(Connection conn) throws SQLException {
 
     //search the ResultSet for a user using the parameters 
     if (rs.next()){
-            String productID = rs.getString("upc");
             String productName = rs.getString("name");
             double price = rs.getDouble("price");
             String brand = rs.getString("brand");
@@ -58,7 +57,7 @@ public ProductDAO(Connection conn) throws SQLException {
                 cat = Categories.MINI_PC;
             }
 
-            Product p = new Product(productID, productName, price, brand, colour, size, image, quantity, cat, desc);
+            Product p = new Product(upc, productName, price, brand, colour, size, image, quantity, cat, desc);
             return p;
         }
         return null;

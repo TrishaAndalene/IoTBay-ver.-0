@@ -42,41 +42,41 @@ public class ViewOrderServlet extends HttpServlet {
         ArrayList<Order> orderLists = (ArrayList<Order>) request.getAttribute("orderLists");
         ArrayList<Order> finalContainer = new ArrayList<>();
         if (orderLists == null){
-        try {
-            ArrayList<String> orderCodes = orderManager.getOrders(customerID);
-            ArrayList<Order> orderList = new ArrayList<>();
-            for (String s : orderCodes){
-                Order order = orderManager.getOrder(s);
-                if (order != null){
-                    orderList.add(order);
+            try {
+                ArrayList<String> orderCodes = orderManager.getOrders(customerID);
+                ArrayList<Order> orderList = new ArrayList<>();
+                for (String s : orderCodes){
+                    Order order = orderManager.getOrder(s);
+                    if (order != null){
+                        orderList.add(order);
+                    }
                 }
-            }
-                finalContainer = orderList;
-            } catch (SQLException e) {
+                    finalContainer = orderList;
+                } catch (SQLException e) {
 
-            }
+                }
         }  else {
             finalContainer = orderLists;
         }
 
         try{
-        if (filter == null || filter.equalsIgnoreCase("All")){
-            request.setAttribute("orderLists", finalContainer);
-        } else { 
-            System.out.println("View order servlet filter: " + filter);  
-            ArrayList<Order> filtered = new ArrayList<>(); 
-            List<String> orderCodes = orderManager.getOrdersByStatus(customerID, filter);
-            for (String s : orderCodes){
-                Order order = orderManager.getOrder(s);
-                if (order != null){
-                    filtered.add(order);
+            if (filter == null || filter.equalsIgnoreCase("All")){
+                request.setAttribute("orderLists", finalContainer);
+            } else { 
+                System.out.println("View order servlet filter: " + filter);  
+                ArrayList<Order> filtered = new ArrayList<>(); 
+                List<String> orderCodes = orderManager.getOrdersByStatus(customerID, filter);
+                for (String s : orderCodes){
+                    Order order = orderManager.getOrder(s);
+                    if (order != null){
+                        filtered.add(order);
+                    }
                 }
-            }
-            request.setAttribute("orderLists", filtered);
+                request.setAttribute("orderLists", filtered);
 
         }} catch (SQLException e){
 
-        };
+        }
 
         request.getRequestDispatcher("/ViewOrder.jsp").include(request, response);
 
