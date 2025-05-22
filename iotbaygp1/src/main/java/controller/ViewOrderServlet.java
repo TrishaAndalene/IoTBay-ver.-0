@@ -65,13 +65,15 @@ public class ViewOrderServlet extends HttpServlet {
             } else { 
                 System.out.println("View order servlet filter: " + filter);  
                 ArrayList<Order> filtered = new ArrayList<>(); 
+                if (customerID != 9){
                 List<String> orderCodes = orderManager.getOrdersByStatus(customerID, filter);
                 for (String s : orderCodes){
                     Order order = orderManager.getOrder(s);
-                    if (order != null && customerID != 9){
+                    if (order != null){
                         filtered.add(order);
                     }
                 }
+            }
                 request.setAttribute("orderLists", filtered);
 
         }} catch (SQLException e){

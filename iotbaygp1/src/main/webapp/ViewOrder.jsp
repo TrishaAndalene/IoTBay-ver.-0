@@ -43,7 +43,7 @@
             </form>
         </div>
         <div class="search-bar">
-            <form action="OrderSearchServlet" method="post">
+            <form action="OrderSearchServlet" method="post" style="display:inline-flex; margin-top: 2vh;">
               <input type="text" placeholder="Search by code" name="searchQuery">
               <button type="submit">Search</button> <!-- later change it with icon -->
             </form>

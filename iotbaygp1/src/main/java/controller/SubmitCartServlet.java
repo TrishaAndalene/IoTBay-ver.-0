@@ -91,6 +91,8 @@ public class SubmitCartServlet extends HttpServlet{
                 request.setAttribute("orderItems", orderItemsList);
                 request.setAttribute("orderID", orderID);
                 request.setAttribute("confirmedPaymentID", confirmedPaymentID);
+                session.removeAttribute("paymentID");
+                session.removeAttribute("payment");
 
                 request.getRequestDispatcher("OrderConfirmation.jsp").include(request, response);
             } else {

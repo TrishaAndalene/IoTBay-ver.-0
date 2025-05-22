@@ -92,7 +92,7 @@
                         <% if (storeCustomer != null)
                          { %> <h5><b>Customer:</b> <%= storeCustomer.getFirstName() %> <%= storeCustomer.getLastName() %></h5>
                         <% } else { %> 
-                            <h5><b>Cusomter:</b> No Current Customer</h5>
+                            <h5><b>Customer:</b> No Current Customer</h5>
                         <% } %> 
                             <input type="text" name="customerPhn" placeholder="Search Phone #">
                             <button type="submit">Search for Customer</button>

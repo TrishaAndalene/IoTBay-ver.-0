@@ -45,7 +45,7 @@
                      <div class="err">
                             <% String errorMsg = (String) request.getAttribute("errorMsg"); 
                                 if (errorMsg != null) { %>
-                                <p><%= errorMsg %></p>
+                                <p class="error"><%= errorMsg %></p>
                                 <% } %>
                         </div>                 
                 </td>
@@ -68,18 +68,18 @@
                      <div class="err2">
                             <% String errorMesg = (String) request.getAttribute("errorMesg"); 
                                 if (errorMesg != null) { %>
-                                <p><%= errorMesg %></p>
+                                <p class="error"><%= errorMesg %></p>
                                 <% } %>
                         </div>                  
                 </td>
             </tr>
             <tr>
                 <td>Product QTY: </td>    
-                <td><input type="number" name="quantity" placeholder="QTY">
+                <td><input type="text" name="quantity" placeholder="QTY">
                      <div class="err3">
-                            <% String errorMessg = (String) request.getAttribute("errorMessg"); 
-                                if (errorMessg != null) { %>
-                                <p><%= errorMessg %></p>
+                            <% String errorMssg = (String) request.getAttribute("errorMessg"); 
+                                if (errorMssg != null) { %>
+                                <p class="error"><%= errorMssg %></p>
                                 <% } %>
                         </div>                   
                 </td>

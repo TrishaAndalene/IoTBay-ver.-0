@@ -28,7 +28,7 @@
     <div id="main_screen">
         <p id="promotion_title">IoT Bay</p>
         <p id="promotion_line">Connect. Automate. Simplify.</p>
-        <p id="promotion_line">Your Smart Home Hub Awaits.</p>
+        <p id="promotion_line2">Your Smart Home Hub Awaits.</p>
         <div id="order_btn"><a href="BrowseItemsServlet">Shop Now</a></div>
     </div>
 

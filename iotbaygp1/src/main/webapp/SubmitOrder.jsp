@@ -93,18 +93,16 @@
                     
 
                     <h1>Enter Payment Details</h1>
-                    <p>Customer ID: <%= session.getAttribute("customerID") %></p>
-                    <p>Payment ID: <%= session.getAttribute("paymentID") %></p>
 
                     <form action="AddToPayment.jsp" method="post">
-                        <input type="submit" value="Add Other Payment Method" style="margin-left: 5%;" class="buttonEntry">
+                        <input type="submit" value="Add Payment Method" style="margin-left: 5%;" class="buttonEntry">
                     </form>
             <% 
                 if (customerID != null && customerID != 9){
                             
                         %>
                     <form action="SavedPaymentServlet" method="post">
-                        <input type="submit" value="Change to Saved Payment Method" style="margin-left: 5%;" class="buttonEntry">
+                        <input type="submit" value="Use Saved Payment Method" style="margin-left: 5%;" class="buttonEntry">
                     </form>
 
                     <% 

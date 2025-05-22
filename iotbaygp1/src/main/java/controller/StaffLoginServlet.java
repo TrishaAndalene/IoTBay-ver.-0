@@ -30,10 +30,14 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     if (staffManager == null) throw new IOException("DB manager not found");
     StoreCartDAO storeCartManager = (StoreCartDAO) session.getAttribute("storeCartManager");
 
-    Staff staff = null;       
+    Staff staff = null;    
+    int logID = 0;   
  
     try {       
         staff = staffManager.findStaff(email, password);
+        if(staff != null){
+            logID = staffManager.addAccessStaffLog(staff);
+        }       
         
     } catch (SQLException ex) {           
         Logger.getLogger(StaffLoginServlet.class.getName()).log(Level.SEVERE, null, ex);    
@@ -41,6 +45,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 
     if (staff != null) {                     
         //13-save the logged in user object to the session
+        session.setAttribute("logID", logID);         
         session.setAttribute("staff", staff);
         session.setAttribute("staffID", staff.getID());
         try {
@@ -53,7 +58,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         request.getRequestDispatcher("/StaffLanding.jsp").include(request, response);   
     } else {                       
         //15-set user does not exist error to the session
-        session.setAttribute("errorMsg", "Incorrect email or password");        
+        request.setAttribute("errorMsg", "Incorrect email or password");        
         //16- redirect user back to the login.jsp
         request.getRequestDispatcher("/StaffLogin.jsp").include(request, response);  
         }   

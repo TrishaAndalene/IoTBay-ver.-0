@@ -101,6 +101,11 @@ div.line {
     margin-left: 5vw;
 }
 
+.right-content .error {
+    color:red;
+    font-size: x-small;
+}
+
 input {
     margin-left: 5vw;
     margin-top: 4vh;

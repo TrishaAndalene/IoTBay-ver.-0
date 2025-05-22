@@ -105,6 +105,7 @@ body{
 
 
 
+
 .qty-update {
     display: flex;
     align-items: stretch;
@@ -127,6 +128,12 @@ body{
     border: 2px solid #babfd2;
     border-radius: 5px;
     width: 30%;
+}
+.qty-update .error {
+    color:red;
+    font-size: x-small;
+    display: flex;
+    align-self: flex-end;
 }
 
 

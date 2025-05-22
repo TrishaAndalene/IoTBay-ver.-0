@@ -3,31 +3,48 @@
 <jsp:useBean id="shipment" class="model.Shipment" scope="request" />
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Shipment Form</title>
+  <meta charset="UTF-8">
+  <title>Enter Shipment Details</title>
+  <link rel="stylesheet" href="css/Header.css">
+  <link rel="stylesheet" href="css/Footer.css">
+  <link rel="stylesheet" href="css/Shipment.css">
 </head>
 <body>
-  <h2><%= shipment.getShipmentId() > 0 ? "Edit Shipment" : "Add Shipment" %></h2>
 
-  <form action="shipment" method="post">
-    <input type="hidden" name="shipmentId" value="<%= shipment.getShipmentId() %>" />
+  <div id="shipment_section">
+    <h2><%= shipment.getShipmentId() > 0 ? "Edit Shipment" : "Enter Shipment Details" %></h2>
 
-    <label>Order ID:</label>
-    <input type="text" name="orderId" value="<%= shipment.getOrderId() %>" readonly /><br/>
+    <% if (shipment.getShipmentId() > 0) { %>
+      <p class="shipment-id">
+        Shipment ID: <%= String.format("%03d", shipment.getShipmentId()) %>
+      </p>
+    <% } %>
 
-    <label>Shipment Method:</label>
-    <input type="text" name="shipmentMethod" value="<%= shipment.getShipmentMethod() != null ? shipment.getShipmentMethod() : "" %>" required /><br/>
+    <form action="ShipmentServlet" method="post">
+      <input type="hidden" name="shipmentId" value="<%= shipment.getShipmentId() %>" />
+      <input type="hidden" name="orderId" value="<%= shipment.getOrderId() %>" />
 
-    <label>Shipment Date:</label>
-    <input type="date" name="shipmentDate" value="<%= shipment.getShipmentDate() != null ? new SimpleDateFormat("yyyy-MM-dd").format(shipment.getShipmentDate()) : "" %>" required /><br/>
+      <label for="shipmentMethod">Shipment Method:</label>
+      <select name="shipmentMethod" id="shipmentMethod" required>
+        <option value="">Select...</option>
+        <option value="Standard" <%= "Standard".equals(shipment.getShipmentMethod()) ? "selected" : "" %>>Standard</option>
+        <option value="Express" <%= "Express".equals(shipment.getShipmentMethod()) ? "selected" : "" %>>Express</option>
+      </select>
 
-    <label>Shipment Address:</label>
-    <input type="text" name="shipmentAddress" value="<%= shipment.getShipmentAddress() != null ? shipment.getShipmentAddress() : "" %>" required /><br/>
+      <label for="shipmentDate">Shipment Date:</label>
+      <input type="date" name="shipmentDate" id="shipmentDate"
+             value="<%= shipment.getShipmentDate() != null ? new SimpleDateFormat("yyyy-MM-dd").format(shipment.getShipmentDate()) : "" %>" required />
 
-    <input type="submit" value="Submit Shipment" />
-  </form>
+      <label for="shipmentAddress">Shipment Address:</label>
+      <textarea name="shipmentAddress" id="shipmentAddress" required><%= shipment.getShipmentAddress() != null ? shipment.getShipmentAddress() : "" %></textarea>
 
-  <a href="shipment">Back to List</a>
+      <input type="submit" value="Submit Shipment" />
+    </form>
+
+    <a href="shipment" class="back-link">Back to Shipment List</a>
+  </div>
+
 </body>
 </html>

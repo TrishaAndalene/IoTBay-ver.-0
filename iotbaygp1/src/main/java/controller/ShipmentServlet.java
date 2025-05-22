@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Shipment;
 
-@WebServlet("/shipment")
+@WebServlet("/ShipmentServlet")
 public class ShipmentServlet extends HttpServlet {
     private ShipmentDAO shipmentDAO;
 
@@ -79,7 +79,7 @@ public class ShipmentServlet extends HttpServlet {
             }
 
             request.getSession().removeAttribute("orderId");
-            response.sendRedirect("shipment");
+            response.sendRedirect("ShipmentServlet");
         } catch (Exception e) {
             throw new ServletException(e);
         }
@@ -88,10 +88,19 @@ public class ShipmentServlet extends HttpServlet {
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Integer orderId = (Integer) session.getAttribute("orderId");
+        Object rawOrderId = session.getAttribute("orderId");
 
-        if (orderId == null) {
+        if (rawOrderId == null) {
             throw new ServletException("Missing orderId in session. Cannot create shipment.");
+        }
+
+        int orderId;
+        try {
+            orderId = rawOrderId instanceof Integer
+                    ? (Integer) rawOrderId
+                    : Integer.parseInt(rawOrderId.toString());
+        } catch (Exception e) {
+            throw new ServletException("Invalid orderId format in session", e);
         }
 
         Shipment shipment = new Shipment();
@@ -112,7 +121,7 @@ public class ShipmentServlet extends HttpServlet {
             throws Exception {
         int shipmentId = Integer.parseInt(request.getParameter("id"));
         shipmentDAO.deleteShipment(shipmentId);
-        response.sendRedirect("shipment");
+        response.sendRedirect("ShipmentServlet");
     }
 
     private void listShipments(HttpServletRequest request, HttpServletResponse response)

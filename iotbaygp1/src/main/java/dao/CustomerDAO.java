@@ -1,12 +1,15 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.AccessLog;
 import model.Customer;
 
 public class CustomerDAO {
@@ -128,5 +131,59 @@ public class CustomerDAO {
         int success = st.executeUpdate(query);
 
         return success;
+    }
+
+        public int addAccessCustomerLog(Customer customer) throws SQLException{
+        int customer_id = customer.getID();
+        String email = customer.getEmail();
+
+        String query = "INSERT INTO CustomerAccessLog (customer_id, customer_email, login) VALUES (?, ?, DATETIME('now'))";
+
+        PreparedStatement pst = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        pst.setInt(1, customer_id);
+        pst.setString(2, email);
+
+        pst.executeUpdate();
+        System.out.println("Customer log add success!");
+
+        ResultSet rs = pst.getGeneratedKeys();
+        if (rs.next()) {
+            int id = rs.getInt(1);
+            System.out.println("ID retrieved: " + id);
+            return id;
+        } else {
+            throw new SQLException("Could not get ID.");
+        }
+    }
+
+    public void addAccessCustomerLogout(int logID) throws SQLException{
+        String query = "UPDATE CustomerAccessLog SET logout=DATETIME('now') WHERE id='"+logID+"'";
+
+        st.executeUpdate(query);
+        System.out.println("success");
+    }
+
+    public ArrayList<AccessLog> getAccessLog(String email) throws SQLException{
+        ArrayList<AccessLog> accessLogSet = new ArrayList<>();
+
+        String query = "SELECT * FROM CustomerAccessLog WHERE customer_email='"+email+"'";
+
+        ResultSet rs = st.executeQuery(query);
+
+        while(rs.next()){
+            int accessID = rs.getInt("id");
+            int customerID = rs.getInt("customer_id");
+            String customerEmail = rs.getString("customer_email");
+            Timestamp loginTime = rs.getTimestamp("login");
+            Timestamp logoutTime = rs.getTimestamp("logout");
+
+            AccessLog accessLog = new AccessLog(accessID, customerID, customerEmail, loginTime.toLocalDateTime(), logoutTime != null ? logoutTime.toLocalDateTime() : null);
+            
+            accessLogSet.add(accessLog);
+        }
+
+        rs.close();
+
+        return accessLogSet;
     }
 }

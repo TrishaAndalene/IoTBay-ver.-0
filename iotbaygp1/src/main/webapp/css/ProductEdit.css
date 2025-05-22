@@ -125,8 +125,14 @@ body{
 
 .btm-btns .back {
     background-color: #2440ad; 
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 .btm-btns .remove {
-    background-color: #a7051e; 
+    background-color: #a7051e;
+    border-radius: 5px; 
+    font-size: 13px;
+    font-weight: bold;
 }

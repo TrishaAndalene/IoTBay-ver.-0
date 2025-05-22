@@ -45,6 +45,12 @@
                     <label for="rememberMe">Remember me</label> <br>
                     <input type="submit" id="signInBtn" value="Sign In">
                 </form>
+                    <div class="err">
+                            <% String errorMsg = (String) request.getAttribute("errorMsg"); 
+                                if (errorMsg != null) { %>
+                                <p class="error"><%= errorMsg %></p>
+                                <% } %>
+                    </div>  
 
                 <!-- line only -->
                 <div class="line"><h4>_______</h4></div>

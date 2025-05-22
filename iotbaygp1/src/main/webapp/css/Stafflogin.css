@@ -125,6 +125,13 @@ body{
     border-color: rgb(76, 166, 255);
 }
 
+.submit-cont .err {
+    color:red;
+    font-size: x-small;
+    display: flex;
+    align-self: flex-end;
+}
+
 .forgot-container{
     display: flex;
     margin-top: 10px;

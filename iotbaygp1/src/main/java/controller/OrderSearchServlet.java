@@ -36,8 +36,7 @@ public class OrderSearchServlet extends HttpServlet {
 
         //3- capture the posted email - check jsp form name to see what parameter name
         Integer customerID = (Integer) session.getAttribute("customerID");  
-        if (customerID == null) throw new IOException("customerID is null");  
-    
+
         System.out.println("Search received: " + search);
         ArrayList<Order> orderList = new ArrayList<>();
             try {

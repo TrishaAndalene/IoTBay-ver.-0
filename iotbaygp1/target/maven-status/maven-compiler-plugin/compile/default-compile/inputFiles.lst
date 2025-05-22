@@ -43,6 +43,7 @@
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/CartServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/ProductEditServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/SavedPaymentChoiceServlet.java
+/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/AccessLog.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/CustomerLoginServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/StorePurchaseDAO.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/Payment.java
@@ -65,6 +66,7 @@
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/Cart.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/dao/PaymentDAO.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/AddToStoreCartServlet.java
+/Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/AccessLogServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/controller/OrderServlet.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/CartItem.java
 /Users/elle/Documents/ISD/IoTBay-ver.-0/iotbaygp1/src/main/java/model/OrderItem.java

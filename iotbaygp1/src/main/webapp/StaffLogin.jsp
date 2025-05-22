@@ -41,13 +41,14 @@
                 </div>
                 <div class="submit-cont">
                         <input type="submit" id="signInBtn" value="Sign In">
-                </div> 
-                     <div class="err">
+                        <div class="err">
                             <% String errorMsg = (String) request.getAttribute("errorMsg"); 
                                 if (errorMsg != null) { %>
                                 <p><%= errorMsg %></p>
                                 <% } %>
-                    </div>                 
+                    </div> 
+                </div> 
+                
                 </form>
                 <br>
                 <div class="forgot-container">

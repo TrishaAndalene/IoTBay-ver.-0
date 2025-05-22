@@ -33,13 +33,7 @@
             <% } else { %>
     <!-- main screen -->
     <div id="main_screen">
-        <h2 id="staff_name">Stock Management</h2>
-                <div class="err">
-                  <% String errorMsg = (String) request.getAttribute("errorMsg"); 
-                    if (errorMsg != null) { %>
-                    <p style="color:red;"><%= errorMsg %></p>
-                    <% } %>
-                </div>       
+        <h2 id="staff_name">Stock Management</h2>    
         <table id="product-table">
             <thead>
                 <tr>
@@ -64,6 +58,12 @@
                     <input type="hidden" name="upc" value="<%= p.getUPC() %>">
                     <input type="text" name="quantity" required>
                     <button type="submit">Update Stock</button>
+                    <div class="err">
+                  <% String errorMsg = (String) request.getAttribute("errorMsg"); 
+                    if (errorMsg != null) { %>
+                    <p style="color:red;"><%= errorMsg %></p>
+                    <% } %>
+                </div>   
                   </form>
                 </div>
               </td>

@@ -27,8 +27,14 @@ public class CustomerLoginServlet extends HttpServlet{
 
         Customer customer = null;
 
+        int logID = 0;
+
+
         try{
             customer = customerManager.findCustomer(email, password);
+            if(customer != null){
+                logID = customerManager.addAccessCustomerLog(customer);
+            }
 
         }catch (SQLException ex){
             Logger.getLogger(CustomerLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -36,10 +42,11 @@ public class CustomerLoginServlet extends HttpServlet{
 
         if(customer != null){
             session.setAttribute("customer", customer);
+            session.setAttribute("logID", logID);
             session.setAttribute("customerID", customer.getID());
             request.getRequestDispatcher("/Main.jsp").include(request, response);
         }else{
-            session.setAttribute("errorMsg", "User does not exist in the system");
+            request.setAttribute("errorMsg", "User does not exist in the system");
             request.getRequestDispatcher("/CustomerLogin.jsp").include(request, response);
         }
     }

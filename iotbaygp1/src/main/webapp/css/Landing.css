@@ -56,6 +56,15 @@ body {
     margin-bottom: 30px;
 }
 
+#promotion_line2{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    font-family: "Sriracha", cursive;
+    margin-left: 6.5%;
+    margin-bottom: 30px;
+}
+
 #order_btn{
     height: 80px;
     width: 250px;

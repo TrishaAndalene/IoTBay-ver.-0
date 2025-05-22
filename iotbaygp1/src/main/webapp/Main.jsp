@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/Header.css">
-    <link rel="stylesheet" href="css/Main.css">
+    <link rel="stylesheet" href="css/Landing.css">
     <link rel="stylesheet" href="css/Footer.css">
 
 </head>
@@ -24,173 +24,123 @@
 
     <!-- main screen -->
     <div id="main_screen">
-        <img id="main_background" src="img/main_image.png">
-        <p id="promotion_title">Promotion Title</p>
-        <p id="promotion_line">Promotion line</p>
-        <div id="order_btn"><a href="Order.jsp">ORDER NOW</a></div>
+        <p id="promotion_title">IoT Bay</p>
+        <p id="promotion_line">Connect. Automate. Simplify.</p>
+        <p id="promotion_line2">Your Smart Home Hub Awaits.</p>
+        <div id="order_btn"><a href="BrowseItemsServlet">Shop Now</a></div>
     </div>
 
     <!-- Second -->
     <div id="second_screen">
         <!-- Second Screen Text -->
         <div id="second_screen_context">
-            <p>SHOP FROM 15 CATEGORIES</p>
+            <p>SHOP OUR CATEGORIES</p>
         </div>
         <!-- split line -->
         <div id="split_line"></div>
         <!-- frame1 -->
-        <div class="frame_2nd" id="frame1_2">
-            <img class="frame_2nd_img" id="frame_2nd_img1" src="img/diamond.jpg">
-            <p class="product_name">NAME</p>
-        </div>
+        <div class="category-frame">
+            <button>
+                <img class="arrow" id="arrow_left" src="img/left.png">
+            </button>
+            <div class="frame_2nd">
+                <img id="frame_2nd_img1" src="img/minipc.png">
+                <p class="product_name">Mini PC</p>
+            </div>
         <!-- frame2 -->
-        <div class="frame_2nd" id="frame2_2">
-            <img class="frame_2nd_img" id="frame_2nd_img2" src="img/diamond.jpg">
-            <p class="product_name">NAME</p>
-        </div>
+            <div class="frame_2nd">
+                <img id="frame_2nd_img2" src="img/activitytracker.png">
+                <p class="product_name">Activity Trackers</p>
+            </div>
         <!-- frame3 -->
-        <div class="frame_2nd" id="frame3_2">
-            <img class="frame_2nd_img" id="frame_2nd_img3" src="img/diamond.jpg">
-            <p class="product_name">NAME</p>
-        </div>.
-        <!-- Arrow Sign -->
-        <button>
-            <img class="arrow" id="arrow_left" src="img/left.png">
-        </button>
-        <button>
-            <img class="arrow" id="arrow_right" src="img/right.png">
-        </button>
-        <!-- slideshow -->
-        <img class="slideshow" id="slideshow1" src="img/circle_blue.png">
-        <img class="slideshow" id="slideshow2" src="img/circle_grey.png">
-        <img class="slideshow" id="slideshow3" src="img/circle_grey.png">
-        <img class="slideshow" id="slideshow4" src="img/circle_grey.png">
-        <img class="slideshow" id="slideshow5" src="img/circle_grey.png">
-    </div>
+            <div class="frame_2nd">
+                <img id="frame_2nd_img3" src="img/wifiphoto.png">
+                <p class="product_name">Wifi</p>
+            </div>
 
+            <button>
+                <img class="arrow" id="arrow_right" src="img/right.png">
+            </button>
+        </div>
+        <!-- Arrow Sign -->
+        <div class="slideshow">
+            <img src="img/circle_blue.png">
+            <img src="img/circle_grey.png">
+            <img src="img/circle_grey.png">
+            <img src="img/circle_grey.png">
+            <img src="img/circle_grey.png">
+        </div>       
+    </div>
+    <div id="order-search">
+        <div id="search_context">
+            <p>Find Your Order</p>
+        </div>
+        
+    <div id="search_bar">
+        <form action="OrderSearchServlet" method="post">
+            <input type="text" placeholder="Enter Order Code" name="searchQuery">
+            <button type="submit"></button>
+        </form>
+    </div>
+        
+    </div>
     <!-- Customer Favourite -->
     <div id="customer_favourite">
         <!-- Customer Favourite Text -->
         <div id="customer_favourite_context">
-            <p>CUSTOMER FAVOURITE</p>
+            <p>CUSTOMER FAVOURITES</p>
         </div>
         <!-- Search bar -->
-        <div id="search_bar">
-            <input type="text" placeholder="Type to search" id="search_text">
-            <button><img id="search_icon" src="img/search_icon.png"></button>
-        </div>
 
         <!-- frame1 -->
-        <div class="frame_3rd" id="frame1_3">
-            <img class="frame_3rd_img" id="frame_3rd_img1" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
-            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
+         <div class="customer_fav_frame">
+        <div class="frame_3rd">
+            <img id="frame_3rd_img1" src="img/iotboard.jpg">
+            <p class="price">$458.99 AUD</p>
+            <button class="order_btn">ORDER NOW</button>
         </div>
         <!-- frame2 -->
-        <div class="frame_3rd" id="frame2_3">
-            <img class="frame_3rd_img" id="frame_3rd_img2" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
-            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
+        <div class="frame_3rd">
+            <img id="frame_3rd_img2" src="img/rakwireless.gif">
+            <p class="price">$159.95 AUD</p>
+            <button class="order_btn">ORDER NOW</button>
         </div>
         <!-- frame3 -->
-        <div class="frame_3rd" id="frame3_3">
-            <img class="frame_3rd_img" id="frame_3rd_img3" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
-            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
+        <div class="frame_3rd">
+            <img id="frame_3rd_img3" src="img/globalstat.png">
+            <p class="price">$158.99 AUD</p>
+            <button class="order_btn">ORDER NOW</button>
         </div>
-    </div>
-    <div id="customer_favourite2">
-        <!-- Customer Favourite Text -->
-        <div id="customer_favourite2_context">
-            <p>RECOMMENDATION</p>
-        </div>
-
-        <!-- frame1 -->
-        <div class="frame_3rd" id="frame1_3">
-            <img class="frame_3rd_img" id="frame_3rd_img1" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
-            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
-        </div>
-        <!-- frame2 -->
-        <div class="frame_3rd" id="frame2_3">
-            <img class="frame_3rd_img" id="frame_3rd_img2" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
-            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
-        </div>
-        <!-- frame3 -->
-        <div class="frame_3rd" id="frame3_3">
-            <img class="frame_3rd_img" id="frame_3rd_img3" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
-            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
-        </div>
-    </div>
-    <div id="customer_favourite3">
-        <!-- Customer Favourite Text -->
-        <div id="customer_favourite3_context">
-            <p>ORDER AGAIN</p>
-        </div>
-
-        <!-- frame1 -->
-        <div class="frame_3rd" id="frame1_3">
-            <img class="frame_3rd_img" id="frame_3rd_img1" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
-            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
-        </div>
-        <!-- frame2 -->
-        <div class="frame_3rd" id="frame2_3">
-            <img class="frame_3rd_img" id="frame_3rd_img2" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
-            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
-        </div>
-        <!-- frame3 -->
-        <div class="frame_3rd" id="frame3_3">
-            <img class="frame_3rd_img" id="frame_3rd_img3" src="img/stair.jpg">
-            <p class="price">$17.99 AUD</p>
-            <button class="order_btn"><a href="Order.jsp">ORDER NOW</a></button>
         </div>
     </div>
 
     <!-- LATEST REVIEWS -->
     <div id="latest_reviews">
+
         <!-- Latest review context -->
         <div id="latest_reveiw_context">
             <p>LATEST REVEIWS</p>
         </div>
 
         <!-- Review Section -->
-        <div id="review_section">
-            <div>
-                <!-- img -->
-                <img id="review_img" src="img/diamond.jpg">
+         <div class="review_container">
+            <button>
+                <img class="arrow" src="img/left.png">
+            </button>
+            <div id="review_section">
+                <div>
+                    <!-- img -->
+                    <img id="review_img" src="img/wifiphoto.png">
+                </div>
+                            <div class="wall">
+                <p class="quote">"I recently discovered this IoT store, and I'm genuinely impressed. The selection of smart devices is top-notch and clearly curated with quality in mind. The website was smooth to navigate, and I appreciated the helpful product descriptions and reviews. Plus, the customer service team was responsive and knowledgeable when I had a question about device compatibility.</p><br><p class="quote">If you're looking to upgrade your home or workspace with reliable IoT tech, I highly recommend this store. It's now my go-to for smart devices!"</><br><br>
+                <p class="cust">- Bob C., Sydney</p>
             </div>
-            <div id="wall"></div>
-        </div>
-        <!-- Arrow Sign -->
-        <button>
-            <img class="arrow" id="arrow_left2" src="img/left.png">
-        </button>
-        <button>
-            <img class="arrow" id="arrow_right2" src="img/right.png">
-        </button>
-    </div>
+            </div>
 
-    <!-- Rate your experience -->
-    <div id="rating">
-        <!-- Rating context -->
-        <div id="rating_context">
-            <p>RATE YOUR EXPERIENCE</p>
-        </div>
-
-        <div id="rating_section">
-            <div id="rating_text">
-                <p>How would you like to rate your experience with us?</p>
-            </div>
-            <div>
-                <img id="star" src="img/star.png">
-            </div>
-            <input type="text" placeholder="Leave your comment here" id="rating_comment">
-            <button id="submit_btn">Submit</button>
-            <div id="wall2"></div>
+            <button>
+                <img class="arrow" src="img/right.png">
+            </button>
         </div>
     </div>
 
@@ -201,19 +151,21 @@
             <p>WANT TO KNOW ABOUT US?</p>
         </div>
         <!-- IMG Stack -->
-        <div class="image-stack">
-            <img src="img/diamond.jpg" class="stacked-img" style="z-index: 4;">
-            <img src="img/diamond.jpg" class="stacked-img" style="z-index: 1;">
-            <img src="img/diamond.jpg" class="stacked-img" style="z-index: 2;">
-            <img src="img/diamond.jpg" class="stacked-img" style="z-index: 3;">
+         <div class="about-stack">
+
+        <div class="image-stack" style="position: relative;">
+            <img src="img/diamond.jpg" class="stacked-img">
+            <img src="img/diamond.jpg" class="stacked-img">
+            <img src="img/diamond.jpg" class="stacked-img">
+            <img src="img/diamond.jpg" class="stacked-img">
         </div>
         <!-- company text -->
         <div id="company_text">
-            <p>Lorem ipsum dolor sit amet,</p><br/>
-            <p>consectetur adipiscing elit. Phasellus</p><br/>
-            <p>vulputate felis sit amet laoreet</p><br/>
-            <p>varius. Curabitur tempor diam vel</p><br/>
-            <p>lorem.</p>
+            <p>Welcome to IoT Bay!</p><br/>
+            <p>We are an independant retailer specialising in IoT technologies for personal and business use.</p><br/>
+            <p>Visit us in Sydney, or shop with us here online</p><br/>
+            <p>- the IoT Bay family x</p>
+        </div>
         </div>
     </div>
 
@@ -221,35 +173,37 @@
     <div id="frequent_faq">
         <!-- faq context -->
         <div id="frequent_context">
-            <p>FREQUENT FAQs</p>
+            <p>FAQs</p>
         </div>
 
         <!-- faq section -->
-        <div class="faq_section" id="faq1">
-            <p id="faq_section_text">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING.</p>
-            <button>
-                <img id="plus" src="img/plus.png">
-            </button>
+        <div class="faq_container">
+            <div class="faq_section">
+                <p id="faq_section_text">What are the shipping options?</p>
+                <button>
+                    <img id="plus" src="img/plus.png">
+                </button>
+            </div>
+            <div class="faq_section">
+                <p id="faq_section_text">Do you do refunds for online orders?</p>
+                <button>
+                    <img id="plus" src="img/plus.png">
+                </button>
+            </div>
+            <div class="faq_section">
+                <p id="faq_section_text">Do you have a store I can visit in person?</p>
+                <button>
+                    <img id="plus" src="img/plus.png">
+                </button>
+            </div>
+            <div class="faq_section">
+                <p id="faq_section_text">Can I get IoT advice from an expert?</p>
+                <button>
+                    <img id="plus" src="img/plus.png">
+                </button>
+            </div>
         </div>
-        <div class="faq_section" id="faq2">
-            <p id="faq_section_text">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING.</p>
-            <button>
-                <img id="plus" src="img/plus.png">
-            </button>
-        </div>
-        <div class="faq_section" id="faq3">
-            <p id="faq_section_text">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING.</p>
-            <button>
-                <img id="plus" src="img/plus.png">
-            </button>
-        </div>
-        <div class="faq_section" id="faq4">
-            <p id="faq_section_text">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING.</p>
-            <button>
-                <img id="plus" src="img/plus.png">
-            </button>
-        </div>
-    </div>
+    </>
     <!-- footer -->
     <%@ include file="/Footer.jsp" %>
     

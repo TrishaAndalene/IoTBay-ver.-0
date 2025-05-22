@@ -56,6 +56,7 @@
         </div>
         
         <div class ="headerimage-container">
+            <p>Welcome <%=staff.getFirstName()%>!</p>
             <a href="StoreCartServlet"><img src="img/staff_bag.jpg" class="headerdropimg"/></a>
             <div class="headerdropdown">
             <img src="img/profile-icon.jpg" class="headerdropimg"/>
@@ -65,7 +66,6 @@
                     <a href="Logout.jsp">Log Out</a>
                 </div>
             </div>  
-            <p>Welcome <%=staff.getFirstName()%>!</p>
         </div>    
     </nav>
     <%
@@ -100,7 +100,8 @@
             </form>
         </div>
         
-        <div class ="headerimage-container">  
+        <div class ="headerimage-container">
+            <p>Welcome <%=customer.getFirstName()%>!</p>  
             <div class="headerdropdown">
             <img src="img/profile-icon.jpg" class="headerdropimg"/>
                 <div class="headerdropdown-content">
@@ -115,7 +116,6 @@
                     <a href="ViewCartServlet">View Cart</a>
                 </div>
             </div>
-            <p>Welcome <%=customer.getFirstName()%>!</p>
         </div>
         
     </nav>

@@ -70,6 +70,12 @@ body{
     right: 0%;
     font-size: 12px;  
 }
+
+#form-table .error {
+    color:red;
+    font-size: x-small;
+}
+
 .cat {
     height: 15px;
     padding: 5px 10px;

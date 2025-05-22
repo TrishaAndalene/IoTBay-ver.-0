@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.AccessLog {
+    position: absolute;
+    top: 7vh;
+    height: 93vh;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+form {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input[type="date"],
+form input[type="submit"] {
+    padding: 6px 12px;
+    font-size: 1rem;
+}
+
+.AccessLog table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.AccessLog thead {
+    position: sticky;
+    top: 0;
+    background-color: #eee;
+}
+
+.AccessLog th, .AccessLog td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.AccessLog tbody {
+    display: block;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.AccessLog thead, .AccessLog tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+@media screen and (max-width: 768px) {
+    .AccessLog {
+        padding: 10px;
+    }
+
+    .AccessLog th, .AccessLog td {
+        font-size: 0.9rem;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

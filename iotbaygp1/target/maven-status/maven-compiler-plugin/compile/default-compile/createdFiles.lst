@@ -47,7 +47,9 @@ controller/RemoveProductServlet.class
 model/Staff.class
 dao/ShipmentDAO.class
 controller/OrderDetailsServlet.class
+controller/AccessLogServlet.class
 model/Shipment.class
+model/AccessLog.class
 controller/AccountDeleteServlet.class
 controller/ConnServlet.class
 controller/StoreCartServlet.class

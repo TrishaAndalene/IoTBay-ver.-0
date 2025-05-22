@@ -68,7 +68,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 
     try {
         if (!image.contains("https://")){
-            request.setAttribute("errorMsg", "Image URL must be a URL");
+            request.setAttribute("errorMesg", "Image URL must be a URL");
             request.getRequestDispatcher("/AddProduct.jsp").forward(request, response);
             return;
                 }
@@ -78,7 +78,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     try {   
         quantity = Integer.parseInt(quantityStr);  
     } catch (NumberFormatException ex) {           
-        request.setAttribute("errorMesg", "Stock quantity must be an integer");
+        request.setAttribute("errorMssg", "Stock quantity must be an integer");
         request.getRequestDispatcher("/AddProduct.jsp").forward(request, response);
         return; }
 
@@ -86,8 +86,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     
     try {       
         productManager.addProduct(product);
-            request.setAttribute("confirmMessg", "New Item Added!");
-            request.getRequestDispatcher("AddProductServlet").forward(request, response);
+            request.getRequestDispatcher("StockMgmtServlet").forward(request, response);
             return;
         
     } catch (SQLException ex) {           
