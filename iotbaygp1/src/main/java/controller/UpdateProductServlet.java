@@ -19,17 +19,18 @@ public class UpdateProductServlet extends HttpServlet {
     
 @Override   
 protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-    //1- retrieve the current session
+    // Retrieving the current session
     HttpSession session = request.getSession();
-        //5- retrieve the manager instance from session      
+    // Retrieving the manager instance from the session      
     ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
-
     if (productManager == null) throw new IOException("DB manager not found");
-    //3- capture the posted details
+
+    // Capturing parameters passed in from the JSP
     String upc = request.getParameter("upc");
     String field = request.getParameter("field");
     String value = request.getParameter("value"); 
-    
+
+    // Error Checking - Price must be a number 
     if (field.equals("price")){
         try {
             double pricedouble = Double.parseDouble(value);
@@ -39,6 +40,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             return; 
             }
         }
+    // Error Checking - image URL must be a URL       
     if (field.equals("image")){
             try {
                 if (!value.contains("https://")){
@@ -50,15 +52,13 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         }
     }
     
+    // Update product instance in the database
     try {       
-
-        productManager.updateProduct(field, upc, value);
-        System.out.println(field + ": " + upc + ": " + value);
-        
+        productManager.updateProduct(field, upc, value);   
     } catch (SQLException ex) {           
         Logger.getLogger(AddProductServlet.class.getName()).log(Level.SEVERE, null, ex);    
     }
-
+    // Redirects to the Stock Management page
     response.sendRedirect("StockMgmtServlet");
     }
 }

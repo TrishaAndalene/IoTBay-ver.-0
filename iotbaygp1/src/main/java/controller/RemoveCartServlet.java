@@ -21,13 +21,13 @@ public class RemoveCartServlet extends HttpServlet {
 
         @Override   
         protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-            //1- retrieve the current session
+            //retrieve the current session
             HttpSession session = request.getSession();
         
-            //3- capture the posted details
+            //retrieve required parameter
             String upc = request.getParameter("upc");
             
-            //5- retrieve the manager instance from session      
+            //retrieve the manager instance from session      
             CartItemsDAO cartItemManager = (CartItemsDAO) session.getAttribute("cartItemsManager");
         
             if (cartItemManager == null) throw new IOException("DB manager not found");
@@ -36,8 +36,9 @@ public class RemoveCartServlet extends HttpServlet {
             if (cartManager == null) throw new IOException("DB manager 2 is not found");
 
             Integer customerID = (Integer) session.getAttribute("customerID");
-            if (customerID == null){customerID = 0;};
+            if (customerID == null){customerID = 9;} // this is a set up for anonymous user
          
+            // main process
             try {       
                 if (customerID != null){
                     int cartID = cartManager.getCreateCart(customerID);

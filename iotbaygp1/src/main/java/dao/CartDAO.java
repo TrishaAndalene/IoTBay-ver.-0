@@ -16,12 +16,14 @@ private Statement st;
 private Connection conn;
 private ProductDAO productManager;
    
+// init function
 public CartDAO(Connection conn) throws SQLException {       
     st = conn.createStatement();
     this.conn = conn;
     this.productManager = new ProductDAO(conn);
 }
 
+// function to retrieve a cart that already belong to a customer
   public int getCreateCart(Integer customerID) throws SQLException {
     String q1 = "SELECT" + " cartID from Carts WHERE userID = " + customerID;
     ResultSet rs1= st.executeQuery(q1); 
@@ -44,6 +46,7 @@ public CartDAO(Connection conn) throws SQLException {
     }   
   }
 
+    // a function to get All Purchase, but temporarily not utilised (testing code only before update)
     public ArrayList<Purchase> getList(Integer customerID) throws SQLException{
         
         int cartCode = this.getCreateCart(customerID);
@@ -60,8 +63,9 @@ public CartDAO(Connection conn) throws SQLException {
     return placeholder;
   }
 
+    // a function used to delete a cart when the order is submitted
     public void clearCart(int cartID) throws SQLException {
-        String query = "DELETE FROM Cart WHERE cartID = ?";
+        String query = "DELETE FROM Carts WHERE cartID = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setInt(1, cartID);
             ps.executeUpdate();

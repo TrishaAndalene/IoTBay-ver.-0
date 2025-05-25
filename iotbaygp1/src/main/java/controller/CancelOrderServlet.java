@@ -24,12 +24,14 @@ public class CancelOrderServlet extends HttpServlet {
 
         @Override   
         protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-            //1- retrieve the current session
+            //retrieve the current session
             HttpSession session = request.getSession();
 
+            //retrieve the required parameter for the process
             String orderID = (String) request.getParameter("orderID");
             if (orderID == null) throw new IOException("orderID is null");
             
+            //obtain all relevant ObjectManager for the Servlet
             OrderItemsDAO orderItemsManager = (OrderItemsDAO) session.getAttribute("orderItemsManager");
             if (orderItemsManager == null) throw new IOException("DB manager not found");
 
@@ -38,11 +40,10 @@ public class CancelOrderServlet extends HttpServlet {
 
             ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
         
-            //3- capture the posted email - check jsp form name to see what parameter name
             Integer customerID = (Integer) session.getAttribute("customerID");  
-            if (customerID == null){customerID = 0;};   
+            if (customerID == null){customerID = 0;}; // <- is a set up for anonymous user
 
-         
+            // main process
             try {      
                 if (customerID != null){
                     Order order = orderManager.getOrder(orderID);
@@ -53,6 +54,7 @@ public class CancelOrderServlet extends HttpServlet {
                     orderManager.cancelOrder(orderID);
                     System.out.println("order cancelled");
 
+                    // to get the updated database
                     ArrayList<String> orderCodes = orderManager.getOrders(customerID);
                     ArrayList<Order> orderList = new ArrayList<>();
                     for (String s : orderCodes){

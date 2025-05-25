@@ -21,14 +21,13 @@ public ProductDAO(Connection conn) throws SQLException {
 }
 
     public Product findProduct(String upc) throws SQLException {   
-        //setup the select sql query string
+        // Sets up the SQL query string
         String query = "SELECT * FROM Products WHERE upc = '" + upc  + "' ";
 
-        //execute this query using the statement field 
-        //add the results to a ResultSet 
+        //execute this query using the statement and create a result set from the search
         ResultSet rs = st.executeQuery(query);
 
-    //search the ResultSet for a user using the parameters 
+    //retrieve the data from the ResultSet using the parameters of column headings
     if (rs.next()){
             String productName = rs.getString("name");
             double price = rs.getDouble("price");
@@ -57,6 +56,7 @@ public ProductDAO(Connection conn) throws SQLException {
                 cat = Categories.MINI_PC;
             }
 
+            // return the found product
             Product p = new Product(upc, productName, price, brand, colour, size, image, quantity, cat, desc);
             return p;
         }
@@ -64,12 +64,16 @@ public ProductDAO(Connection conn) throws SQLException {
     }
 
     public List<Product> listAllProducts() throws SQLException{
+        // Creates list for products to be added to
         List<Product> productList = new ArrayList<>();
 
+        // Sets up the SQL query string
         String query = "SELECT * FROM Products";
 
+        //execute this query using the statement and create a result set from the search
         ResultSet result = st.executeQuery(query);
 
+        //retrieve the data from the ResultSet using the parameters of column headings for each item
         while (result.next()){
             String upc = result.getString("upc");
             String name = result.getString("name");
@@ -99,6 +103,7 @@ public ProductDAO(Connection conn) throws SQLException {
                 cat = Categories.MINI_PC;
             }
 
+            // create a product from the RS and adds it to the list to return
             Product p = new Product(upc, name, price, brand, colour, size, image, quantity, cat, description);
             productList.add(p);
         }
@@ -107,12 +112,14 @@ public ProductDAO(Connection conn) throws SQLException {
     }
 
     public List<Product> getProductsByCat(String filter) throws SQLException{
+        // Creates list for products to be added to       
         List<Product> productList = new ArrayList<>();
-
+        // Sets up the SQL query string to include the filter
         String query = "SELECT" + " * FROM Products WHERE category = '" + filter + "'";
-
+        //execute this query using the statement and create a result set from the search
         ResultSet result = st.executeQuery(query);
 
+        //retrieve the data from the ResultSet using the parameters of column headings for each item
         while (result.next()){
             String upc = result.getString("upc");
             String name = result.getString("name");
@@ -134,6 +141,7 @@ public ProductDAO(Connection conn) throws SQLException {
                 System.err.println("Unknown category: " + categoryStr);
             }
         }
+            // create a product from the RS and adds it to the list to return
             Product p = new Product(upc, name, price, brand, colour, size, image, quantity, cat, description);
             productList.add(p);
         }
@@ -142,7 +150,7 @@ public ProductDAO(Connection conn) throws SQLException {
 
 
     public void addProduct(Product product) throws SQLException {  
-        //code for add-operation 
+        //Retrieves each value from the input Product
         String upc = product.getUPC();
         String name = product.getName();
         String brand = product.getBrand();
@@ -154,69 +162,64 @@ public ProductDAO(Connection conn) throws SQLException {
         String image = product.getImg();
         Categories category = product.getCategories();
 
-
+        // set up SQL statement with input values
         String sql = "INSERT" + " INTO Products (upc, name, price, brand, colour, size, image, quantity, category, description) VALUES ('" + upc + "', '" + name + "', " + price + ", '" + brand + "', '" + colour + "', '" + size + "', '" + image + "', " + quantity + ", '" + category + "', '" + description + "');";
 
+        // adds product to the DB
         st.executeUpdate(sql);
-        System.out.println("Product Added!");
-
-
     }
 
     public void updateProduct(String field, String upc, String value) throws SQLException {  
-        //code for add-operation 
+        // checks if the field passed in would contain a String value
         List<String> strings = List.of("name", "brand", "colour", "size", "description", "category", "image");
-        
+    
+  
         String sql;
+        // if it were a String value
         if (strings.contains(field)){
             sql = "UPDATE" + " Products SET " + field  + " = '" + value + "' WHERE upc = '" + upc + "'";
     }
         else {
+        // if it were an int/double
             sql = "UPDATE" + " Products SET " + field  + " = " + value + " WHERE upc = '" + upc + "'";
         }
+        // updates the Product data in the DB
         st.executeUpdate(sql);
-        System.out.println(sql);
+
     }
 
     public void updateStock(String upc, int qty) throws SQLException {  
-        //code for add-operation 
-        
+        //Creates SQL string for updating the product qty
         String sql = "UPDATE" + " Products SET quantity = quantity + " + qty + " WHERE upc = '" + upc + "'";
         
         st.executeUpdate(sql);
-        System.out.println(sql);
     }
 
     public void stockPurchase(String upc, int qty) throws SQLException {  
-        //code for add-operation 
-        
+        //Creates SQL string for updating the product qty after purchase
         String sql = "UPDATE" + " Products SET quantity = quantity - " + qty + " WHERE upc = '" + upc + "'";
         
         st.executeUpdate(sql);
-        System.out.println(sql);
     }
 
-
-
     public void updateStockAfterOrder(String upc, int qty) throws SQLException{
+        //Creates SQL string for updating the product qty after order
         String sql = "UPDATE" + " Products SET quantity = " + qty + " WHERE upc = '" + upc + "'";
         
         st.executeUpdate(sql);
-        System.out.println(sql);
     }
 
     public void removeProduct(String upc) throws SQLException {  
-        //code for add-operation 
-        
+        //Creates SQL string for removing a product from the DB
         String sql = "DELETE" + " from Products WHERE upc = '" + upc + "'";
         
         st.executeUpdate(sql);
-        System.out.println(sql);
     }
 
     public List<Product> productSearch(String search) throws SQLException{
+        // Creates list for relevant products to be added to
         List<Product> productList = new ArrayList<>();
-
+        // Sets up the SQL string to retrieve products that include the search parameter in their name or category
         String query = "SELECT" + " * FROM Products WHERE name LIKE '%" + search + "%' OR category LIKE '%" + search + "%' ";
 
         ResultSet result = st.executeQuery(query);
@@ -242,12 +245,11 @@ public ProductDAO(Connection conn) throws SQLException {
                 System.err.println("Unknown category: " + categoryStr);
             }
         }
+        // create a product from the RS and adds it to the list to return
             Product p = new Product(upc, name, price, brand, colour, size, image, quantity, cat, description);
             productList.add(p);
             System.out.println("Total products loaded: " + productList.size());
         }
         return productList;
     }
-
-
 }

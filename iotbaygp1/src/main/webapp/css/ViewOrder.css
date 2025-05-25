@@ -94,12 +94,12 @@ h1 {
   
 .search-bar button[type="submit"] {
     float: right;
-    padding: 6px;
-    margin-top: 8px;
+    padding: 12px 20px;
+    height: 100%;
     margin-right: 16px;
     background: #ddd;
     border: 2px solid #2440ad;
-  }
+}
 
 /* Table */
 div.order-container{

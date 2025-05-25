@@ -86,7 +86,7 @@ body {
     font-family: "Sriracha", cursive;
 }
 /* ------------------------------------------------------------------------- */
-/* Second screen */
+/* Categories section */
 #second_screen{
     display: flex;
     flex-direction: column;
@@ -232,7 +232,7 @@ body {
   }
 
 /* ------------------------------------------------------------------------- */
-/* Customer Favourite */
+/* Customer Favourites section */
 #customer_favourite{
     display: flex;
     flex-direction: column;
@@ -241,7 +241,7 @@ body {
     gap: 20px;
     font-family: "Roboto", Tahoma, sans-serif;
 }
-/* Custoemr Favourite Context */
+/* Customer Favourite Context */
 #customer_favourite_context{
     width: 100%;
     height: 50px;
@@ -351,7 +351,7 @@ body {
     height: 50px;
 }
 /* ------------------------------------------------------------------------- */
-/* Want to know about us */
+/* Want to know about us?? */
 #company_detail{
     display: flex;
     flex-direction: column;

@@ -17,12 +17,14 @@ private Statement st;
 private Connection conn;
 private ProductDAO productManager;
    
+// init function
 public OrderDAO(Connection conn) throws SQLException {       
     st = conn.createStatement();
     this.conn = conn;
     this.productManager = new ProductDAO(conn);
 }
 
+// function to get a specific Order
   public Order getOrder(String orderID) throws SQLException {
     
 
@@ -46,6 +48,7 @@ public OrderDAO(Connection conn) throws SQLException {
     return null;
   }
 
+  // function to get all Order code for listing
   public ArrayList<String> getOrders(int userID) throws SQLException{
     String q1 = "SELECT" + " * from Orders WHERE userID = " + userID;
     ResultSet rs1= st.executeQuery(q1);
@@ -59,9 +62,36 @@ public OrderDAO(Connection conn) throws SQLException {
     return container;
   }
 
+  // function to get Order code for listing with date filter
+  public List<String> getOrdersByDate(int userID, String filter) throws SQLException{
+    List<String> orderList = new ArrayList<>();
+    System.out.print(filter);
+
+    String query = "SELECT" + " * FROM Orders WHERE datePlaced = '" + filter + "' AND userID = " + userID;
+     
+    ResultSet result = st.executeQuery(query);
+
+        while (result.next()){
+          String orderID = result.getString("orderID");
+          orderList.add(orderID);;
+        }
+        return orderList;
+  }
+
+  // function to get Order code for listing with status filter
   public List<String> getOrdersByStatus(int userID, String filter) throws SQLException{
         List<String> orderList = new ArrayList<>();
-
+        if (filter.equalsIgnoreCase("Received")){
+          filter = "RECEIVED";
+        } else if (filter.equalsIgnoreCase("On delivery")){
+          filter = "On delivery";
+        } else if (filter.equalsIgnoreCase("Cancelled")){
+          filter = "Cancelled";
+        } else if (filter.equalsIgnoreCase("Finished")){
+          filter = "Finished";
+        } else if (filter.equalsIgnoreCase("Processed")){
+          filter = "Processed";
+        }
         String query = "SELECT" + " * FROM Orders WHERE status = '" + filter + "' AND userID = " + userID;
 
         ResultSet result = st.executeQuery(query);
@@ -73,6 +103,7 @@ public OrderDAO(Connection conn) throws SQLException {
         return orderList;
     }
 
+  // function to create an order (Status is automatically received)
   public String createOrder(Integer userID, double cost) throws SQLException{
     String orderID = this.generateRandomStringList(1, 8);
     String query = "INSERT INTO Orders(orderID, userID, datePlaced, totalCost, status) VALUES (?, ?, CURRENT_TIMESTAMP, ?, 'RECEIVED')";
@@ -85,28 +116,30 @@ public OrderDAO(Connection conn) throws SQLException {
     return orderID;
   }
 
-      public String generateRandomStringList(int numberOfStrings, int stringLength) {
-        List<String> stringList = new ArrayList<>();
-        Random random = new Random();
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        String result = "";
+  // function to randomise the Ordercode 
+  public String generateRandomStringList(int numberOfStrings, int stringLength) {
+    List<String> stringList = new ArrayList<>();
+    Random random = new Random();
+    String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    String result = "";
 
-        for (int i = 0; i < numberOfStrings; i++) {
-            StringBuilder sb = new StringBuilder(stringLength);
-            for (int j = 0; j < stringLength; j++) {
-                int randomIndex = random.nextInt(characters.length());
-                sb.append(characters.charAt(randomIndex));
-            }
-            stringList.add(sb.toString());
+    for (int i = 0; i < numberOfStrings; i++) {
+        StringBuilder sb = new StringBuilder(stringLength);
+        for (int j = 0; j < stringLength; j++) {
+            int randomIndex = random.nextInt(characters.length());
+            sb.append(characters.charAt(randomIndex));
         }
-
-        for (int n = 0; n < stringList.size(); n++){
-            result += stringList.get(n);
-        }
-
-        return result;
+        stringList.add(sb.toString());
     }
 
+    for (int n = 0; n < stringList.size(); n++){
+        result += stringList.get(n);
+    }
+
+    return result;
+  }
+  
+  // function to delete an specific order
   public void deleteOrder(String orderID) throws SQLException{
     String query = "DELETE FROM Orders where orderID = ?";
 
@@ -115,6 +148,7 @@ public OrderDAO(Connection conn) throws SQLException {
     ps.executeUpdate();
   }
 
+  // function to update the order status to cancelled
   public void cancelOrder(String orderID) throws SQLException{
     String query = "SELECT status FROM Orders where orderID = ?";
 

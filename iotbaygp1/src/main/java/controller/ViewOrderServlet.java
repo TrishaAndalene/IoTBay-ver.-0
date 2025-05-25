@@ -25,30 +25,45 @@ public class ViewOrderServlet extends HttpServlet {
 
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-        //1- retrieve the current session
+        //retrieve the current session
         HttpSession session = request.getSession();
+
+        // retrieve the possible feature
         String filter = request.getParameter("status");
+
+        //retrieve all relevant objectManager for the Servlet
         OrderItemsDAO orderItemsManager = (OrderItemsDAO) session.getAttribute("orderItemsManager");
         if (orderItemsManager == null) throw new IOException("order items manager not found");
 
         OrderDAO orderManager = (OrderDAO) session.getAttribute("orderManager");
         if (orderManager == null) throw new IOException("DB order manager is not found");
     
-        //3- capture the posted email - check jsp form name to see what parameter name
         Integer customerID = (Integer) session.getAttribute("customerID");  
-        if (customerID == null){customerID = 9;}
+        if (customerID == null){customerID = 9;} // <- is a set up for anonymous user
 
         @SuppressWarnings("unchecked")
-        ArrayList<Order> orderLists = (ArrayList<Order>) request.getAttribute("orderLists");
-        ArrayList<Order> finalContainer = new ArrayList<>();
+        ArrayList<Order> orderLists = (ArrayList<Order>) request.getAttribute("orderLists"); // this is used to obtain new OrderLists in a case of cancelling or removing an order
+        ArrayList<Order> finalContainer = new ArrayList<>(); 
+
+        // retrieve the second filter option
+        String filterDate = request.getParameter("filterDate");
+        System.out.println("filter date is" + filterDate);
+
+        // a conditioning to make that anonymous user can not see the other history of a collective anonymous user
         if (orderLists == null && customerID != 9){
             try {
                 ArrayList<String> orderCodes = orderManager.getOrders(customerID);
                 ArrayList<Order> orderList = new ArrayList<>();
                 for (String s : orderCodes){
                     Order order = orderManager.getOrder(s);
-                    if (order != null){
-                        orderList.add(order);
+                    // deployement of the first filter function (by date)
+                    String time = order.getDate();
+                    String dateOnly = time.substring(0, 10);
+                    System.out.println(dateOnly);
+                    if (filterDate == null || filterDate.isEmpty() || filterDate.equalsIgnoreCase(dateOnly)){
+                        if (order != null){
+                            orderList.add(order);
+                        }
                     }
                 }
                     finalContainer = orderList;
@@ -60,6 +75,7 @@ public class ViewOrderServlet extends HttpServlet {
         }
 
         try{
+            // deployment of a second filtering option (status) -> however, filter can only be deployed once, so if date is chosen then there is no status filter
             if (filter == null || filter.equalsIgnoreCase("All")){
                 request.setAttribute("orderLists", finalContainer);
             } else { 
@@ -73,8 +89,9 @@ public class ViewOrderServlet extends HttpServlet {
                         filtered.add(order);
                     }
                 }
+                
             }
-                request.setAttribute("orderLists", filtered);
+            request.setAttribute("orderLists", filtered);
 
         }} catch (SQLException e){
 

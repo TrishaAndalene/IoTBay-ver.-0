@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.List;
 
-// Cart Object (partially dependent on Customer.java)
+// Cart Object (partially dependent on Customer.java) is used only for a temporary container
 public class Cart implements Serializable{
     private int cartID;
     private final int userID;
@@ -30,12 +30,9 @@ public class Cart implements Serializable{
         this.status = status;
     }
 
+    // this is not used currently
     public double getTotalCost(List<CartItem> products) {
         double total = 0.00;
-        // work out how to add this in later - could be taking in a list of the products 
         return total;
     }
-
-    
-
 }

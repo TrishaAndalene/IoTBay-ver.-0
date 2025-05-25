@@ -24,37 +24,29 @@ public class StockMgmtServlet extends HttpServlet {
 
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-        //1- retrieve the current session
+        // Retrieving the current session
         HttpSession session = request.getSession();
     
-        //5- retrieve the manager instance from session      
+        // Retrieving the manager instance from the session   
         ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
         if (productManager == null) throw new IOException("DB manager not found");
     
-    
+        // Create list of all Products in the database to be passed in to the view   
         List<Product> allProduct = null; 
-        
-        System.out.println("Session ID: " + session.getId());
-        System.out.println("productManager is null: " + (productManager == null));
-
-     
         try {       
-            allProduct = productManager.listAllProducts();
-            
+            allProduct = productManager.listAllProducts();    
         } catch (SQLException ex) {           
             Logger.getLogger(StockMgmtServlet.class.getName()).log(Level.SEVERE, null, ex);    
         }
-    
+
+        // Pass the list to the view as an attribute and redirect to the JSP
         if (allProduct != null) {                     
-            //13-save the logged in user object to the session
             request.setAttribute("allProduct", allProduct);
-            //14- redirect user to the main.jsp
             request.getRequestDispatcher("/StockMgmt.jsp").forward(request, response);   
         } else {                       
-            //15-set user does not exist error to the session
-            request.setAttribute("errorMsg", "Idk what is going on :(");        
-            //16- redirect user back to the login.jsp
-            request.getRequestDispatcher("/BrowseItems.jsp").include(request, response);  
+        //Set up error message and redirect to the JSP
+            request.setAttribute("errorMsg", "No items found.");        
+            request.getRequestDispatcher("/StockMgmt.jsp").include(request, response);  
             }   
         }
     }

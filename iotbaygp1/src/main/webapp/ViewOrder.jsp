@@ -47,8 +47,15 @@
               <input type="text" placeholder="Search by code" name="searchQuery">
               <button type="submit">Search</button> <!-- later change it with icon -->
             </form>
+            <form action="ViewOrderServlet" method="get">
+                <input type="date" id="filterDate" name="filterDate" value="<%= request.getParameter("filterDate") != null ? request.getParameter("filterDate") : "" %>">
+                <input type="submit" value="Show">
+            </form>
         </div>
         <div class="order-container">
+
+            <p><%= request.getParameter("filterDate") %></p>
+
             <table>
                 <tr>
                     <th>OrderID</th>
@@ -66,7 +73,7 @@
                 <tr>
                     <td><%= order.getOrderId() %></td>
                     <td><%= order.getDate() %></td>
-                    <td><%= order.getCost() %></td>
+                    <td><%= String.format("%.2f", order.getCost()) %></td>
                     <td><%= order.getStatus() %></td>
 
                     <td style="min-width: 4vw; max-width: 4vw;">
@@ -103,7 +110,7 @@
                 <%
                          }
                     } else {
-                        out.println("is null");
+                       
                     }
                 %>
 

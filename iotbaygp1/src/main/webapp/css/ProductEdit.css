@@ -50,6 +50,7 @@ body{
     padding: 10px 5px;
 }
 
+/* error messages */
 .err p{
     font-size: x-small;
     color: red;
@@ -60,7 +61,7 @@ body{
 }
 
 
-
+/* table for product info */
 #product-table {
     display: flex;
     align-items: center;
@@ -102,6 +103,7 @@ body{
     background-color: #2440ad;
 }
 
+/* container for bottom buttons*/
 .btm-btns{
     display: flex;
     align-items: center;

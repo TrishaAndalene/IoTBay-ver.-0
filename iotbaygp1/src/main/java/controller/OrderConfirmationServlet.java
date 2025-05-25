@@ -29,9 +29,10 @@ public class OrderConfirmationServlet extends HttpServlet{
 
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-        //1- retrieve the current session
+        //retrieve the current session
         HttpSession session = request.getSession();
 
+        //retrieve all relevant ObjectManager for the Servlet
         CartItemsDAO cartItemsManager = (CartItemsDAO) session.getAttribute("cartItemsManager");
         if (cartItemsManager == null) throw new IOException("DB manager not found");
 
@@ -41,18 +42,18 @@ public class OrderConfirmationServlet extends HttpServlet{
         ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
     
     
-        //3- capture the posted email - check jsp form name to see what parameter name
+        //obtaining the attribute needed from the session
         Integer customerID = (Integer) session.getAttribute("customerID");  
         if (customerID == null){customerID = 0;}   
 
         Integer cartID = (Integer) session.getAttribute("cartID");
-        if (cartID == null) {
+        if (cartID == null) { // <- is a set up to create Cart object if the customer does not have it
             try {
                 cartID = cartManager.getCreateCart(customerID);
             } catch (SQLException e){}
         }   
 
-     
+        // main process
         try {    
 
             List<CartItem> cartItemList = cartItemsManager.getCartItems(cartID);

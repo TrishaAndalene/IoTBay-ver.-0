@@ -71,6 +71,8 @@ body{
     height: 25px;
 }
 
+/* table of products list */
+
 #product-table {
     width: 100%;
     padding: 5px 10px;
@@ -105,7 +107,7 @@ body{
 
 
 
-
+/* updating quantity td container */
 .qty-update {
     display: flex;
     align-items: stretch;

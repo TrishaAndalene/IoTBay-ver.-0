@@ -60,6 +60,7 @@ body{
     border-radius: 5px;
 }
 
+/* product information container */
 .product-container {
     display: flex;
     flex: 1;
@@ -114,6 +115,7 @@ body{
     border-radius: 5px;
 }
 
+/* "recommended" section */
 .rec-header h4{
     border-top: 2px solid rgb(148, 141, 179);
     color: rgb(53, 50, 67);

@@ -25,8 +25,8 @@
     <!-- main screen -->
     <div id="main_screen">
         <p id="promotion_title">IoT Bay</p>
-        <p id="promotion_line">Connect. Automate. Simplify.</p>
-        <p id="promotion_line2">Your Smart Home Hub Awaits.</p>
+        <p id="promotion_line">Connect and Simplify Your Life.</p>
+        <p id="promotion_line2">The New Home of IoT Awaits...</p>
         <div id="order_btn"><a href="BrowseItemsServlet">Shop Now</a></div>
     </div>
 
@@ -133,7 +133,8 @@
                     <img id="review_img" src="img/wifiphoto.png">
                 </div>
                             <div class="wall">
-                <p class="quote">"I recently discovered this IoT store, and I'm genuinely impressed. The selection of smart devices is top-notch and clearly curated with quality in mind. The website was smooth to navigate, and I appreciated the helpful product descriptions and reviews. Plus, the customer service team was responsive and knowledgeable when I had a question about device compatibility.</p><br><p class="quote">If you're looking to upgrade your home or workspace with reliable IoT tech, I highly recommend this store. It's now my go-to for smart devices!"</><br><br>
+                <p class="quote">"After many years of purchasing from IoT Bay in-store, I am so glad that I can now order online. The website makes it even easier to see the amazing selection of good quality smart devices. The website was easy to navigate, and when I contacted the store to ask a question about an item I was interested in, the customer service team were just as responsive and knowledgable as when I visit in-store!
+                </p><br><p class="quote">If you're just starting out with IoT devices, or a seasoned professional looking to upgrade your home or workspace with reliable tech, I highly recommend this store. It's my #1 for quality smart devices!"</p><br><br>
                 <p class="cust">- Bob C., Sydney</p>
             </div>
             </div>

@@ -15,6 +15,7 @@
     border-bottom: 2px solid rgb(50, 28, 199);
 }
 
+/* company logo  */
 .headercompany-details {
   display: flex;
   flex: 0 0 auto;
@@ -35,6 +36,7 @@
   font-family: "Sriracha", cursive;
 }
 
+/* links for each user type */
 .headerlinks {
   display: flex;
   justify-content: center;
@@ -60,6 +62,7 @@
     font-size: 14px;
 }
 
+/* drop down menus */
 .headersearch-container, .headerdropdown {
     flex: 0 0 auto;
     display: flex;
@@ -70,6 +73,7 @@
     font-family: "Roboto", Tahoma, sans-serif;
   }
 
+/* search bar*/
 .headersearch-container {
   display: flex;
   flex-direction: row;
@@ -115,6 +119,7 @@
     border-radius: 25%;
   }
 
+/* account links and welcome message */
 .headeraccount-container {
   display: flex;
   justify-content: center;
@@ -168,22 +173,20 @@
     font-size: 12px;
     border-radius: 15px;
   } 
-  /* The container <div> - needed to position the dropdown content */
+/* positions drop down menu*/
   .headerdropdown {
     position: relative;
     display: inline-block;
   }
 
+  /* images for drop down content button */
   .headerdropimg {
     height: 20px;
     width: 20px;
     cursor: pointer;
   }
-
   
-
-  
-  /* Dropdown Content (Hidden by Default) */
+  /* hides drop down content in header and positions the content in front on hover */
   .headerdropdown-content {
     display: none;
     position: absolute;
@@ -204,17 +207,17 @@
     font-family: "Roboto", Tahoma, sans-serif;
   }
   
-  /* Change color of dropdown links on hover */
+  /* Changes the color of the dropdown links when hovered */
   .headerdropdown-content a:hover {
     background-color: #2440ad;
     color: white;
     font-family: "Roboto", Tahoma, sans-serif;
   }
   
-  /* Show the dropdown menu on hover */
+  /* Shows the dropdown menu on hover */
   .headerdropdown:hover .headerdropdown-content {display: block;}
   
-  /* Change the background colour */
+  /* Changes the background colour of the dropdown content */
   .headerdropdown:hover .headerdropbtn {
     background-color: #2440ad;
     color: white;}

@@ -3,6 +3,7 @@
 
     <!-- navigation bar -->
 <header>
+         <!-- adds all potential session attributes in -->
     <%
     Customer customer = (Customer) session.getAttribute("customer");
     Staff staff = (Staff) session.getAttribute("staff");
@@ -13,6 +14,8 @@
 
     if (staff != null) {
 %>
+
+<!-- STAFF HEADER -->
     <nav class="headernav-bar">
         <a href="index.jsp"><div class="headercompany-details">
         <img src="img/company_logo.png" class="headercompany-logo">
@@ -71,6 +74,8 @@
     <%
 } else if (customer != null) {
 %>
+
+<!-- CUSTOMER HEADER -->
     <nav class="headernav-bar">
         <a href="index.jsp"><div class="headercompany-details">
         <img src="img/company_logo.png" class="headercompany-logo">
@@ -123,7 +128,7 @@
     <%
 } else {
 %>
-
+<!-- UNREGISTERED USER HEADER -->
     <nav class="headernav-bar">
         <a href="index.jsp"><div class="headercompany-details">
             <img src="img/company_logo.png" class="headercompany-logo">

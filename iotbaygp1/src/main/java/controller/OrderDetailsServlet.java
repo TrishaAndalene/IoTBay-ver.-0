@@ -27,14 +27,14 @@ public class OrderDetailsServlet extends HttpServlet{
 
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-        //1- retrieve the current session
+        //retrieve the current session
         HttpSession session = request.getSession();
 
-        //3- capture the posted email - check jsp form name to see what parameter name
+        //retrieve the required parameter for the Servlet
         String orderID = (String) request.getParameter("orderID");  
         if (orderID == null) throw new IOException("orderID is null");
         
-        //5- retrieve the manager instance from session      
+        //retrieve the manager instance from session      
         ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
         if (productManager == null) throw new IOException("DB manager not found");
 
@@ -44,6 +44,7 @@ public class OrderDetailsServlet extends HttpServlet{
         OrderDAO orderManager = (OrderDAO) session.getAttribute("orderManager");
         if (orderManager == null) throw new IOException("DB order manager is not found");    
     
+        // main process
         try {       
             Order order = orderManager.getOrder(orderID);
             if (order != null){

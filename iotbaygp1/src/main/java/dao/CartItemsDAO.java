@@ -16,19 +16,21 @@ private Statement st;
 private Connection conn;
 private final ProductDAO productManager;
    
+// init function
 public CartItemsDAO(Connection conn) throws SQLException {       
     st = conn.createStatement();
     this.conn = conn;
     this.productManager = new ProductDAO(conn);
 }
 
-
+// a function to add CartItems object
 public void addItemToCart(int cartId, String upc, int quantity) throws SQLException {
     String query = "INSERT" + " INTO CartItems (cartId, upc, quantity) VALUES (" + cartId + ", '" + upc + "', " + quantity + ")";
     st.executeUpdate(query);
     System.out.println("added successfully");
 }
 
+// a function to return the CartItemId (CartItemId is a auto increment key and unique)
 public int findCartItem(int cartID, String upc) throws SQLException{
     List<CartItem> container = this.getCartItems(cartID);
     for (CartItem c : container){
@@ -39,6 +41,18 @@ public int findCartItem(int cartID, String upc) throws SQLException{
     return 0;
 }
 
+// a function to specifically retrive the quantity of a cartItem
+public int findCartItemQuantity(int cartID, String upc) throws SQLException{
+    List<CartItem> container = this.getCartItems(cartID);
+    for (CartItem c : container){
+        if (c.getUPC().equalsIgnoreCase(upc)){
+            return c.getQuantity();
+        }
+    }
+    return 0;
+}
+
+// a function to retrieve all CartItems that belong to a particular Cart for listing
 public List<CartItem> getCartItems(int cartID) throws SQLException{
         List<CartItem> cartItemsList = new ArrayList<>();
 
@@ -63,24 +77,28 @@ public List<CartItem> getCartItems(int cartID) throws SQLException{
     
 }
 
+// a function to update the quantity of a CartItem
 public void updateCartItem(int cartID, int itemID, String upc, int quantity) throws SQLException{
     String query = "UPDATE" + " CartItems SET cartId =" + cartID + ", upc = " + upc + ", quantity =" + quantity + " WHERE cartItemID = " + itemID;
     st.executeUpdate(query);
     System.out.println("update succesfully");
 }
 
+// a function to remove a CartItem
 public void removeCartItem(int cartID, String upc) throws SQLException{
     String query = "DELETE" + " FROM CartItems WHERE upc = " + upc + " and cartID = " + cartID;
     st.executeUpdate(query);
     System.out.println("remove succesfully");
 }
 
+// a function to remove all CartItems (used only during the order submission)
 public void removeAllItem(int cartID) throws SQLException{
     String query = "DELETE" + " FROM CartItems WHERE cartID = " + cartID;
     st.executeUpdate(query);
     System.out.println("Cart cleared");
 }
 
+// an updated and consolidate function of both remove and update
 public void updateStock(int cartID, String upc, String symbol) throws SQLException {  
         //code for add-operation 
         String plus = "plus";
@@ -88,7 +106,7 @@ public void updateStock(int cartID, String upc, String symbol) throws SQLExcepti
         String sql;
         System.out.println(cartID + ": " + upc + "; " + symbol);
         if (symbol.equals(plus)){
-            sql = "UPDATE" + " CartItems SET quantity = quantity + 1 WHERE upc = '" + upc + "' AND cartID = " + cartID ;
+            sql = "UPDATE" + " CartItems SET quantity = quantity + 1 WHERE upc = '" + upc + "' AND cartID = " + cartID;
         } else if (symbol.equals(remove)) {
             sql = "DELETE" + " FROM CartItems WHERE upc = '" + upc + "' AND cartID = " + cartID ;
         } else {

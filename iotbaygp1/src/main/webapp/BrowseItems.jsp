@@ -5,11 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browse Products</title>   
+    <title>Browse Products</title>  
+    
+         <!-- adding css  -->
     <link rel="stylesheet" href="css/BrowseItems.css">
     <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/Footer.css">
 
+         <!-- adding google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -34,7 +37,7 @@
     <!-- main screen -->
     <div id="main_screen">
         <h2>Our Products</h2>
-        
+          <!-- top navigation bar for selecting a category -->   
         <form action="BrowseItemsServlet" method="post">
         <div class="btn-container">
             <button type="submit" name="filter" value="all"> Show all</button>
@@ -47,7 +50,7 @@
         </div>
     </form>
         
-                        
+         <!-- grid of product cards -->                   
         <div id="product-grid">
             <%
                         for (Product p : allProduct) {

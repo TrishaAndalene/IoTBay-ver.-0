@@ -32,6 +32,7 @@
 
     if (cartItems == null) {
     %>
+        <!-- to avoid errors if it is null -->
     <p>Oh no!!!!!!!</p>
     <%
     } else {
@@ -79,15 +80,7 @@
                                 <button type="submit" name = "symbol" value="plus" class="circleButton">  +</button>
                             </form>
                         </td>
-                        <td><%= p.getPrice() * quantity %></td>
-                        <!-- <td style="min-width: 7vw; max-width: 7vw;">
-                            <form action="UpdateCartStockServlet" method="post" style="display: flex; flex-direction: row; justify-content: space-evenly;">
-                            <input type="hidden" name="upc" value="<%= p.getUPC() %>">
-                            <button type="submit" name = "symbol" value="minus" class="circleButton">-  </button>
-                            <%= quantity %>
-                            <button type="submit" name = "symbol" value="plus" class="circleButton">  +</button>
-                            </form>
-                        </td> -->
+                        <td><%= String.format("%.2f", p.getPrice() * quantity) %></td>
                         <td style="min-width: 4vw; max-width: 4vw;">
                             <form action="UpdateCartStockServlet" method="post">
                             <input type="hidden" name="upc" value="<%= p.getUPC() %>">

@@ -6,15 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>   
+
+    <!-- adding css -->
     <link rel="stylesheet" href="css/BrowseItems.css">
     <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/Footer.css">
 
-    <link rel="stylesheet" href="css/BrowseItems.css">
-    <link rel="stylesheet" href="css/Header.css">
-    <link rel="stylesheet" href="css/Footer.css">
 
-    <!-- Style overloading -->
+    <!-- adding google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
@@ -42,7 +41,7 @@
                 %>
 
 
-
+    <!-- grid of product cards -->
         <div id="product-grid">
             <%
                         for (Product p : allProduct) {
@@ -55,6 +54,7 @@
                         <%   if (p.getQuantity() <= 0 ){  %> 
                             <button class="sold-out">Sold Out</button>
                         <%   } else {  %> 
+    <!-- for staff -->
                             <%   if (staff != null){  %> 
                                 <form action="AddToStoreCartServlet" method="post">
                                     <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
@@ -62,6 +62,7 @@
                                     <button type="submit">Add to Cart</button>
                                 </form>
                             <%   } else if (customer != null){  %> 
+        <!-- for customer -->
                                 <form action="AddToCartServlet" method="post">
                                     <input type="hidden" name="userID" value="<%= customerID %>" />
                                     <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
@@ -69,6 +70,7 @@
                                     <button type="submit">Add to Cart</button>
                                 </form>
                             <%   } else {  %>
+        <!-- for unregistered user -->
                                 <form action="AddToCartServlet" method="post">
                                     <input type="hidden" name="userID" value="9" />
                                     <input type="hidden" name="upc" value="<%= p.getUPC() %>" />
@@ -81,7 +83,6 @@
                             <button type="submit">View Product</button>
                         </form>
                     </div>
-
                 </div>
                 <%
              }

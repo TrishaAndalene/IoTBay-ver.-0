@@ -63,7 +63,7 @@ public class ConnServlet extends HttpServlet {
 
         conn = db.openConnection();       
         try {            
-            // THIS IS WHERE WE ADD ALL THE DAO
+            // Adding all of the DAO
             staffManager = new StaffDAO(conn);
             productManager = new ProductDAO(conn);
             customerManager = new CustomerDAO(conn);
@@ -75,13 +75,14 @@ public class ConnServlet extends HttpServlet {
             paymentManager = new PaymentDAO(conn);
             shipmentManager = new ShipmentDAO(conn);
 
-            // These are non-essential ones (not part of our assignment features)
+            // These are non-essential ones for the store cart/purchases (not part of our assignment features)
             storeCartItemsManager = new StoreCartItemsDAO(conn);
             storeCartManager = new StoreCartDAO(conn);
+
         } catch (SQLException ex) {
             Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-            //export the DB manager to the view-session (JSPs)
+            //export the DB managers to the view-session (JSPs)
             session.setAttribute("staffManager", staffManager);  
             session.setAttribute("productManager", productManager);  
             session.setAttribute("customerManager", customerManager); 
@@ -92,7 +93,7 @@ public class ConnServlet extends HttpServlet {
             session.setAttribute("paymentManager", paymentManager);
             session.setAttribute("shipmentManager", shipmentManager);
             
-            // These are non-essential ones (not part of our assignment features)
+            // These are non-essential ones for the store cart/purchases (not part of our assignment features)
             session.setAttribute("storeCartManager", storeCartManager);  
             session.setAttribute("storeCartItemsManager", storeCartItemsManager); 
             session.setAttribute("storePurchaseManager", storePurchaseManager);  

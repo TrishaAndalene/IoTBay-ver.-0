@@ -6,12 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Information</title>   
+    <title>Product Information</title>  
+    
+    <!-- adding css -->
     <link rel="stylesheet" href="css/ProductView.css">
     <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/Footer.css">
 
-    <!-- Style overloading -->
+    <!-- adding google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
@@ -30,7 +32,7 @@
     List<Product> recommendedList = (List<Product>) request.getAttribute("recommendedList");
     if (product == null){    
     %>
-        <p>Uh oh!!!</p>
+        <p>No product found</p>
     <%   } else {  %> 
 
     <!-- main screen -->
@@ -38,7 +40,10 @@
         <div class="back-button">
             <a href="BrowseItemsServlet"><button type="submit"> < Back to Products</button></a>
         </div>
+
+    <!-- Product information display -->
         <div class="product-container">
+
             <div class="product-img">
                 <img src="<%= product.getImg() %>" alt="<%= product.getName() %>" />
             </div>
@@ -53,7 +58,7 @@
                     <h4>Sold Out</h4>
                 <%   } else {  %> 
                     <%   if (staff != null){  %> 
-
+        <!-- if staff - Add to store cart form -->
                     <form action="AddToStoreCartServlet" method="post">
                     <div class = "choose-qty"><b>QTY:</b>
                     <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/></div>
@@ -67,6 +72,7 @@
                     <p><b>Size: </b><%= product.getSize() %></p>
                     <p><b>Description: </b><%= product.getDescription() %></p>
                 <%   } else if (customer != null){  %> 
+    <!-- if customer - Add to cart form -->
                     <form action="AddToCartServlet" method="post">
                     <div class = "choose-qty"><b>QTY:</b>
                     <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/></div>
@@ -76,6 +82,7 @@
                         <button type="submit">Add To Cart</button>
                     </form>
                 <%   } else {  %> 
+    <!-- if unregistered customer - Add to cart form -->
                     <form action="AddToCartServlet" method="post">
                     <div class = "choose-qty"><b>QTY:</b>
                     <input type="number" name="quantity" value="1" min="1" max="<%= product.getQuantity() %>"/></div>
@@ -93,7 +100,7 @@
             </div> 
         </div> 
         
-        
+    <!-- recommended list - mostly for UI -->    
         <div class = "rec-header"><h4>Recommended For You:</h4></div>
         <div class="recommended">
             <% for (Product p : recommendedList) {  %>

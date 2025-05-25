@@ -36,9 +36,11 @@
      <!-- main screen -->
      <div id="main_screen">
         <h2 id="staff_name">Update Product</h2>
-        
+    
+<!-- Product Edit Table -->
         <table id="product-table">
                 <tr>
+    <!-- Update Name -->
                     <form action="UpdateProductServlet" method="post">     
                     <td><b>Update Name: </b></td>
                     <td><input type="text" name="value" value="<%= p.getName() %>"></td>
@@ -49,6 +51,7 @@
                     </td>
                     </form>
                 </tr>
+    <!-- Update Brand-->
                 <tr>
                     <form action="UpdateProductServlet" method="post"> 
                     <td><b>Update Brand: </b></td>
@@ -61,6 +64,7 @@
                     </td>
                 </form>
                 </tr>
+    <!-- Update Price -->
                 <tr>
                     <form action="UpdateProductServlet" method="post"> 
                     <td><b>Update Price: </b></td>
@@ -80,6 +84,7 @@
                     </td>
                 </form>
                 </tr>
+    <!-- Update Image URL -->
                 <tr>
                     <form action="UpdateProductServlet" method="post"> 
                     <td><b>Update Image URL: </b></td>
@@ -99,6 +104,7 @@
                     </td>
                 </form>
                 </tr>
+    <!-- Update Description -->
                 <tr>
                     <form action="UpdateProductServlet" method="post"> 
                     <td><b>Update Description: </b></td>
@@ -110,6 +116,7 @@
                     </td>
                     </form>
                 </tr> 
+    <!-- Update Category -->
                 <form action="UpdateProductServlet" method="post">
                 <tr>
                     <td><b>Update Category: </b></td>
@@ -130,6 +137,7 @@
                 </tr>  
                 </form>                     
         </table>
+    <!-- Bottom buttons -->
         <div class="btm-btns">
         <div class="back">
             <a href="StockMgmtServlet">

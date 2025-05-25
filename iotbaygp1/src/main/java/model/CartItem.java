@@ -56,6 +56,11 @@ public class CartItem {
         return this.quantity;
     }
 
+    // for testing only to reset the quantity
+    public void setQuantity(int newQty){
+        this.quantity = newQty;
+    }
+
     public double getTotalCost(){
         return this.quantity*this.product.getPrice();
     }

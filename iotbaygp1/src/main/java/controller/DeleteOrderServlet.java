@@ -20,12 +20,14 @@ public class DeleteOrderServlet extends HttpServlet {
 
         @Override   
         protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-            //1- retrieve the current session
+            //retrieve the current session
             HttpSession session = request.getSession();
 
+            //retrieve the needed parameter for the process
             String orderID = (String) request.getParameter("orderID");
             if (orderID == null) throw new IOException("orderID is null");
             
+            //obtaining all relevant objectManager for the Servlet
             OrderItemsDAO orderItemsManager = (OrderItemsDAO) session.getAttribute("orderItemsManager");
             if (orderItemsManager == null) throw new IOException("DB manager not found");
 
@@ -34,9 +36,9 @@ public class DeleteOrderServlet extends HttpServlet {
         
             //3- capture the posted email - check jsp form name to see what parameter name
             Integer customerID = (Integer) session.getAttribute("customerID");  
-            if (customerID == null){customerID = 0;};   
+            if (customerID == null){customerID = 0;}; // <- is a set up for anonymous user   
 
-         
+            // main process
             try {      
                 if (customerID != null){
                     orderItemsManager.removeAllItem(orderID);

@@ -24,19 +24,18 @@ public class OrderSearchServlet extends HttpServlet {
 
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-        //1- retrieve the current session
+        //retrieve the current session
         HttpSession session = request.getSession();
 
+        //retrive the search query for the Servlet
         String search = request.getParameter("searchQuery");
 
     
-        //5- retrieve the manager instance from session      
+        //retrieve the manager instance from session      
         OrderDAO orderManager = (OrderDAO) session.getAttribute("orderManager");
         if (orderManager == null) throw new IOException("DB manager not found");
 
-        //3- capture the posted email - check jsp form name to see what parameter name
-        Integer customerID = (Integer) session.getAttribute("customerID");  
-
+        // main process (CustomerID is not used due to everyone can search for an order)
         System.out.println("Search received: " + search);
         ArrayList<Order> orderList = new ArrayList<>();
             try {

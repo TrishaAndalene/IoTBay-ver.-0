@@ -25,6 +25,7 @@
      <!-- main screen -->
      <div id="main_screen">
         <h2 id="staff_name">Add Item</h2>
+    <!-- form to add product -->
         <form action="AddProductServlet" method="post">
             <table id="form-table">
             <tr>

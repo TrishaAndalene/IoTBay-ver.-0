@@ -16,14 +16,15 @@ public class OrderItemsDAO {
 private Statement st;
 private Connection conn;
 private ProductDAO productManager;
-   
+
+// init function
 public OrderItemsDAO(Connection conn) throws SQLException {       
     st = conn.createStatement();
     this.conn = conn;
     this.productManager = new ProductDAO(conn);
 }
 
-
+// function to add OrderItems
 public void addItemToOrder(String orderCode, String upcCode, int quantityValue) throws SQLException {
     String query = "INSERT INTO OrderItems(orderID, upc, quantity) VALUES (?, ?, ?)";
     PreparedStatement ps = conn.prepareStatement(query);
@@ -34,6 +35,7 @@ public void addItemToOrder(String orderCode, String upcCode, int quantityValue) 
     System.out.println("added successfully");
 }
 
+// function to retrieve all OrderItems for listing the Order details
 public List<OrderItem> getOrderItems(String orderCode) throws SQLException{
         List<OrderItem> OrderItemsList = new ArrayList<>();
         System.out.println("I am here 3");
@@ -62,6 +64,8 @@ public List<OrderItem> getOrderItems(String orderCode) throws SQLException{
         return OrderItemsList;
     
 }
+
+// function to remove all OrderItem, used when the order is removed
 public void removeAllItem(String orderID) throws SQLException{
     String query = "DELETE FROM OrderItems WHERE orderID = ? ";
     PreparedStatement ps = conn.prepareStatement(query);

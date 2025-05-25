@@ -3,10 +3,9 @@
             <!-- main company logo -->
         <div class = "footercompany-details">
             <img src="img/company_logo.png" class="footercompany-logo">
-            <!-- compnay name -->
             <h3 class="footercompany-name">IoT Bay</h3>
         </div>
-
+             <!-- social media links -->
         <div class ="footersocial-media">
             <div class = "footersocial-row">
                 <img alt="instagram" src="img/insta.png">

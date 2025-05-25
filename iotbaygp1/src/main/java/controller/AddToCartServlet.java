@@ -24,14 +24,16 @@ public class AddToCartServlet extends HttpServlet {
 
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-        //1- retrieve the current session
+        //retrieve the current session
         HttpSession session = request.getSession();
+
+        //retrieve required parameter for the process
         int userID = Integer.parseInt(request.getParameter("userID"));
 
         String upc = request.getParameter("upc");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-        //5- retrieve the manager instance from session      
+        //retrieve the manager instance from session      
         CartDAO cartManager = (CartDAO) session.getAttribute("cartManager");
 
         if (cartManager == null) throw new IOException("DB manager not found");
@@ -40,7 +42,8 @@ public class AddToCartServlet extends HttpServlet {
         if (cartItemsManager == null) throw new IOException("DB manager not found");
 
         System.out.println("Input received: " + userID + "; " + upc + "; " + quantity);
-           
+        
+        // main process
         try {
             int cartID = cartManager.getCreateCart(userID);
             int itemID = cartItemsManager.findCartItem(cartID, upc);

@@ -34,6 +34,11 @@ public class OrderItem {
         this.product = product;
     }
 
+    // for testing only to reset the quantity
+    public void setQuantity(int newQty){
+        this.quantity = newQty;
+    }
+
     // Read methods
     public Product getProduct(){
         return this.product;

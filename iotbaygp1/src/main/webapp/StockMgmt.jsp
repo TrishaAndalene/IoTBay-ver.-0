@@ -29,11 +29,12 @@
             List<Product> allProduct = (List<Product>) request.getAttribute("allProduct");
             if (allProduct == null) {
             %>
-            <p>Oh no!!!!!!!</p>
+            <p>No products found</p>
             <% } else { %>
     <!-- main screen -->
     <div id="main_screen">
-        <h2 id="staff_name">Stock Management</h2>    
+        <h2 id="staff_name">Stock Management</h2>
+    <!-- product table -->    
         <table id="product-table">
             <thead>
                 <tr>
@@ -79,6 +80,7 @@
     }
             %>      
         </table>
+          <!-- bottom buttons -->
         <div id="add_btn">
             <a href="AddProduct.jsp">Add New Product</a>
         </div> 

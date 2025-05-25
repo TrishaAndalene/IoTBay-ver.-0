@@ -29,31 +29,29 @@ public class ViewCartServlet extends HttpServlet {
 
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-        //1- retrieve the current session
+        //retrieve the current session
         HttpSession session = request.getSession();
 
+        //retrieve all relevant objectManager for the Servlet
         CartItemsDAO cartItemsManager = (CartItemsDAO) session.getAttribute("cartItemsManager");
         if (cartItemsManager == null) throw new IOException("DB manager not found");
 
         CartDAO cartManager = (CartDAO) session.getAttribute("cartManager");
         if (cartManager == null) throw new IOException("DB cart manager is not found");
     
-        //3- capture the posted email - check jsp form name to see what parameter name
         Integer customerID = (Integer) session.getAttribute("customerID");  
-        if (customerID == null){
+        if (customerID == null){ // <- is a set up for anonymous user
             customerID = 9;
         }
 
         Integer cartID = (Integer) session.getAttribute("cartID");
-        if (cartID == null) {
+        if (cartID == null) { // <- is a set up to create Cart if the user doesn not have one
             try {
                 cartID = cartManager.getCreateCart(customerID);
             } catch (SQLException e){}
         }
-        
-        //5- retrieve the manager instance from session      
-
      
+        // main process
         try {    
 
             List<CartItem> cartItemList = cartItemsManager.getCartItems(cartID);
@@ -65,7 +63,6 @@ public class ViewCartServlet extends HttpServlet {
                 cartItems.put(p, qty);}
 
             request.setAttribute("cartItems", cartItems);
-            //14- redirect user to the main.jsp
             request.getRequestDispatcher("/ViewCart.jsp").include(request, response);
 
             

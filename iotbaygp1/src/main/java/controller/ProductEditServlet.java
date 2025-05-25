@@ -26,19 +26,18 @@ public class ProductEditServlet extends HttpServlet{
 
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-        //1- retrieve the current session
+        // Retrieving the current session
         HttpSession session = request.getSession();
-    
-        //3- capture the posted email - check jsp form name to see what parameter name
-        String upc = request.getParameter("upc");      
-        
-        //5- retrieve the manager instance from session      
+
+        // Retrieving the manager instance from the session   
         ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
         if (productManager == null) throw new IOException("DB manager not found");
     
-    
+        // Capturing parameters passed in from the JSP
+        String upc = request.getParameter("upc");      
+
+        // Create product instance and capture object details retrieved by the database
         Product product = null;       
-     
         try {       
             product = productManager.findProduct(upc);
             
@@ -46,16 +45,14 @@ public class ProductEditServlet extends HttpServlet{
             Logger.getLogger(ProductEditServlet.class.getName()).log(Level.SEVERE, null, ex);    
         }
     
+        // Send product instance to the JSP for updating   
         if (product != null) {                     
-            //13-save the logged in user object to the session
             request.setAttribute("product", product);
-            //14- redirect user to the main.jsp
             request.getRequestDispatcher("/ProductEdit.jsp").include(request, response);   
-        } else {                       
-            //15-set user does not exist error to the session
-            session.setAttribute("errorMsg", "Incorrect upc :(");        
-            //16- redirect user back to the login.jsp
-            request.getRequestDispatcher("/StockMgmt.jsp").include(request, response);  
+        } else {
+            //Set up error message and redirect to the JSP                      
+            session.setAttribute("errorMsg", "UPC does not exist in the database");        
+            request.getRequestDispatcher("StockMgmtServlet").include(request, response);  
             }   
         }
 }

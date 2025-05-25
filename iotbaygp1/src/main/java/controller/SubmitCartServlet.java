@@ -27,10 +27,10 @@ public class SubmitCartServlet extends HttpServlet{
     
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //retrieve current HTTP session
         HttpSession session = request.getSession();
 
-
-        // Manager tab
+        //retrieve all relevant ObjectManager for the Servlet
         CartDAO cartManager = (CartDAO) session.getAttribute("cartManager");
         if (cartManager == null) throw new IOException("cartManager is null");
 
@@ -49,14 +49,14 @@ public class SubmitCartServlet extends HttpServlet{
         ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
         if (productManager == null) throw new IOException("productManager is not found");
 
+        // obtain required parameter
         Double cost = Double.parseDouble(request.getParameter("totalPrice"));
         Integer paymentID = (Integer) session.getAttribute("paymentID");
 
         Integer customerID = (Integer) session.getAttribute("customerID");
-        if (customerID == null){customerID = 9;}
+        if (customerID == null){customerID = 9;} // <- is a set up for anonymous user
 
-
-
+        // main process
         try {
             if (customerID != null){
                 int cartID = cartManager.getCreateCart(customerID);
@@ -70,7 +70,7 @@ public class SubmitCartServlet extends HttpServlet{
 
                 int confirmedPaymentID = paymentManager.confirmPayment(orderID, paymentID);
 
-
+                // this part is to update the stock value of the product upon order submission
                 for (CartItem c : cartItems){
                     if (c.getQuantity() != 0){
                         orderItemManager.addItemToOrder(orderID, c.getUPC(), c.getQuantity());
@@ -85,6 +85,7 @@ public class SubmitCartServlet extends HttpServlet{
                     }
                 }
 
+                // connecting with the Payment
                 List<OrderItem> orderItemsList = orderItemManager.getOrderItems(orderID);
 
                 cartItemsManager.removeAllItem(cartID);

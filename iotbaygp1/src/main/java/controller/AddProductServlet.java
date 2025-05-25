@@ -21,13 +21,14 @@ public class AddProductServlet extends HttpServlet {
     
 @Override   
 protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-    //1- retrieve the current session
+    // Retrieving the current session
     HttpSession session = request.getSession();
-    //5- retrieve the manager instance from session      
+
+    // Retrieving the manager instance from session      
     ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
     if (productManager == null) throw new IOException("DB manager not found");
 
-    //3- capture the posted details
+    // Capturing parameters passed in from the JSP
     String upc = request.getParameter("upc");
     String name = request.getParameter("name"); 
     String brand = request.getParameter("brand");  
@@ -58,7 +59,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 
     double price = 0;
     int quantity = 0;
-
+    
+    // Error Checking - Price must be a number
     try {   
         price = Double.parseDouble(priceStr);  
     } catch (NumberFormatException ex) {           
@@ -66,6 +68,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         request.getRequestDispatcher("/AddProduct.jsp").forward(request, response);
         return; }
 
+    // Error Checking - image URL must be a URL
     try {
         if (!image.contains("https://")){
             request.setAttribute("errorMesg", "Image URL must be a URL");
@@ -74,16 +77,19 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
                 }
             } catch (Exception e){    
         }
-        
+
+    // Error Checking - QTY must be a number
     try {   
         quantity = Integer.parseInt(quantityStr);  
     } catch (NumberFormatException ex) {           
         request.setAttribute("errorMssg", "Stock quantity must be an integer");
         request.getRequestDispatcher("/AddProduct.jsp").forward(request, response);
         return; }
-
-    Product product = new Product(upc, name, price, brand, colour, size, image, quantity, cat, description);  
     
+    // Create product instance to be added to the database
+    Product product = new Product(upc, name, price, brand, colour, size, image, quantity, cat, description); 
+
+    // Add product instance to the database and return to the Stock Management page
     try {       
         productManager.addProduct(product);
             request.getRequestDispatcher("StockMgmtServlet").forward(request, response);
@@ -92,7 +98,5 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     } catch (SQLException ex) {           
         Logger.getLogger(AddProductServlet.class.getName()).log(Level.SEVERE, null, ex);    
     }
-
-    //response.sendRedirect("StockMgmtServlet");
     }
 }

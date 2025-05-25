@@ -23,45 +23,40 @@ public class BrowseItemsServlet extends HttpServlet {
     }
 
     @Override   
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
-        //1- retrieve the current session
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException { 
+
+        // Retrieving the current session
         HttpSession session = request.getSession();
 
-        String filter = request.getParameter("filter");
-
-    
-        //5- retrieve the manager instance from session      
+        // Retrieving the manager instance from session     
         ProductDAO productManager = (ProductDAO) session.getAttribute("productManager");
         if (productManager == null) throw new IOException("DB manager not found");
-    
-        System.out.println("Filter received: " + filter);
 
+        // Capturing parameter passed in from the JSP
+        String filter = request.getParameter("filter");
+
+        // Create list to be passed in to the view
         List<Product> allProduct = null;
 
-         
-            try {
-                if (filter == null || filter.equals("all")){
-                    allProduct = productManager.listAllProducts();
-                } else {
-                    allProduct = productManager.getProductsByCat(filter);} 
+        // Add Product instances to the list by filter
+        try {
+            if (filter == null || filter.equals("all")){
+                allProduct = productManager.listAllProducts();
+            } else {
+                allProduct = productManager.getProductsByCat(filter);} 
 
             } catch (SQLException ex) {
                 Logger.getLogger(BrowseItemsServlet.class.getName()).log(Level.SEVERE, null, ex);  
             }
-    
+        
+        // Pass the list to the view as an attribute and redirect to the JSP
         if (allProduct != null) {                     
-            //13-save the logged in user object to the session
             request.setAttribute("allProduct", allProduct);
-            //14- redirect user to the main.jsp
             request.getRequestDispatcher("/BrowseItems.jsp").forward(request, response);   
         } else {                       
-            //15-set user does not exist error to the session
-            request.setAttribute("errorMsg", "Idk what is going on :(");        
-            //16- redirect user back to the login.jsp
+            //Set up error message and redirect to the JSP
+            request.setAttribute("errorMsg", "No products found.");        
             request.getRequestDispatcher("/BrowseItems.jsp").include(request, response);  
             }   
-
-            System.out.println("Session ID: " + session.getId());
-            System.out.println("productManager is null");
         }
     }
